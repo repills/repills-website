@@ -25,13 +25,13 @@ const PageContentStyle = styled.div`${pageContent}`;
 const features = [
   {
     icon: 'PullRequest',
-    title: 'Learn Pill by Pill',
+    title: 'Learn pill by pill',
     description: 'Repills is a place to learn about web development and design through high-quality resources.'
   },
   {
     icon: 'Star',
-    title: 'Free resources grouped by topics',
-    description: 'The "pills" proposed are free and also grouped by section and topics. Browse them and discover what\'s new!'
+    title: 'Free resources',
+    description: 'The "pills" proposed are free and also grouped by section and topic. Browse them and discover what\'s new!'
   },
   {
     icon: 'GitHub',
@@ -132,8 +132,7 @@ class Index extends React.Component {
 
             <PageBlock
               align="CENTER"
-              title="Pills by section"
-              description="Choose a section and start to learn"
+              title="Learn by topic"
               style={{ marginTop: '60px' }}
             >
               <SectionsList
