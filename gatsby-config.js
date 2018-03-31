@@ -1,5 +1,4 @@
 module.exports = {
-  pathPrefix: `/repills-website`,
   siteMetadata: {
     title: `Repills.com`,
     author: `Repills`,
@@ -11,7 +10,7 @@ module.exports = {
       resolve: 'gatsby-source-filesystem',
       options: {
         path: `${__dirname}/src/resources`,
-        name: 'resources',
+        name: 'resources'
       },
     }
   ]
