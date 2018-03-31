@@ -1,4 +1,5 @@
 import React from 'react';
+import Helmet from 'react-helmet';
 import {
   ResourcesListWithDetail,
   ResponsivePagination,
@@ -66,6 +67,9 @@ class Topic extends React.Component {
 
     return (
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>{topic.title}</title>
+        </Helmet>
         <HeaderContent style={{alignItems: 'center'}}>
           <HeaderContentMain>
             <SectionPageHeader

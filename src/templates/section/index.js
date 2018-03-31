@@ -11,6 +11,7 @@ import {
   ContributorsList,
   getResourcesStats
 } from 'repills-react-components';
+import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import {
@@ -91,6 +92,9 @@ class Section extends React.Component {
 
     return (
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>{name}</title>
+        </Helmet>
         <HeaderContent>
           <HeaderContentMain>
             <SectionPageHeader

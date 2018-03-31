@@ -5,7 +5,7 @@ export default class HTML extends React.Component {
 
   render() {
     return (
-      <html lang="en">
+      <html lang="en" prefix="og: http://ogp.me/ns#">
         <head>
           <meta charSet="utf-8" />
           <meta

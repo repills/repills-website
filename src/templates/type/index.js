@@ -8,6 +8,7 @@ import {
   ShareBar
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
+import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
 import {
   PageContent,
@@ -45,6 +46,9 @@ class Type extends React.Component {
 
     return (
       <div style={transition && transition.style}>
+        <Helmet>
+          <title>{type.label.plural}</title>
+        </Helmet>
         <HeaderContent>
           <HeaderContentMain>
             <TypePageHeader
