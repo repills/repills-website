@@ -1,7 +1,7 @@
 ---
 sections: [reactjs]
 link: http://neostack.com/opensource/react-slick
-title: "React Slick Docs Github"
+title: "React Slick"
 author: "Akiran"
 publishedAt: 1970-01-01T00:00:00.000Z
 type: [library]
