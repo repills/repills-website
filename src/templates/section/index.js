@@ -8,6 +8,7 @@ import {
   ShareBar,
   Counter,
   TileCta,
+  ContributorsList,
   getResourcesStats
 } from 'repills-react-components';
 import PropTypes from 'prop-types';
@@ -197,12 +198,12 @@ class Section extends React.Component {
                </div>
                }
                </div>
-               <ContributorsList
-               contributors={contributors}
-               style={{marginTop: '32px'}}
-               />
                */
             }
+            <ContributorsList
+              contributors={contributors}
+              style={{marginTop: '32px'}}
+            />
 
           </PageContentSecondary>
 
