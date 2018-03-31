@@ -28,17 +28,23 @@ class Type extends React.Component {
   handleNavigateToTopic = topicId => alert('Navigate to topic: ' + topicId);
 
   render() {
+
+    const {
+      pathContext,
+      transition
+    } = this.props;
+
     const {
       sectionId,
       types,
       pagination,
       type
-    } = this.props.pathContext;
+    } = pathContext;
 
     const section = sections.find(s => s.id === sectionId);
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <HeaderContent>
           <HeaderContentMain>
             <TypePageHeader

@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   TypesList,
   TopicsList,
@@ -8,6 +8,7 @@ import {
   ShareBar,
   Counter,
   TileCta,
+  ContributorsList,
   getResourcesStats
 } from 'repills-react-components';
 import PropTypes from 'prop-types';
@@ -62,7 +63,8 @@ class Section extends React.Component {
 
     const {
       data,
-      pathContext
+      pathContext,
+      transition
     } = this.props;
 
     const {
@@ -88,7 +90,7 @@ class Section extends React.Component {
     }));
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <HeaderContent>
           <HeaderContentMain>
             <SectionPageHeader
@@ -197,12 +199,12 @@ class Section extends React.Component {
                </div>
                }
                </div>
-               <ContributorsList
-               contributors={contributors}
-               style={{marginTop: '32px'}}
-               />
                */
             }
+            <ContributorsList
+              contributors={contributors}
+              style={{marginTop: '32px'}}
+            />
 
           </PageContentSecondary>
 

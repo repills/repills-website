@@ -46,7 +46,8 @@ class Topic extends React.Component {
 
 
     const {
-      pathContext
+      pathContext,
+      transition
     } = this.props;
 
     const {
@@ -64,7 +65,7 @@ class Topic extends React.Component {
     // const suggestedTopics = Object.entries(sections.topics);
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <HeaderContent style={{alignItems: 'center'}}>
           <HeaderContentMain>
             <SectionPageHeader
