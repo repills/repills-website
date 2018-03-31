@@ -68,7 +68,8 @@ class Index extends React.Component {
 
     const {
       data,
-      pathContext
+      pathContext,
+      transition
     } = this.props;
 
     const {sections} = pathContext;
@@ -79,7 +80,7 @@ class Index extends React.Component {
     const allSections = [...activeSections, ...noActiveSections];
 
     return (
-      <BaseStyle>
+      <BaseStyle style={transition && transition.style}>
         <div>
           <HomePageHeader
             subTitle="for web developers and UI designers"

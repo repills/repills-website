@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   TypesList,
   TopicsList,
@@ -63,7 +63,8 @@ class Section extends React.Component {
 
     const {
       data,
-      pathContext
+      pathContext,
+      transition
     } = this.props;
 
     const {
@@ -89,7 +90,7 @@ class Section extends React.Component {
     }));
 
     return (
-      <div>
+      <div style={transition && transition.style}>
         <HeaderContent>
           <HeaderContentMain>
             <SectionPageHeader
