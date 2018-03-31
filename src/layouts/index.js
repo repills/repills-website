@@ -2,6 +2,7 @@ import React from 'react';
 import { TopNavigation } from 'repills-react-components';
 import styled from 'styled-components';
 import { navigateTo } from 'gatsby-link';
+import Helmet from 'react-helmet';
 
 import {
   base,
@@ -33,6 +34,17 @@ export default class Template extends React.Component {
 
     return (
       <BaseStyle>
+        <Helmet
+          defaultTitle={`Daily pills to acquire new skills`}
+          titleTemplate={`%s | Repills.com`}
+        >
+          <meta property="og:title" content="Repills.com" />
+          <meta property="og:description" content="Daily pills to acquire new skills!" />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://repills.com" />
+          <meta property="og:site_name" content="Repills.com" />
+          <meta property="og:locale" content="en_EN" />
+        </Helmet>
         <NavigationStyle>
           <NavigationWrapperStyle>
             <TopNavigation onClickLogo={() => navigateTo('/')} />
