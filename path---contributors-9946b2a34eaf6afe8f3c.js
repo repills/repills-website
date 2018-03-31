@@ -1,2 +1,0 @@
-webpackJsonp([0xd4095fac8ffa],{767:function(a,t){a.exports={data:{allMarkdownRemark:{totalCount:84,listAuthors:["andreamangano"],group:[{fieldValue:"andreamangano",totalCount:84}]}},pathContext:{}}}});
-//# sourceMappingURL=path---contributors-9946b2a34eaf6afe8f3c.js.map
