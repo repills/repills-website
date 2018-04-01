@@ -29,6 +29,8 @@ export default class Template extends React.Component {
     }
   }
 
+  // Twitter card (fallback to og facebook https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started)
+
   render() {
     const { children } = this.props;
 
@@ -42,6 +44,7 @@ export default class Template extends React.Component {
           titleTemplate={`%s | Repills.com`}
         >
           <meta name="description" content={description} />
+          <meta name="twitter:card" content="summary" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:type" content="website" />
@@ -49,7 +52,6 @@ export default class Template extends React.Component {
           <meta property="og:site_name" content="Repills.com" />
           <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
           <meta property="og:locale" content="en_EN" />
-
         </Helmet>
         <NavigationStyle>
           <NavigationWrapperStyle>
