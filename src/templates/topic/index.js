@@ -65,10 +65,16 @@ class Topic extends React.Component {
     const section = sections.find(s => s.id === sectionId);
     // const suggestedTopics = Object.entries(sections.topics);
 
+    const metaDescription = `${section.name}: Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
+
     return (
       <div style={transition && transition.style}>
         <Helmet>
           <title>{topic.title}</title>
+          <meta name="description" content={metaDescription} />
+          <meta property="og:title" content={`${topic.title} | Learn pill by pill and acquire new skills!`} />
+          <meta property="og:description" content={metaDescription} />
+          <meta property="og:url" content={`https://repills.com${topic.path}`} />
         </Helmet>
         <HeaderContent style={{alignItems: 'center'}}>
           <HeaderContentMain>

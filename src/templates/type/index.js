@@ -44,10 +44,16 @@ class Type extends React.Component {
 
     const section = sections.find(s => s.id === sectionId);
 
+    const metaDescription = `Free ${type.label.plural} about '${section.name}' and other amazing contents. Discover everyday what's new in the web development and UI design.`;
+
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>{type.label.plural}</title>
+          <title>{type.label.plural} in {section.name}</title>
+          <meta name="description" content={metaDescription} />
+          <meta property="og:title" content={`Resources about ${section.name} grouped by type`} />
+          <meta property="og:description" content={metaDescription} />
+          <meta property="og:url" content={`https://repills.com${type.path}`} />
         </Helmet>
         <HeaderContent>
           <HeaderContentMain>
@@ -60,24 +66,6 @@ class Type extends React.Component {
               typeName={type.label}
             />
           </HeaderContentMain>
-          <HeaderContentSecondary>
-            <ShareBar
-              link="http://repills.com"
-              text="Learn pill by pill on repills.com"
-              title="Pills around the web for web developers and UI designers"
-              types={[
-                'facebook',
-                'google',
-                'linkedin',
-                'twitter',
-                'email'
-              ]}
-              style={{
-                display: 'flex',
-                justifyContent: 'flex-end'
-              }}
-            />
-          </HeaderContentSecondary>
         </HeaderContent>
         <div>
           <TypesList
