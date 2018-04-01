@@ -5,6 +5,7 @@
     "classnames": "^2.2.5",
     "gatsby": "^1.9.243",
     "gatsby-link": "^1.6.40",
+    "gatsby-plugin-favicon": "^2.1.1",
     "gatsby-plugin-react-helmet": "^2.0.5",
     "gatsby-source-filesystem": "^1.5.25",
     "gatsby-transformer-remark": "^1.7.34",
