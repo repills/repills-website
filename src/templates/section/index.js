@@ -91,16 +91,18 @@ class Section extends React.Component {
       publishedCount: c.totalCount
     }));
 
+    const metaTitle = `${name} | Learn pill by pill and acquire new skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
+    const shareUrl = `https://repills.com${path}`;
 
     return (
       <div style={transition && transition.style}>
         <Helmet>
           <title>{name}</title>
           <meta name="description" content={metaDescription} />
-          <meta property="og:title" content={`${name} | Learn pill by pill and acquire new skills!`} />
+          <meta property="og:title" content={metaTitle} />
           <meta property="og:description" content={metaDescription} />
-          <meta property="og:url" content={`https://repills.com${path}`} />
+          <meta property="og:url" content={shareUrl} />
         </Helmet>
         <HeaderContent>
           <HeaderContentMain>
@@ -119,13 +121,11 @@ class Section extends React.Component {
               stats={getResourcesStats(resources, true)}
             />
             <ShareBar
-              link="http://repills.com"
-              text="Learn pill by pill on repills.com"
-              title="Pills around the web for web developers and UI designers"
+              link={shareUrl}
+              text={metaDescription}
+              title={metaTitle}
               types={[
                 'facebook',
-                'google',
-                'linkedin',
                 'twitter',
                 'email'
               ]}

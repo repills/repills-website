@@ -65,16 +65,18 @@ class Topic extends React.Component {
     const section = sections.find(s => s.id === sectionId);
     // const suggestedTopics = Object.entries(sections.topics);
 
-    const metaDescription = `${section.name}: Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
+    const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire new skills!`;
+    const metaDescription = `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
+    const shareUrl = `https://repills.com${topic.path}`;
 
     return (
       <div style={transition && transition.style}>
         <Helmet>
           <title>{topic.title}</title>
           <meta name="description" content={metaDescription} />
-          <meta property="og:title" content={`${topic.title} | Learn pill by pill and acquire new skills!`} />
+          <meta property="og:title" content={metaTitle} />
           <meta property="og:description" content={metaDescription} />
-          <meta property="og:url" content={`https://repills.com${topic.path}`} />
+          <meta property="og:url" content={shareUrl} />
         </Helmet>
         <HeaderContent style={{alignItems: 'center'}}>
           <HeaderContentMain>
@@ -92,13 +94,11 @@ class Topic extends React.Component {
               stats={getResourcesStats(topic.resources, true)}
             />
             <ShareBar
-              link="http://repills.com"
-              text="Learn pill by pill on repills.com"
-              title="Pills around the web for web developers and UI designers"
+              link={shareUrl}
+              text={metaDescription}
+              title={metaTitle}
               types={[
                 'facebook',
-                'google',
-                'linkedin',
                 'twitter',
                 'email'
               ]}
