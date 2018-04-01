@@ -78,6 +78,7 @@ class Section extends React.Component {
       resourcesCount,
       topicsCount,
       maintainers,
+      path,
       types,
       icon
     } = pathContext;
@@ -90,18 +91,16 @@ class Section extends React.Component {
       publishedCount: c.totalCount
     }));
 
+    const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
+
     return (
       <div style={transition && transition.style}>
         <Helmet>
           <title>{name}</title>
-
+          <meta name="description" content={metaDescription} />
           <meta property="og:title" content={`${name} | Learn pill by pill and acquire new skills!`} />
-          <meta property="og:description" content={`Discover everyday amazing resources about '${name}' and other hot topics in the web development and UI design.`} />
-          <meta property="og:type" content="website" />
-          <meta property="og:url" content={`https://repills.com/${id}`} />
-          <meta property="og:site_name" content="Repills.com" />
-          <meta property="og:locale" content="en_EN" />
-
+          <meta property="og:description" content={metaDescription} />
+          <meta property="og:url" content={`https://repills.com${path}`} />
         </Helmet>
         <HeaderContent>
           <HeaderContentMain>
