@@ -22,17 +22,6 @@ export const navigation = css`
   z-index: ${theme.zIndex.navbar};
   border-bottom: 1px solid ${neutral.low};
   
-  &::after {
-    content: '';
-    height: ${extRem(48)};
-    background: linear-gradient(${neutral.lowest}, ${rgba(neutral.lowest, 0)});
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -1px;
-    transform: translateY(100%);
-  }
-  
   ${media.MD`
     padding: ${extRem(0, 24)};
   `};
