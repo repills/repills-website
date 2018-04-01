@@ -32,18 +32,27 @@ export default class Template extends React.Component {
   render() {
     const { children } = this.props;
 
+    const title = "Daily pills to acquire new skills";
+    const description = "Repills is a place to learn about web development and UI design through high-quality resources.";
+
     return (
       <BaseStyle>
         <Helmet
-          defaultTitle={`Daily pills to acquire new skills`}
+          defaultTitle={title}
           titleTemplate={`%s | Repills.com`}
         >
-          <meta property="og:title" content="Repills.com" />
-          <meta property="og:description" content="Daily pills to acquire new skills!" />
+          <meta name="description" content={description} />
+          block meta-tags
+          meta(name="keywords" content=siteContents.meta.tags)
+
+          <meta property="og:title" content={title} />
+          <meta property="og:description" content={description} />
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://repills.com" />
           <meta property="og:site_name" content="Repills.com" />
+          <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
           <meta property="og:locale" content="en_EN" />
+
         </Helmet>
         <NavigationStyle>
           <NavigationWrapperStyle>
