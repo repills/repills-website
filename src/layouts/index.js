@@ -1,5 +1,5 @@
 import React from 'react';
-import { TopNavigation } from 'repills-react-components';
+import { TopNavigation, Spinner } from 'repills-react-components';
 import styled from 'styled-components';
 import { navigateTo } from 'gatsby-link';
 import Helmet from 'react-helmet';
@@ -10,7 +10,8 @@ import {
   page,
   pageWrapper,
   footer,
-  navigationWrapper
+  navigationWrapper,
+  spinner
 } from './style';
 
 const BaseStyle = styled.div`${base}`;
@@ -19,8 +20,20 @@ const PageStyle = styled.div`${page}`;
 const NavigationWrapperStyle = styled.div`${navigationWrapper}`;
 const PageWrapperStyle = styled.div`${pageWrapper}`;
 const FooterStyle = styled.footer`${footer}`;
+const SpinnerStyle = styled.div`${spinner}`;
 
 export default class Template extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true
+    }
+  }
+
+  componentDidMount() {
+    setTimeout(() => this.setState({loading: false}), 600);
+  }
 
   componentWillUpdate() {
     const page = document.getElementById('page');
@@ -33,6 +46,7 @@ export default class Template extends React.Component {
 
   render() {
     const { children } = this.props;
+    const { loading } = this.state;
 
     const title = "REPILLS - Daily pills to acquire new skills";
     const description = "Repills.com is a place to learn about web development and UI design through high-quality resources. Discover what's new today!";
@@ -53,19 +67,30 @@ export default class Template extends React.Component {
           <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
           <meta property="og:locale" content="en_EN" />
         </Helmet>
-        <NavigationStyle>
-          <NavigationWrapperStyle>
-            <TopNavigation onClickLogo={() => navigateTo('/')} />
-          </NavigationWrapperStyle>
-        </NavigationStyle>
-        <PageStyle id="page">
-          <PageWrapperStyle>
-            {children()}
-            <FooterStyle>
-              Repills.com - Made with passion and a bit of automation (powered by <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>)
-            </FooterStyle>
-          </PageWrapperStyle>
-        </PageStyle>
+        {
+          loading &&
+          <SpinnerStyle>
+            <Spinner />
+          </SpinnerStyle>
+        }
+        {
+          !loading &&
+            <div>
+              <NavigationStyle>
+                <NavigationWrapperStyle>
+                  <TopNavigation onClickLogo={() => navigateTo('/')} />
+                </NavigationWrapperStyle>
+              </NavigationStyle>
+              <PageStyle id="page">
+                <PageWrapperStyle>
+                  {children()}
+                  <FooterStyle>
+                    Repills.com - Made with passion and a bit of automation (powered by <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>)
+                  </FooterStyle>
+                </PageWrapperStyle>
+              </PageStyle>
+            </div>
+        }
       </BaseStyle>
     );
   }
