@@ -46,8 +46,7 @@ class Index extends React.Component {
     super(props);
     const { data } = this.props;
     this.state = {
-      latestSharedResources: data.latestSharedResources.edges.map(e => normalizeResource(e)),
-      latestPublishedResources: data.latestPublishedResources.edges.map(e => normalizeResource(e))
+      latestSharedResources: data.latestSharedResources.edges.map(e => normalizeResource(e))
     }
   }
 
@@ -62,8 +61,7 @@ class Index extends React.Component {
   render() {
 
     const {
-      latestSharedResources,
-      latestPublishedResources
+      latestSharedResources
     } = this.state;
 
     const {
@@ -104,26 +102,9 @@ class Index extends React.Component {
                 {
                   // TODO: navigations for topics
                   <ResourcesListWithDetail
+                    breaks={{ XS: 4, SM: 6 }}
                     resources={latestSharedResources}
                     dateType={'createdAt'}
-                    navigateToSection={this.handleNavigateToSection}
-                    navigateToTopic={this.handleNavigateToTopic}
-                  />
-                }
-              </div>
-            </PageBlock>
-
-            <PageBlock
-              align="CENTER"
-              title='Last by publish date'
-              style={{ marginTop: '60px' }}
-            >
-              <div style={{ marginTop: '40px' }}>
-                {
-                  // TODO: navigations for topics
-                  <ResourcesListWithDetail
-                    resources={latestPublishedResources}
-                    dateType={'publishedAt'}
                     navigateToSection={this.handleNavigateToSection}
                     navigateToTopic={this.handleNavigateToTopic}
                   />
@@ -159,30 +140,8 @@ export const pageQuery = graphql`
       totalCount
     }
     latestSharedResources: allMarkdownRemark(
-      limit: 9,
+      limit: 12,
       sort: { order: DESC, fields: [frontmatter___createdAt] }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            sections
-            link
-            title
-            author
-            createdAt
-            publishedAt
-            type
-            topics
-            suggestedBy
-            createdAt
-            reference
-          }
-        }
-      }
-    }
-    latestPublishedResources: allMarkdownRemark(
-      limit: 9,
-      sort: { order: DESC, fields: [frontmatter___publishedAt] }
     ) {
       edges {
         node {
