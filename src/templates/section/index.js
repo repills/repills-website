@@ -145,6 +145,7 @@ class Section extends React.Component {
               title='Last added'
             >
               <ResourcesListWithDetail
+                breaks={{ XS: 4, SM: 6 }}
                 resources={lastResources}
                 dateType={'createdAt'}
                 navigateToSection={this.handleNavigateToSection}
@@ -159,6 +160,7 @@ class Section extends React.Component {
               style={{margin: '52px 0'}}
             >
               <TopicsList
+                breaks={{ XS: 8, SM: 16 }}
                 navigateTo={path => navigateTo(path)}
                 topics={Object.keys(topics).map(topicId => (topics[topicId]))}
               />
@@ -234,7 +236,7 @@ export default Section;
 export const pageQuery = graphql`
   query TagPage($id: String) {
     resources: allMarkdownRemark(
-      limit: 6
+      limit: 12
       sort: { fields: [frontmatter___createdAt], order: DESC }
       filter: { frontmatter: { sections: { in: [$id] } } }
     ) {
