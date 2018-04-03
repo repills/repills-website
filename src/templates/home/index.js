@@ -96,9 +96,9 @@ class Index extends React.Component {
             <PageBlock
               align="CENTER"
               title='Last added'
-              style={{ marginTop: '60px' }}
+              style={{ marginTop: '52px' }}
             >
-              <div style={{ marginTop: '40px' }}>
+              <div>
                 {
                   // TODO: navigations for topics
                   <ResourcesListWithDetail
@@ -120,7 +120,6 @@ class Index extends React.Component {
               <SectionsList
                 navigateTo={path => navigateTo(path)}
                 sections={allSections}
-                style={{ marginTop: '40px' }}
               />
             </PageBlock>
           </PageContentStyle>
