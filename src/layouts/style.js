@@ -20,8 +20,9 @@ export const base = css`
 export const navigation = css`
   position: relative;
   z-index: ${theme.zIndex.navbar};
+  background-color: ${neutral.lowest};
   border-bottom: 1px solid ${neutral.low};
-  
+
   ${media.MD`
     padding: ${extRem(0, 24)};
   `};
@@ -31,18 +32,10 @@ export const page = css`
   flex-grow: 1;
   overflow-y: auto;
   will-change: scroll-position;
-  padding: ${extRem(0, 12)};
-  
-  ${media.SM`
-    padding: ${extRem(0, 24)};
-  `};
 `;
 
 export const pageWrapper = css`
-  ${media.XL`
-    max-width: ${extRem(1150)};
-    margin: 0 auto;
-  `};
+
 `;
 
 export const spinner = css`
@@ -63,7 +56,7 @@ export const footer = css`
   ${typography.body}
   color: ${neutral.medium};
   margin-top: ${extRem(68)};
-  padding-bottom: ${extRem(32)};
+  padding: ${extRem(0,20,32)};
   
   a {
     color: currentColor;

@@ -8,23 +8,19 @@ import {
   PageBlock
 } from 'repills-react-components';
 import {sections as sectionsData} from 'repills-config';
-
-import styled from 'styled-components';
 import { navigateTo } from 'gatsby-link';
-import {
-  base,
-  page,
-  pageContent
-} from './style';
 import { normalizeResource } from '../../../utils/resources';
 
-const BaseStyle = styled.div`${base}`;
-const PageStyle = styled.div`${page}`;
-const PageContentStyle = styled.div`${pageContent}`;
+import {
+  Header,
+  SimpleHeaderContent,
+  Page,
+  SimplePageContent
+} from '../../style/layout-columns';
 
 const features = [
   {
-    icon: 'PullRequest',
+    icon: 'SquarePill',
     title: 'Learn pill by pill',
     description: 'Repills is a place to learn about web development and design through high-quality resources.'
   },
@@ -34,7 +30,7 @@ const features = [
     description: 'The "pills" proposed are free and also grouped by section and topic. Browse them and discover what\'s new!'
   },
   {
-    icon: 'GitHub',
+    icon: 'PullRequest',
     title: 'Open source project',
     description: 'Discover the project on <a target="_blank" href="https://github.com/repills/repills-website">GitHub</a> and <a target="_blank" href="https://repills.github.io/repills-generator/">contribute</a> by adding new amazing resources.'
   }
@@ -74,29 +70,33 @@ class Index extends React.Component {
 
     const activeSectionKeys = Object.keys(sections);
     const activeSections = activeSectionKeys.map(sectionId => (sections[sectionId]));
-    const noActiveSections = sectionsData.filter(s => !activeSectionKeys.includes(s.id)).map(s => { s.disabled = true; return s});
+    const noActiveSections = sectionsData.filter(s => !activeSectionKeys.includes(s.id)).map(s => {
+      s.disabled = true;
+      s.resourcesCount = 0;
+      s.topicsCount = 0;
+      return s
+    });
     const allSections = [...activeSections, ...noActiveSections];
 
     return (
-      <BaseStyle style={transition && transition.style}>
-        <div>
-          <HomePageHeader
-            subTitle="for web developers and UI designers"
-            // title={`${data.totalResources.totalCount} Pills around the web`}
-            title="Daily pills to acquire new skills!"
-          />
-          <div style={{borderBottom: '1px solid #e0e0e0', padding: '0 0 40px'}}>
+      <div style={transition && transition.style}>
+        <Header>
+          <SimpleHeaderContent style={{paddingBottom: '32px'}}>
+            <HomePageHeader
+              subTitle="for web developers and UI designers"
+              // title={`${data.totalResources.totalCount} Pills around the web`}
+              title="Daily <strong>pills</strong> to get new <strong>skills</strong>"
+            />
             <FeatureList
               features={features}
             />
-          </div>
-        </div>
-        <PageStyle>
-          <PageContentStyle>
+          </SimpleHeaderContent>
+        </Header>
+        <Page>
+          <SimplePageContent>
             <PageBlock
               align="CENTER"
               title='Last added'
-              style={{ marginTop: '52px' }}
             >
               <div>
                 {
@@ -122,9 +122,9 @@ class Index extends React.Component {
                 sections={allSections}
               />
             </PageBlock>
-          </PageContentStyle>
-        </PageStyle>
-      </BaseStyle>
+          </SimplePageContent>
+        </Page>
+      </div>
     );
   }
 };
