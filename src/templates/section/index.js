@@ -189,7 +189,7 @@ class Section extends React.Component {
               <TileCta
                 cta={{
                   label: 'Contact us',
-                  onClick: () => "Clicked",
+                  onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
                   skin: 'outline'
                 }}
                 description="Great! Propose yourself as maintainer and help us to select high-level contents."
