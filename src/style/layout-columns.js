@@ -1,18 +1,55 @@
 import {
   extRem,
-  media
+  media,
+  theme
 } from 'repills-react-components';
 import { grid } from 'styled-components-grid';
 import styled, { css } from 'styled-components';
 
+const { palettes } = theme;
+const { neutral } = palettes;
+
+
+export const Header = styled.div`
+  background-color: ${neutral.lower};
+  padding: ${extRem(0, 20)};
+`;
+
+export const SimpleHeader = styled.div`
+  padding: ${extRem(0, 20)};
+`;
+
+export const Page = styled.div`
+  padding: ${extRem(0, 20)};
+`;
+
+const commonContent = css`
+  ${media.XL`
+    max-width: ${extRem(1150)};
+    margin: 0 auto;
+  `};
+`;
+
 export const PageContent = styled.div`
   ${grid()}
+  ${commonContent}
+  padding-top: ${extRem(52)};
+`;
+
+export const SimplePageContent = styled.div`
+  ${commonContent}
+  padding-top: ${extRem(52)};
 `;
 
 export const HeaderContent = styled.div`
   ${grid()}
-  padding-top: ${extRem(32)};
+  padding-top: ${extRem(52)};
   align-items: center;
+  ${commonContent}
+`;
+
+export const SimpleHeaderContent = styled.div`
+  ${commonContent}
 `;
 
 const commonMain = css`
@@ -29,7 +66,7 @@ export const PageContentMain = styled.div`
 
 export const HeaderContentMain = styled.div`
   ${commonMain}
-  padding-bottom: ${extRem(32)};
+  padding-bottom: ${extRem(52)};
 `;
 
 const commonSecondary = css`
@@ -42,6 +79,6 @@ const commonSecondary = css`
 export const PageContentSecondary = styled.div`${commonSecondary}`;
 export const HeaderContentSecondary = styled.div`
   ${commonSecondary}
-  padding-bottom: ${extRem(32)};
+  padding-bottom: ${extRem(52)};
   align-items: center;
 `;

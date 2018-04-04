@@ -48,7 +48,7 @@ export default class Template extends React.Component {
     const { children } = this.props;
     const { loading } = this.state;
 
-    const title = "REPILLS - Daily pills to acquire new skills";
+    const title = "REPILLS - Daily pills to get new skills";
     const description = "Repills.com is a place to learn about web development and UI design through high-quality resources. Discover what's new today!";
 
     return (
@@ -75,7 +75,7 @@ export default class Template extends React.Component {
         }
         {
           !loading &&
-            <div>
+            <BaseStyle>
               <NavigationStyle>
                 <NavigationWrapperStyle>
                   <TopNavigation onClickLogo={() => navigateTo('/')} />
@@ -89,7 +89,7 @@ export default class Template extends React.Component {
                   </FooterStyle>
                 </PageWrapperStyle>
               </PageStyle>
-            </div>
+            </BaseStyle>
         }
       </BaseStyle>
     );
