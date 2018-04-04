@@ -15,12 +15,9 @@ import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
 
 import {
-  Header,
   HeaderContent,
   HeaderContentMain,
-  HeaderContentSecondary,
-  Page,
-  SimplePageContent
+  HeaderContentSecondary
 } from '../../style/layout-columns';
 
 class Topic extends React.Component {
@@ -81,85 +78,78 @@ class Topic extends React.Component {
           <meta property="og:description" content={metaDescription} />
           <meta property="og:url" content={shareUrl} />
         </Helmet>
-        <Header>
-          <HeaderContent style={{alignItems: 'center'}}>
-            <HeaderContentMain>
-              <SectionPageHeader
-                color={section.color}
-                icon={section.icon}
-                label="Topic"
-                title={topic.title}
-              />
-            </HeaderContentMain>
-            <HeaderContentSecondary>
-              <Counter
-                count={pagination.totalCount}
-                label="total pills"
-                stats={getResourcesStats(topic.resources, true)}
-              />
-              <ShareBar
-                link={shareUrl}
-                text={metaDescription}
-                title={metaTitle}
-                types={[
-                  'facebook',
-                  'twitter',
-                  'email'
-                ]}
-                style={{
-                  marginTop: '24px',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}
-              />
-            </HeaderContentSecondary>
-          </HeaderContent>
-        </Header>
-        <Page>
-          <SimplePageContent style={{paddingTop: '36px'}}>
-            <div style={{textAlign: 'left'}}>
-              <div>
-                <Button
-                  label="Back to section"
-                  skin="ghost"
-                  onClick={this.backToSection}
-                  size="S"
-                />
-                <Button
-                  label="Switch topic"
-                  skin="ghost"
-                  onClick={this.openTopicsModal}
-                  size="S"
-                />
-              </div>
-              <ResourcesListWithDetail
-                resources={topic.resources.map(resource => resource.frontmatter)}
-                dateType={'createdAt'}
-                navigateToSection={this.handleNavigateToSection}
-                navigateToTopic={this.handleNavigateToTopic}
-                style={{ marginTop: '32px' }}
-              />
-              <ResponsivePagination
-                currentPage={pagination.currentPage}
-                handleNavigateToPage={page => navigateTo(`${topic.path}/${page}`)}
-                itemsPerPage={pagination.perPage}
-                itemsTotalCount={pagination.totalCount}
-                style={{ marginTop: '32px' }}
-              />
-            </div>
-            <Modal
-              handleClose={this.onClose}
-              open={openTopicsModal}
-            >
-              <div style={{padding: '24px'}}>
-                <TopicsList
-                  navigateTo={path => navigateTo(path)}
-                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                />
-              </div>
-            </Modal>
-          </SimplePageContent>
-        </Page>
+        <HeaderContent style={{alignItems: 'center'}}>
+          <HeaderContentMain>
+            <SectionPageHeader
+              color={section.color}
+              icon={section.icon}
+              label="Topic"
+              title={topic.title}
+            />
+          </HeaderContentMain>
+          <HeaderContentSecondary>
+            <Counter
+              count={pagination.totalCount}
+              label="total pills"
+              stats={getResourcesStats(topic.resources, true)}
+            />
+            <ShareBar
+              link={shareUrl}
+              text={metaDescription}
+              title={metaTitle}
+              types={[
+                'facebook',
+                'twitter',
+                'email'
+              ]}
+              style={{
+                marginTop: '24px',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            />
+          </HeaderContentSecondary>
+        </HeaderContent>
+
+        <div style={{textAlign: 'left'}}>
+          <div>
+            <Button
+              label="Back to section"
+              skin="ghost"
+              onClick={this.backToSection}
+              size="S"
+            />
+            <Button
+              label="Switch topic"
+              skin="ghost"
+              onClick={this.openTopicsModal}
+              size="S"
+            />
+          </div>
+          <ResourcesListWithDetail
+            resources={topic.resources.map(resource => resource.frontmatter)}
+            dateType={'createdAt'}
+            navigateToSection={this.handleNavigateToSection}
+            navigateToTopic={this.handleNavigateToTopic}
+            style={{ marginTop: '32px' }}
+          />
+          <ResponsivePagination
+            currentPage={pagination.currentPage}
+            handleNavigateToPage={page => navigateTo(`${topic.path}/${page}`)}
+            itemsPerPage={pagination.perPage}
+            itemsTotalCount={pagination.totalCount}
+            style={{ marginTop: '32px' }}
+          />
+        </div>
+        <Modal
+          handleClose={this.onClose}
+          open={openTopicsModal}
+        >
+          <TopicsList
+            navigateTo={path => navigateTo(path)}
+            topics={Object.keys(topics).map(topicId => (topics[topicId]))}
+          />
+        </Modal>
       </div>
     );
   }

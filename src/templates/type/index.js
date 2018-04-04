@@ -11,14 +11,14 @@ import { navigateTo } from 'gatsby-link';
 import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
 import {
-  SimpleHeader,
+  PageContent,
   HeaderContentMain,
   HeaderContent,
-  Page,
-  SimplePageContent
+  HeaderContentSecondary
 } from '../../style/layout-columns';
 
 class Type extends React.Component {
+
 
   handleNavigateToSection = sectionId => {
     const section = this.props.pathContext.sections[sectionId];
@@ -55,43 +55,39 @@ class Type extends React.Component {
           <meta property="og:description" content={metaDescription} />
           <meta property="og:url" content={`https://repills.com${type.path}`} />
         </Helmet>
-        <SimpleHeader>
-          <HeaderContent>
-            <HeaderContentMain>
-              <TypePageHeader
-                color={type.color}
-                count={pagination.totalCount}
-                icon={type.label.singular}
-                topicAction={() => navigateTo(section.path)}
-                topicName={section.name}
-                typeName={type.label}
-              />
-            </HeaderContentMain>
-          </HeaderContent>
-        </SimpleHeader>
-        <Page>
-          <SimplePageContent style={{paddingTop: 0}}>
-            <TypesList
-              navigateTo={path => navigateTo(path)}
-              types={types}
-              activeKey={type.id}
+        <HeaderContent>
+          <HeaderContentMain>
+            <TypePageHeader
+              color={type.color}
+              count={pagination.totalCount}
+              icon={type.label.singular}
+              topicAction={() => navigateTo(section.path)}
+              topicName={section.name}
+              typeName={type.label}
             />
-            <ResourcesListWithDetail
-              resources={type.resources.map(resource => resource.frontmatter)}
-              dateType={'createdAt'}
-              navigateToSection={this.handleNavigateToSection}
-              navigateToTopic={this.handleNavigateToTopic}
-              style={{paddingTop: '32px'}}
-            />
-            <ResponsivePagination
-              currentPage={pagination.currentPage}
-              handleNavigateToPage={page => navigateTo(`${type.path}/${page}`)}
-              itemsPerPage={pagination.perPage}
-              itemsTotalCount={pagination.totalCount}
-              style={{ marginTop: '32px' }}
-            />
-          </SimplePageContent>
-        </Page>
+          </HeaderContentMain>
+        </HeaderContent>
+        <div>
+          <TypesList
+            navigateTo={path => navigateTo(path)}
+            types={types}
+            activeKey={type.id}
+          />
+          <ResourcesListWithDetail
+            resources={type.resources.map(resource => resource.frontmatter)}
+            dateType={'createdAt'}
+            navigateToSection={this.handleNavigateToSection}
+            navigateToTopic={this.handleNavigateToTopic}
+            style={{ marginTop: '32px' }}
+          />
+          <ResponsivePagination
+            currentPage={pagination.currentPage}
+            handleNavigateToPage={page => navigateTo(`${type.path}/${page}`)}
+            itemsPerPage={pagination.perPage}
+            itemsTotalCount={pagination.totalCount}
+            style={{ marginTop: '32px' }}
+          />
+        </div>
       </div>
     );
   }

@@ -15,11 +15,9 @@ import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 
 import {
-  Header,
   HeaderContent,
   HeaderContentMain,
   HeaderContentSecondary,
-  Page,
   PageContent,
   PageContentMain,
   PageContentSecondary
@@ -106,123 +104,125 @@ class Section extends React.Component {
           <meta property="og:description" content={metaDescription} />
           <meta property="og:url" content={shareUrl} />
         </Helmet>
-        <Header>
-          <HeaderContent>
-            <HeaderContentMain>
-              <SectionPageHeader
-                color={color}
-                description={description}
-                icon={icon}
-                label="Section"
-                title={name}
+        <HeaderContent>
+          <HeaderContentMain>
+            <SectionPageHeader
+              color={color}
+              description={description}
+              icon={icon}
+              label="Section"
+              title={name}
+            />
+          </HeaderContentMain>
+          <HeaderContentSecondary>
+            <Counter
+              count={resourcesCount}
+              label="total pills"
+              stats={getResourcesStats(resources, true)}
+            />
+            <ShareBar
+              link={shareUrl}
+              text={metaDescription}
+              title={metaTitle}
+              types={[
+                'facebook',
+                'twitter',
+                'email'
+              ]}
+              style={{
+                marginTop: '24px',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            />
+          </HeaderContentSecondary>
+        </HeaderContent>
+
+        <PageContent>
+
+          <PageContentMain>
+            <PageBlock
+              title='Last added'
+            >
+              <ResourcesListWithDetail
+                breaks={{ XS: 4, SM: 6 }}
+                resources={lastResources}
+                dateType={'createdAt'}
+                navigateToSection={this.handleNavigateToSection}
+                navigateToTopic={this.handleNavigateToTopic}
               />
-            </HeaderContentMain>
-            <HeaderContentSecondary>
-              <Counter
-                count={resourcesCount}
-                label="total pills"
-                stats={getResourcesStats(resources, true)}
+            </PageBlock>
+
+
+            <PageBlock
+              contentsCount={topicsCount}
+              title={`Topic${topicsCount === 1 ? '' : 's'}`}
+              style={{margin: '52px 0'}}
+            >
+              <TopicsList
+                breaks={{ XS: 8, SM: 16 }}
+                navigateTo={path => navigateTo(path)}
+                topics={Object.keys(topics).map(topicId => (topics[topicId]))}
               />
-              <ShareBar
-                link={shareUrl}
-                text={metaDescription}
-                title={metaTitle}
-                types={[
-                  'facebook',
-                  'twitter',
-                  'email'
-                ]}
-                style={{
-                  marginTop: '24px',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}
-              />
-            </HeaderContentSecondary>
-          </HeaderContent>
-        </Header>
-        <Page>
-          <PageContent>
+            </PageBlock>
+          </PageContentMain>
 
-            <PageContentMain>
-              <PageBlock
-                title='Last added'
-              >
-                <ResourcesListWithDetail
-                  breaks={{ XS: 4, SM: 6 }}
-                  resources={lastResources}
-                  dateType={'createdAt'}
-                  navigateToSection={this.handleNavigateToSection}
-                  navigateToTopic={this.handleNavigateToTopic}
-                />
-              </PageBlock>
-
-
-              <PageBlock
-                contentsCount={topicsCount}
-                title={`Topic${topicsCount === 1 ? '' : 's'}`}
-                style={{margin: '52px 0'}}
-              >
-                <TopicsList
-                  breaks={{ XS: 8, SM: 16 }}
-                  navigateTo={path => navigateTo(path)}
-                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                />
-              </PageBlock>
-            </PageContentMain>
-
-            <PageContentSecondary>
+          <PageContentSecondary>
+            <PageBlock
+              title="Types"
+            >
               <TypesList
                 navigateTo={path => navigateTo(path)}
                 types={types}
               />
-              <TileCta
-                cta={{
-                  label: 'Contribute',
-                  onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
-                }}
-                description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
-                icon="GitHub"
-                title="We do great things together!"
-                style={{marginTop: '32px'}}
-              />
-              <TileCta
-                cta={{
-                  label: 'Contact us',
-                  onClick: () => "Clicked",
-                  skin: 'outline'
-                }}
-                description="Great! Propose yourself as maintainer and help us to select high-level contents."
-                icon="User"
-                title={`Are you an expert in "${name}"?`}
-                style={{marginTop: '32px'}}
-              />
-              {
-                /*
-                 <div style={{marginTop: '32px'}}>
-                 {
-                 maintainers.length > 0 &&
-                 <div>
-                 <h3>Maintainer{maintainers.length !== 1 ? 's' : ''}</h3>
-                 {
-                 maintainers.map(maintainer => (
-                 <div>{maintainer.name} ({maintainer.github})</div>
-                 ))
-                 }
-                 </div>
-                 }
-                 </div>
-                 */
-              }
-              <ContributorsList
-                contributors={contributors}
-                style={{marginTop: '32px'}}
-              />
+            </PageBlock>
+            <TileCta
+              cta={{
+                label: 'Contribute',
+                onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
+              }}
+              description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
+              icon="GitHub"
+              title="We do great things together!"
+              style={{marginTop: '32px'}}
+            />
+            <TileCta
+              cta={{
+                label: 'Contact us',
+                onClick: () => "Clicked",
+                skin: 'outline'
+              }}
+              description="Great! Propose yourself as maintainer and help us to select high-level contents."
+              icon="User"
+              title={`Are you an expert in "${name}"?`}
+              style={{marginTop: '32px'}}
+            />
+            {
+              /*
+               <div style={{marginTop: '32px'}}>
+               {
+               maintainers.length > 0 &&
+               <div>
+               <h3>Maintainer{maintainers.length !== 1 ? 's' : ''}</h3>
+               {
+               maintainers.map(maintainer => (
+               <div>{maintainer.name} ({maintainer.github})</div>
+               ))
+               }
+               </div>
+               }
+               </div>
+               */
+            }
+            <ContributorsList
+              contributors={contributors}
+              style={{marginTop: '32px'}}
+            />
 
-            </PageContentSecondary>
+          </PageContentSecondary>
 
-          </PageContent>
-        </Page>
+        </PageContent>
+
       </div>
     );
   }
