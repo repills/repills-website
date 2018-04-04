@@ -17,7 +17,7 @@ export default class HTML extends React.Component {
             name="viewport"
           />
           <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans:400,600"
+            href="https://fonts.googleapis.com/css?family=Poppins:400,600"
             rel="stylesheet"
           />
           <link
