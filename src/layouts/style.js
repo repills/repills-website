@@ -56,7 +56,7 @@ export const footer = css`
   ${typography.body}
   color: ${neutral.medium};
   margin-top: ${extRem(68)};
-  padding-bottom: ${extRem(32)};
+  padding: ${extRem(0,20,32)};
   
   a {
     color: currentColor;
