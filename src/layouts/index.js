@@ -56,7 +56,7 @@ export default class Template extends React.Component {
           titleTemplate={`%s | Repills.com`}
         >
           <meta name="description" content={description} />
-          <meta name="twitter:card" content="summary" />
+          <meta name="twitter:card" content="summary_large_image" />
           <meta property="og:title" content={title} />
           <meta property="og:description" content={description} />
           <meta property="og:type" content="website" />
