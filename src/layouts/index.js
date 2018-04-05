@@ -10,8 +10,7 @@ import {
   page,
   pageWrapper,
   footer,
-  navigationWrapper,
-  spinner
+  navigationWrapper
 } from './style';
 
 const BaseStyle = styled.div`${base}`;
@@ -20,7 +19,6 @@ const PageStyle = styled.div`${page}`;
 const NavigationWrapperStyle = styled.div`${navigationWrapper}`;
 const PageWrapperStyle = styled.div`${pageWrapper}`;
 const FooterStyle = styled.footer`${footer}`;
-const SpinnerStyle = styled.div`${spinner}`;
 
 export default class Template extends React.Component {
 
@@ -67,12 +65,7 @@ export default class Template extends React.Component {
           <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
           <meta property="og:locale" content="en_EN" />
         </Helmet>
-        {
-          loading &&
-          <SpinnerStyle>
-            <Spinner />
-          </SpinnerStyle>
-        }
+        { loading && <Spinner position="fixed" />}
         <BaseStyle>
           <NavigationStyle>
             <NavigationWrapperStyle>
