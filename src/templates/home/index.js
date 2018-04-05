@@ -5,7 +5,8 @@ import {
   ResourcesListWithDetail,
   Select,
   FeatureList,
-  PageBlock
+  PageBlock,
+  VerticalSpacing
 } from 'repills-react-components';
 import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
@@ -85,7 +86,7 @@ class Index extends React.Component {
             <HomePageHeader
               subTitle="for web developers and UI designers"
               // title={`${data.totalResources.totalCount} Pills around the web`}
-              title="Daily <strong>pills</strong> to get new <strong>skills</strong>"
+              title="Daily <strong>pills</strong> to get more <strong>skills</strong>"
             />
             <FeatureList
               features={features}
@@ -112,16 +113,17 @@ class Index extends React.Component {
               </div>
             </PageBlock>
 
-            <PageBlock
-              align="CENTER"
-              title="Learn by topic"
-              style={{ marginTop: '60px' }}
-            >
-              <SectionsList
-                navigateTo={path => navigateTo(path)}
-                sections={allSections}
-              />
-            </PageBlock>
+            <VerticalSpacing size="large">
+              <PageBlock
+                align="CENTER"
+                title="Learn by topic"
+              >
+                <SectionsList
+                  navigateTo={path => navigateTo(path)}
+                  sections={allSections}
+                />
+              </PageBlock>
+            </VerticalSpacing>
           </SimplePageContent>
         </Page>
       </div>

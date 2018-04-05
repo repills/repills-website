@@ -5,7 +5,8 @@ import {
   TypesList,
   PageBlock,
   TypePageHeader,
-  ShareBar
+  ShareBar,
+  VerticalSpacing
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
 import Helmet from 'react-helmet';
@@ -76,20 +77,22 @@ class Type extends React.Component {
               types={types}
               activeKey={type.id}
             />
-            <ResourcesListWithDetail
-              resources={type.resources.map(resource => resource.frontmatter)}
-              dateType={'createdAt'}
-              navigateToSection={this.handleNavigateToSection}
-              navigateToTopic={this.handleNavigateToTopic}
-              style={{paddingTop: '32px'}}
-            />
-            <ResponsivePagination
-              currentPage={pagination.currentPage}
-              handleNavigateToPage={page => navigateTo(`${type.path}/${page}`)}
-              itemsPerPage={pagination.perPage}
-              itemsTotalCount={pagination.totalCount}
-              style={{ marginTop: '32px' }}
-            />
+            <VerticalSpacing size="medium">
+              <ResourcesListWithDetail
+                resources={type.resources.map(resource => resource.frontmatter)}
+                dateType={'createdAt'}
+                navigateToSection={this.handleNavigateToSection}
+                navigateToTopic={this.handleNavigateToTopic}
+              />
+            </VerticalSpacing>
+            <VerticalSpacing size="medium">
+              <ResponsivePagination
+                currentPage={pagination.currentPage}
+                handleNavigateToPage={page => navigateTo(`${type.path}/${page}`)}
+                itemsPerPage={pagination.perPage}
+                itemsTotalCount={pagination.totalCount}
+              />
+            </VerticalSpacing>
           </SimplePageContent>
         </Page>
       </div>

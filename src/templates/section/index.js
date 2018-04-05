@@ -9,7 +9,8 @@ import {
   Counter,
   TileCta,
   ContributorsList,
-  getResourcesStats
+  getResourcesStats,
+  VerticalSpacing
 } from 'repills-react-components';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
@@ -93,7 +94,7 @@ class Section extends React.Component {
       publishedCount: c.totalCount
     }));
 
-    const metaTitle = `${name} | Learn pill by pill and acquire new skills!`;
+    const metaTitle = `${name} | Learn pill by pill and acquire more skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
     const shareUrl = `https://repills.com${path}`;
 
@@ -159,18 +160,18 @@ class Section extends React.Component {
                 />
               </PageBlock>
 
-
-              <PageBlock
-                contentsCount={topicsCount}
-                title={`Topic${topicsCount === 1 ? '' : 's'}`}
-                style={{margin: '52px 0'}}
-              >
-                <TopicsList
-                  breaks={{ XS: 8, SM: 16 }}
-                  navigateTo={path => navigateTo(path)}
-                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                />
-              </PageBlock>
+              <VerticalSpacing size="large">
+                <PageBlock
+                  contentsCount={topicsCount}
+                  title={`Topic${topicsCount === 1 ? '' : 's'}`}
+                >
+                  <TopicsList
+                    breaks={{ XS: 8, SM: 16 }}
+                    navigateTo={path => navigateTo(path)}
+                    topics={Object.keys(topics).map(topicId => (topics[topicId]))}
+                  />
+                </PageBlock>
+              </VerticalSpacing>
             </PageContentMain>
 
             <PageContentSecondary>
@@ -178,27 +179,30 @@ class Section extends React.Component {
                 navigateTo={path => navigateTo(path)}
                 types={types}
               />
-              <TileCta
-                cta={{
-                  label: 'Contribute',
-                  onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
-                }}
-                description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
-                icon="GitHub"
-                title="Let's do great things together!"
-                style={{marginTop: '32px'}}
-              />
-              <TileCta
-                cta={{
-                  label: 'Contact us',
-                  onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
-                  skin: 'outline'
-                }}
-                description="Great! Propose yourself as maintainer and help us to select high-level contents."
-                icon="User"
-                title={`Are you an expert in "${name}"?`}
-                style={{marginTop: '32px'}}
-              />
+              <VerticalSpacing size="medium">
+                <TileCta
+                  cta={{
+                    label: 'Contribute',
+                    onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
+                  }}
+                  description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
+                  icon="GitHub"
+                  title="Let's do great things together!"
+                />
+              </VerticalSpacing>
+              <VerticalSpacing size="medium">
+                <TileCta
+                  cta={{
+                    label: 'Contact us',
+                    onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
+                    skin: 'outline'
+                  }}
+                  description="Great! Propose yourself as maintainer and help us to select high-level contents."
+                  icon="User"
+                  title={`Are you an expert in "${name}"?`}
+                  style={{marginTop: '32px'}}
+                />
+              </VerticalSpacing>
               {
                 /*
                  <div style={{marginTop: '32px'}}>
@@ -216,10 +220,11 @@ class Section extends React.Component {
                  </div>
                  */
               }
-              <ContributorsList
-                contributors={contributors}
-                style={{marginTop: '32px'}}
-              />
+              <VerticalSpacing size="medium">
+                <ContributorsList
+                  contributors={contributors}
+                />
+              </VerticalSpacing>
 
             </PageContentSecondary>
 
