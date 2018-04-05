@@ -118,11 +118,13 @@ class Section extends React.Component {
               />
             </HeaderContentMain>
             <HeaderContentSecondary>
-              <Counter
-                count={resourcesCount}
-                label="total pills"
-                stats={getResourcesStats(resources, true)}
-              />
+              <div style={{border: '1px solid #e5ded7', padding: '12px'}}>
+                <Counter
+                  count={resourcesCount}
+                  label="total pills"
+                  stats={getResourcesStats(resources, true)}
+                />
+              </div>
               <ShareBar
                 link={shareUrl}
                 text={metaDescription}
@@ -183,7 +185,7 @@ class Section extends React.Component {
                 }}
                 description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
                 icon="GitHub"
-                title="We do great things together!"
+                title="Let's do great things together!"
                 style={{marginTop: '32px'}}
               />
               <TileCta
