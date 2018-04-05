@@ -73,24 +73,21 @@ export default class Template extends React.Component {
             <Spinner />
           </SpinnerStyle>
         }
-        {
-          !loading &&
-            <BaseStyle>
-              <NavigationStyle>
-                <NavigationWrapperStyle>
-                  <TopNavigation onClickLogo={() => navigateTo('/')} />
-                </NavigationWrapperStyle>
-              </NavigationStyle>
-              <PageStyle id="page">
-                <PageWrapperStyle>
-                  {children()}
-                  <FooterStyle>
-                    Repills.com - Made with passion and a bit of automation (powered by <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>)
-                  </FooterStyle>
-                </PageWrapperStyle>
-              </PageStyle>
-            </BaseStyle>
-        }
+        <BaseStyle>
+          <NavigationStyle>
+            <NavigationWrapperStyle>
+              <TopNavigation onClickLogo={() => navigateTo('/')} />
+            </NavigationWrapperStyle>
+          </NavigationStyle>
+          <PageStyle id="page">
+            <PageWrapperStyle>
+              {children()}
+              <FooterStyle>
+                Repills.com - Made with passion and a bit of automation (powered by <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>)
+              </FooterStyle>
+            </PageWrapperStyle>
+          </PageStyle>
+        </BaseStyle>
       </BaseStyle>
     );
   }
