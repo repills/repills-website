@@ -19,6 +19,7 @@ export default class HTML extends React.Component {
           <link
             href="https://fonts.googleapis.com/css?family=Poppins:400,600"
             rel="stylesheet"
+            lazyload
           />
           <link
             crossOrigin="anonymous"
