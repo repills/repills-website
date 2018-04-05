@@ -1,5 +1,6 @@
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://repills.com',
     title: `Repills.com`,
     author: `Repills`,
   },
@@ -31,6 +32,9 @@ module.exports = {
           windows: false
         }
       }
+    },
+    {
+      resolve: `gatsby-plugin-sitemap`
     }
   ]
 };
