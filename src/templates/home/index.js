@@ -85,11 +85,11 @@ class Index extends React.Component {
           <SimpleHeaderContent style={{paddingBottom: '32px'}}>
             <HomePageHeader
               subTitle="for web developers and UI designers"
-              // title={`${data.totalResources.totalCount} Pills around the web`}
               title="Daily <strong>pills</strong> to get more <strong>skills</strong>"
             />
             <FeatureList
               features={features}
+              style={{borderTop: '1px solid #e5ded7', paddingTop: '32px'}}
             />
           </SimpleHeaderContent>
         </Header>
@@ -99,20 +99,17 @@ class Index extends React.Component {
               align="CENTER"
               title='Last added'
             >
-              <div>
-                {
-                  // TODO: navigations for topics
-                  <ResourcesListWithDetail
-                    breaks={{ XS: 4, SM: 6 }}
-                    resources={latestSharedResources}
-                    dateType={'createdAt'}
-                    navigateToSection={this.handleNavigateToSection}
-                    navigateToTopic={this.handleNavigateToTopic}
-                  />
-                }
-              </div>
+              {
+                // TODO: navigations for topics
+                <ResourcesListWithDetail
+                  breaks={{ XS: 4, SM: 6 }}
+                  resources={latestSharedResources}
+                  dateType={'createdAt'}
+                  navigateToSection={this.handleNavigateToSection}
+                  navigateToTopic={this.handleNavigateToTopic}
+                />
+              }
             </PageBlock>
-
             <VerticalSpacing size="large">
               <PageBlock
                 align="CENTER"
