@@ -9,7 +9,8 @@ import {
   TopicsList,
   Button,
   ShareBar,
-  getResourcesStats
+  getResourcesStats,
+  VerticalSpacing
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
@@ -68,7 +69,7 @@ class Topic extends React.Component {
     const section = sections.find(s => s.id === sectionId);
     // const suggestedTopics = Object.entries(sections.topics);
 
-    const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire new skills!`;
+    const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire more skills!`;
     const metaDescription = `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
     const shareUrl = `https://repills.com${topic.path}`;
 
@@ -132,20 +133,22 @@ class Topic extends React.Component {
                   size="S"
                 />
               </div>
-              <ResourcesListWithDetail
-                resources={topic.resources.map(resource => resource.frontmatter)}
-                dateType={'createdAt'}
-                navigateToSection={this.handleNavigateToSection}
-                navigateToTopic={this.handleNavigateToTopic}
-                style={{ marginTop: '32px' }}
-              />
-              <ResponsivePagination
-                currentPage={pagination.currentPage}
-                handleNavigateToPage={page => navigateTo(`${topic.path}/${page}`)}
-                itemsPerPage={pagination.perPage}
-                itemsTotalCount={pagination.totalCount}
-                style={{ marginTop: '32px' }}
-              />
+              <VerticalSpacing size="medium">
+                <ResourcesListWithDetail
+                  resources={topic.resources.map(resource => resource.frontmatter)}
+                  dateType={'createdAt'}
+                  navigateToSection={this.handleNavigateToSection}
+                  navigateToTopic={this.handleNavigateToTopic}
+                />
+              </VerticalSpacing>
+              <VerticalSpacing size="medium">
+                <ResponsivePagination
+                  currentPage={pagination.currentPage}
+                  handleNavigateToPage={page => navigateTo(`${topic.path}/${page}`)}
+                  itemsPerPage={pagination.perPage}
+                  itemsTotalCount={pagination.totalCount}
+                />
+              </VerticalSpacing>
             </div>
             <Modal
               handleClose={this.onClose}
