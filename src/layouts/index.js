@@ -63,6 +63,7 @@ export default class Template extends React.Component {
           <meta property="og:url" content="https://repills.com" />
           <meta property="og:site_name" content="Repills.com" />
           <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
+          <meta name="twitter:image" content="https://repills.com/images/share-twitter.jpg" />
           <meta property="og:locale" content="en_EN" />
         </Helmet>
         { loading && <Spinner position="fixed" />}

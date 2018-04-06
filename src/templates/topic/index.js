@@ -93,11 +93,13 @@ class Topic extends React.Component {
               />
             </HeaderContentMain>
             <HeaderContentSecondary>
-              <Counter
-                count={pagination.totalCount}
-                label="total pills"
-                stats={getResourcesStats(topic.resources, true)}
-              />
+              <div style={{borderBottom: '1px solid #e5ded7', paddingBottom: '20px'}}>
+                <Counter
+                  count={pagination.totalCount}
+                  label="total pills"
+                  stats={getResourcesStats(topic.resources, true)}
+                />
+              </div>
               <ShareBar
                 link={shareUrl}
                 text={metaDescription}
