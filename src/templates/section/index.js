@@ -119,7 +119,7 @@ class Section extends React.Component {
               />
             </HeaderContentMain>
             <HeaderContentSecondary>
-              <div style={{border: '1px solid #e5ded7', padding: '12px'}}>
+              <div style={{borderBottom: '1px solid #e5ded7', paddingBottom: '20px'}}>
                 <Counter
                   count={resourcesCount}
                   label="total pills"
