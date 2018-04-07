@@ -10,7 +10,8 @@ import {
   Button,
   ShareBar,
   getResourcesStats,
-  VerticalSpacing
+  VerticalSpacing,
+  KeywordsCloud
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
@@ -151,6 +152,12 @@ class Topic extends React.Component {
                   itemsTotalCount={pagination.totalCount}
                 />
               </VerticalSpacing>
+              {
+                topic.similar &&
+                <VerticalSpacing size="medium">
+                  <KeywordsCloud keywords={topic.similar} />
+                </VerticalSpacing>
+              }
             </div>
             <Modal
               handleClose={this.onClose}
