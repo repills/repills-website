@@ -3,6 +3,8 @@ const fillSectionsFromEdges = require('./utils/fillSectionsFromEdges');
 const pagesUtilities = require('./utils/pages');
 const frontmatter = config.resources;
 
+console.log(frontmatter)
+
 exports.createPages = ({ boundActionCreators, graphql }) => {
   const { createPage } = boundActionCreators;
 
@@ -25,12 +27,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
   }`)
       .then(result => {
-
-        if (result.errors) { reject(result.errors); }
+        if (result.errors) { reject(result.errors); return; }
 
         const resources = result.data.allMarkdownRemark.edges;
         const sections = fillSectionsFromEdges(resources);
-        const pageBuilder = pagesUtilities({ createPage, sections });
+        const pageBuilder = pagesUtilities({ createPage, sections, resources });
 
         // Page index
         pageBuilder.createHomePage();
@@ -43,6 +44,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
         // Type Pages
         pageBuilder.createTypePages();
+
+        // Resource Pages
+        pageBuilder.createResourcePages();
 
         resolve();
       });

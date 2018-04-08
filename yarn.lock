@@ -7851,9 +7851,9 @@ repeating@^2.0.0:
   version "1.5.0"
   resolved "git+https://github.com/repills/repills-config.git#9f307093ef710d9af141fe828e3b7c3c31c4606d"
 
-"repills-config@git+https://github.com/repills/repills-config.git#1.6.0":
-  version "1.6.0"
-  resolved "git+https://github.com/repills/repills-config.git#906ed85ebfec3a998270e2cc6070bc093b694e7f"
+"repills-config@git+https://github.com/repills/repills-config.git#1.7.0":
+  version "1.7.0"
+  resolved "git+https://github.com/repills/repills-config.git#bfdcf564ed064d873a7fa9ea15bcbce55ab0998b"
 
 "repills-react-components@git+https://github.com/repills/repills-react-components.git#0.40.1":
   version "0.40.1"

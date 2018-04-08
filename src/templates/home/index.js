@@ -33,7 +33,7 @@ const features = [
   {
     icon: 'PullRequest',
     title: 'Open source project',
-    description: 'Discover the project on <a target="_blank" href="https://github.com/repills/repills-website">GitHub</a> and <a target="_blank" href="https://repills.github.io/repills-generator/">contribute</a> by adding new amazing resources.'
+    description: 'Discover the project on <a target="_blank" rel="nofollow" href="https://github.com/repills/repills-website">GitHub</a> and <a target="_blank" rel="nofollow" href="https://repills.github.io/repills-generator/">contribute</a> by adding new amazing resources.'
   }
 ];
 
