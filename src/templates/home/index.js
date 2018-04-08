@@ -11,6 +11,7 @@ import {
 import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
+import paths from '../../../utils/paths';
 
 import {
   Header,
@@ -47,14 +48,6 @@ class Index extends React.Component {
     }
   }
 
-  handleNavigateToSection = sectionId => {
-    const section = this.props.pathContext.sections[sectionId];
-    navigateTo(section.path);
-  };
-
-  // TODO: navigations for topics
-  handleNavigateToTopic = topicId => alert('Navigate to topic: ' + topicId);
-
   render() {
 
     const {
@@ -79,6 +72,8 @@ class Index extends React.Component {
     });
     const allSections = [...activeSections, ...noActiveSections];
 
+    console.log(latestSharedResources)
+
     return (
       <div style={transition && transition.style}>
         <Header>
@@ -100,13 +95,16 @@ class Index extends React.Component {
               title='Last added'
             >
               {
-                // TODO: navigations for topics
                 <ResourcesListWithDetail
                   breaks={{ XS: 4, SM: 6 }}
                   resources={latestSharedResources}
                   dateType={'createdAt'}
-                  navigateToSection={this.handleNavigateToSection}
-                  navigateToTopic={this.handleNavigateToTopic}
+                  generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
+                  navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
+                  navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
+                  navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
+                  generateTopicUrl={topicSlug => `/${topicSlug}`}
+                  generateSectionUrl={sectionSlug => `/${sectionSlug}`}
                 />
               }
             </PageBlock>
@@ -155,6 +153,7 @@ export const pageQuery = graphql`
             suggestedBy
             createdAt
             reference
+            slug
           }
         }
       }

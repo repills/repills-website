@@ -14,6 +14,7 @@ import {
 } from 'repills-react-components';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
+import paths from '../../../utils/paths';
 
 import {
   Header,
@@ -54,14 +55,6 @@ class Section extends React.Component {
       }),
     }),
   };
-
-  handleNavigateToSection = sectionId => {
-    const section = this.props.pathContext.sections[sectionId];
-    navigateTo(section.path);
-  };
-
-  // TODO: navigations for topics
-  handleNavigateToTopic = topicId => alert('Navigate to topic: ' + topicId);
 
   render() {
 
@@ -155,8 +148,12 @@ class Section extends React.Component {
                   breaks={{ XS: 4, SM: 6 }}
                   resources={lastResources}
                   dateType={'createdAt'}
-                  navigateToSection={this.handleNavigateToSection}
-                  navigateToTopic={this.handleNavigateToTopic}
+                  generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
+                  navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
+                  navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
+                  navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
+                  generateTopicUrl={topicSlug => `/${topicSlug}`}
+                  generateSectionUrl={sectionSlug => `/${sectionSlug}`}
                 />
               </PageBlock>
 
@@ -259,7 +256,8 @@ export const pageQuery = graphql`
             topics
             suggestedBy
             createdAt
-            reference
+            reference,
+            slug
           }
         }
       }
