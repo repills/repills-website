@@ -9,6 +9,7 @@ import {
   VerticalSpacing
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
+import paths from '../../../utils/paths';
 import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
 import {
@@ -20,14 +21,6 @@ import {
 } from '../../style/layout-columns';
 
 class Type extends React.Component {
-
-  handleNavigateToSection = sectionId => {
-    const section = this.props.pathContext.sections[sectionId];
-    navigateTo(section.path);
-  };
-
-  // TODO: navigations for topics
-  handleNavigateToTopic = topicId => alert('Navigate to topic: ' + topicId);
 
   render() {
 
@@ -81,8 +74,12 @@ class Type extends React.Component {
               <ResourcesListWithDetail
                 resources={type.resources.map(resource => resource.frontmatter)}
                 dateType={'createdAt'}
-                navigateToSection={this.handleNavigateToSection}
-                navigateToTopic={this.handleNavigateToTopic}
+                generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
+                navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
+                navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
+                navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
+                generateTopicUrl={topicSlug => `/${topicSlug}`}
+                generateSectionUrl={sectionSlug => `/${sectionSlug}`}
               />
             </VerticalSpacing>
             <VerticalSpacing size="medium">

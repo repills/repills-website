@@ -25,12 +25,11 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
     }
   }`)
       .then(result => {
-
-        if (result.errors) { reject(result.errors); }
+        if (result.errors) { reject(result.errors); return; }
 
         const resources = result.data.allMarkdownRemark.edges;
         const sections = fillSectionsFromEdges(resources);
-        const pageBuilder = pagesUtilities({ createPage, sections });
+        const pageBuilder = pagesUtilities({ createPage, sections, resources });
 
         // Page index
         pageBuilder.createHomePage();
@@ -43,6 +42,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
 
         // Type Pages
         pageBuilder.createTypePages();
+
+        // Resource Pages
+        pageBuilder.createResourcePages();
 
         resolve();
       });
