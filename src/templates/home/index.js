@@ -72,8 +72,6 @@ class Index extends React.Component {
     });
     const allSections = [...activeSections, ...noActiveSections];
 
-    console.log(latestSharedResources)
-
     return (
       <div style={transition && transition.style}>
         <Header>
