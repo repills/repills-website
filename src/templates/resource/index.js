@@ -15,11 +15,17 @@ class ResourceTemplate extends React.Component {
 
   handleNavigateTo = link => () => window.open(link, '_blank');
 
+  // @TODO: fix helmet meta
+
   render() {
     const resource = this.props.data.markdownRemark.frontmatter;
     const type = types[resource.type.join('_')];
     return (
       <div>
+        <Helmet>
+          <title>{resource.title}</title>
+          <meta property="og:title" content={resource.title} />
+        </Helmet>
         <Page>
           <SimplePageContent style={{paddingTop: '36px'}}>
             <div style={{ maxWidth: '700px', margin: '0 auto' }}>
