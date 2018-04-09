@@ -20,7 +20,7 @@ export const SimpleHeader = styled.div`
 `;
 
 export const Page = styled.div`
-  padding: ${extRem(0, 20)};
+  padding: ${extRem(0, 20, 60)};
 `;
 
 const commonContent = css`
@@ -34,6 +34,10 @@ export const PageContent = styled.div`
   ${grid()}
   ${commonContent}
   padding-top: ${extRem(52)};
+  
+  &.is-neutral-low {
+    background-color: ${neutral.low};
+  }
 `;
 
 export const SimplePageContent = styled.div`
