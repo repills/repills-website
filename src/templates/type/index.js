@@ -38,12 +38,13 @@ class Type extends React.Component {
 
     const section = sections.find(s => s.id === sectionId);
 
+    const metaTitle = `${type.label.plural} in ${section.name}`;
     const metaDescription = `Free ${type.label.plural} about '${section.name}' and other amazing contents. Discover everyday what's new in the web development and UI design.`;
 
     return (
       <div style={transition && transition.style}>
         <Helmet>
-          <title>{type.label.plural} in {section.name}</title>
+          <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
           <meta property="og:title" content={`Resources about ${section.name} grouped by type`} />
           <meta property="og:description" content={metaDescription} />
