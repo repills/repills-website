@@ -74,8 +74,8 @@ class Index extends React.Component {
 
     return (
       <div style={transition && transition.style}>
-        <Header>
-          <SimpleHeaderContent style={{paddingBottom: '32px'}}>
+        <Header style={{backgroundColor: 'transparent'}}>
+          <SimpleHeaderContent style={{paddingBottom: '60px'}}>
             <HomePageHeader
               subTitle="for web developers and UI designers"
               title="Daily <strong>pills</strong> to get more <strong>skills</strong>"
@@ -86,11 +86,29 @@ class Index extends React.Component {
             />
           </SimpleHeaderContent>
         </Header>
+        <Page
+          style={{backgroundColor: '#f9f8f6'}}
+        >
+          <SimplePageContent
+          >
+            <PageBlock
+              align="CENTER"
+              title="Learn by topic"
+              simple
+            >
+              <SectionsList
+                navigateTo={path => navigateTo(path)}
+                sections={allSections}
+              />
+            </PageBlock>
+          </SimplePageContent>
+        </Page>
         <Page>
           <SimplePageContent>
             <PageBlock
               align="CENTER"
-              title='Last added'
+              title='Last added Pills'
+              simple
             >
               {
                 <ResourcesListWithDetail
@@ -106,17 +124,6 @@ class Index extends React.Component {
                 />
               }
             </PageBlock>
-            <VerticalSpacing size="large">
-              <PageBlock
-                align="CENTER"
-                title="Learn by topic"
-              >
-                <SectionsList
-                  navigateTo={path => navigateTo(path)}
-                  sections={allSections}
-                />
-              </PageBlock>
-            </VerticalSpacing>
           </SimplePageContent>
         </Page>
       </div>
