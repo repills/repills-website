@@ -24,15 +24,13 @@ export default class Template extends React.Component {
 
   constructor(props) {
     super(props);
-    /*
     this.state = {
       loading: true
     }
-    */
   }
 
   componentDidMount() {
-    // setTimeout(() => this.setState({loading: false}), 600);
+    setTimeout(() => this.setState({loading: false}), 500);
   }
 
   componentWillUpdate() {
@@ -46,7 +44,7 @@ export default class Template extends React.Component {
 
   render() {
     const { children } = this.props;
-    // const { loading } = this.state;
+    const { loading } = this.state;
 
     const title = "REPILLS - Daily pills to get more skills";
     const description = "Repills.com is a place to learn about web development and UI design through high-quality resources. Discover what's new today!";
@@ -68,7 +66,7 @@ export default class Template extends React.Component {
           <meta name="twitter:image" content="https://repills.com/images/share-twitter.jpg" />
           <meta property="og:locale" content="en_EN" />
         </Helmet>
-        { /* loading && <Spinner position="fixed" */ }
+        { loading && <Spinner position="fixed" />}
         <BaseStyle>
           <NavigationStyle>
             <NavigationWrapperStyle>
