@@ -2,7 +2,7 @@ const path = require('path');
 const paginate = require('simple-pagination');
 
 // @TODO move in a config file
-const resourcesPerPage = 24;
+const resourcesPerPage = 12;
 
 module.exports = ({ createPage, sections }) => () =>
   Object.keys(sections).forEach(sectionId => {
