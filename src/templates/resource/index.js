@@ -1,6 +1,7 @@
 import React from 'react'
 import {types} from 'repills-config'
 import { navigateTo } from 'gatsby-link';
+import Helmet from 'react-helmet';
 
 import {
   ResourceDetail
