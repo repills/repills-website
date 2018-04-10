@@ -37,6 +37,8 @@ class Topic extends React.Component {
 
   openTopicsModal = () => this.setState({ openTopicsModal: true });
 
+  backToSection = () => navigateTo('/'+this.props.pathContext.sectionId);
+
   onClose = () => this.setState({ openTopicsModal: false });
 
   render() {

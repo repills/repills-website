@@ -7853,10 +7853,6 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-"repills-config@git+https://github.com/repills/repills-config.git#1.7.1":
-  version "1.7.1"
-  resolved "git+https://github.com/repills/repills-config.git#25e3511ea65ec0a1277a2889412b5cfdf8b28889"
-
 "repills-config@git+https://github.com/repills/repills-config.git#1.8.0":
   version "1.8.0"
   resolved "git+https://github.com/repills/repills-config.git#7fae8ffc784cb5e4b06a896d3db16f8cd7fa136c"
