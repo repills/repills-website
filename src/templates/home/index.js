@@ -12,6 +12,7 @@ import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
 import paths from '../../../utils/paths';
+import { Seo } from '../../components';
 
 import {
   Header,
@@ -74,6 +75,7 @@ class Index extends React.Component {
 
     return (
       <div style={transition && transition.style}>
+        <Seo />
         <Header style={{backgroundColor: 'transparent'}}>
           <SimpleHeaderContent style={{paddingBottom: '60px'}}>
             <HomePageHeader
