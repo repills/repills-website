@@ -3,7 +3,6 @@ sections: [reactjs]
 link: https://alligator.io/react/new-way-to-handle-events/
 title: "A New Way to Handle Events in React"
 author: "William Le"
-publishedAt: 1970-01-01T00:00:00.000Z
 type: [article]
 topics: [react_tests]
 suggestedBy: [andreamangano]
