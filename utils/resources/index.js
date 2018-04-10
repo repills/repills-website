@@ -1,8 +1,13 @@
 const config = require('repills-config');
 const typesConfig = config.types;
+const n = require('normalize-data');
+
+const transformMapResource = [
+  ['color', 'type', type => typesConfig[type.join('_')].color],
+  ['typeLabel', 'type', type => typesConfig[type.join('_')].label.singular],
+  ['publishedAt', 'publishedAt', publishedAt => (new Date(publishedAt).getFullYear() === 1970) ? null : publishedAt]
+];
 
 export function normalizeResource({ node }) {
-  node.frontmatter.color = typesConfig[node.frontmatter.type.join('_')].color;
-  node.frontmatter.typeLabel = typesConfig[node.frontmatter.type.join('_')].label.singular;
-  return node.frontmatter;
+  return n.normalize(node.frontmatter, transformMapResource, true);
 }

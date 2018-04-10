@@ -151,7 +151,6 @@ export const pageQuery = graphql`
             link
             title
             author
-            createdAt
             publishedAt
             type
             topics

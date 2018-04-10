@@ -5932,6 +5932,12 @@ nopt@^4.0.1:
     abbrev "1"
     osenv "^0.1.4"
 
+normalize-data@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/normalize-data/-/normalize-data-1.1.1.tgz#1210fc9e48a0720b153e74df599483c05b4423c3"
+  dependencies:
+    object-path "^0.11.4"
+
 normalize-package-data@^2.3.2:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -6025,7 +6031,7 @@ object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
-object-path@^0.11.2:
+object-path@^0.11.2, object-path@^0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/object-path/-/object-path-0.11.4.tgz#370ae752fbf37de3ea70a861c23bba8915691949"
 
@@ -7855,9 +7861,9 @@ repeating@^2.0.0:
   version "1.8.0"
   resolved "git+https://github.com/repills/repills-config.git#7fae8ffc784cb5e4b06a896d3db16f8cd7fa136c"
 
-"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.43.0":
-  version "0.43.0"
-  resolved "git+https://github.com/repills/repills-react-components.git#b492ca59bbe849f9e7e53e5215d182bc74be6d15"
+"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.43.1":
+  version "0.43.1"
+  resolved "git+https://github.com/repills/repills-react-components.git#a6a9b72bc96a8f1ec9e01de82e439ef1e9cf6134"
   dependencies:
     babel-polyfill "^6.26.0"
     classnames "^2.2.5"
