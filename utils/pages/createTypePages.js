@@ -1,5 +1,7 @@
 const path = require('path');
 const paginate = require('simple-pagination');
+const paths = require('../paths');
+
 // @TODO move in a config file
 const resourcesPerPage = 12;
 
@@ -25,18 +27,16 @@ module.exports = ({ createPage, sections }) => () =>
 
       // Create first page also without page param
       createPage({
-        path: pages[0].type.path,
+        path: paths.getTypePagePath({basePath: pages[0].type.path}),
         component: path.resolve(`src/templates/type/index.js`),
-        context: pages[0],
-        // layout: 'scroll-layout'
+        context: pages[0]
       });
 
       pages.forEach((page, index) => {
         createPage({
-          path: `${page.type.path}/${index + 1}`,
+          path: paths.getTypePagePath({index: index + 1, basePath: page.type.path}),
           component: path.resolve(`src/templates/type/index.js`),
-          context: page,
-          // layout: 'scroll-layout'
+          context: page
         });
       });
     });

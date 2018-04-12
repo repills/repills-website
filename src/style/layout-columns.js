@@ -80,7 +80,14 @@ const commonSecondary = css`
   `}
 `;
 
-export const PageContentSecondary = styled.div`${commonSecondary}`;
+export const PageContentSecondary = styled.div`
+  ${commonSecondary}
+  margin-top: ${extRem(52)};
+
+  ${media.LG`
+    margin-top: 0;
+  `}
+`;
 export const HeaderContentSecondary = styled.div`
   ${commonSecondary}
   padding-bottom: ${extRem(52)};

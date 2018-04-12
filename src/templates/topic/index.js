@@ -16,6 +16,7 @@ import {
 import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
 import paths from '../../../utils/paths';
+import config from '../../../config';
 
 import {
   Header,
@@ -61,11 +62,9 @@ class Topic extends React.Component {
     } = this.state;
 
     const section = sections.find(s => s.id === sectionId);
-    // const suggestedTopics = Object.entries(sections.topics);
-
     const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire more skills!`;
     const metaDescription = `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
-    const shareUrl = `https://repills.com${topic.path}`;
+    const shareUrl = `${config.baseUrl}/${paths.getTopicPagePath({index: pagination.currentPage, basePath: topic.path})}`;
 
     return (
       <div style={transition && transition.style}>
@@ -136,17 +135,18 @@ class Topic extends React.Component {
                   generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
                   navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
                   navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-                  generateTopicUrl={topicSlug => `/${topicSlug}`}
                   generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
+                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
                 />
               </VerticalSpacing>
               <VerticalSpacing size="medium">
                 <ResponsivePagination
                   currentPage={pagination.currentPage}
-                  handleNavigateToPage={page => navigateTo(`${topic.path}/${page}`)}
+                  handleNavigateToPage={index => navigateTo(paths.getTopicPagePath({index, basePath: topic.path}))}
                   itemsPerPage={pagination.perPage}
                   itemsTotalCount={pagination.totalCount}
+                  buildPagePath={index => paths.getTopicPagePath({index, basePath: topic.path})}
                 />
               </VerticalSpacing>
               {
