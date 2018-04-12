@@ -49,6 +49,8 @@ class Index extends React.Component {
     }
   }
 
+  navigateToLastAdded = () => navigateTo(paths.getLastAddedPagePath());
+
   render() {
 
     const {
@@ -120,9 +122,12 @@ class Index extends React.Component {
                   generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
                   navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
                   navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-                  generateTopicUrl={topicSlug => `/${topicSlug}`}
                   generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
+                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
+                  showAllAction={{
+                    onClick: this.navigateToLastAdded
+                  }}
                 />
               }
             </PageBlock>

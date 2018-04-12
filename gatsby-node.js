@@ -34,6 +34,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         // Page index
         pageBuilder.createHomePage();
 
+        // Resource Pages
+        pageBuilder.createLastPage();
+
         // Section Overview Pages
         pageBuilder.createSectionPages();
 

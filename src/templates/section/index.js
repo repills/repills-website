@@ -151,13 +151,15 @@ class Section extends React.Component {
                   generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
                   navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
                   navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-                  generateTopicUrl={topicSlug => `/${topicSlug}`}
                   generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
+                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
                 />
               </PageBlock>
 
-              <VerticalSpacing size="large">
+              <VerticalSpacing
+                size="large"
+              >
                 <PageBlock
                   contentsCount={topicsCount}
                   title={`Topic${topicsCount === 1 ? '' : 's'}`}

@@ -78,17 +78,18 @@ class Type extends React.Component {
                 generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
                 navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
                 navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-                generateTopicUrl={topicSlug => `/${topicSlug}`}
                 generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
+                generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
               />
             </VerticalSpacing>
             <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
-                handleNavigateToPage={page => navigateTo(`${type.path}/${page}`)}
+                handleNavigateToPage={index => navigateTo(paths.getTypePagePath({index, basePath: type.path}))}
                 itemsPerPage={pagination.perPage}
                 itemsTotalCount={pagination.totalCount}
+                buildPagePath={index => paths.getTypePagePath({index, basePath: type.path})}
               />
             </VerticalSpacing>
           </SimplePageContent>
@@ -96,7 +97,6 @@ class Type extends React.Component {
       </div>
     );
   }
-
 }
 
 export default Type;
