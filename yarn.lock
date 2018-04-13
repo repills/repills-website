@@ -7857,9 +7857,9 @@ repeating@^2.0.0:
   version "1.8.0"
   resolved "git+https://github.com/repills/repills-config.git#7fae8ffc784cb5e4b06a896d3db16f8cd7fa136c"
 
-"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.44.0":
-  version "0.44.0"
-  resolved "git+https://github.com/repills/repills-react-components.git#29f4940f8ea7d4fdfa2654f37692c4c254f5cc82"
+"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.44.1":
+  version "0.44.1"
+  resolved "git+https://github.com/repills/repills-react-components.git#1b9ecda495c3bd5dfbc26c1a85bbefb7159ce9c4"
   dependencies:
     babel-polyfill "^6.26.0"
     classnames "^2.2.5"
