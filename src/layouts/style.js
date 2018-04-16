@@ -41,10 +41,11 @@ export const pageWrapper = css`
 export const navigationWrapper = pageWrapper;
 
 export const footer = css`
-  ${typography.body}
-  color: ${neutral.medium};
-  margin-top: ${extRem(68)};
-  padding: ${extRem(0,20,32)};
+  ${typography.small}
+  color: ${neutral.high};
+  background-color: ${neutral.highest};
+  margin-top: ${extRem(52)};
+  padding: ${extRem(32,20)};
   
   a {
     color: currentColor;
