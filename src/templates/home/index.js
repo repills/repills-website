@@ -82,7 +82,7 @@ class Index extends React.Component {
           <SimpleHeaderContent style={{paddingBottom: '60px'}}>
             <HomePageHeader
               subTitle="for web developers and UI designers"
-              title="Daily <strong>pills</strong> to get more <strong>skills</strong>"
+              title="Free <strong>pills</strong> to get more <strong>skills</strong>"
             />
             <FeatureList
               features={features}

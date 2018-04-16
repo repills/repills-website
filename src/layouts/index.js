@@ -30,7 +30,7 @@ export default class Template extends React.Component {
   }
 
   componentDidMount() {
-    setTimeout(() => this.setState({loading: false}), 500);
+    setTimeout(() => this.setState({loading: false}), 300);
   }
 
   componentWillUpdate() {
@@ -46,7 +46,7 @@ export default class Template extends React.Component {
     const { children } = this.props;
     const { loading } = this.state;
 
-    const title = "REPILLS | Daily pills to get more skills";
+    const title = "REPILLS | Free pills to get more skills";
     const description = "Repills.com is a place to learn about web development and UI design through high-quality resources. Discover new articles, tutorials, courses, tools, books everyday!";
 
     return (

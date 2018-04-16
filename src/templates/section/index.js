@@ -145,7 +145,6 @@ class Section extends React.Component {
                 title='Last added'
               >
                 <ResourcesListWithDetail
-                  breaks={{ XS: 4, SM: 6 }}
                   resources={lastResources}
                   dateType={'createdAt'}
                   generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
@@ -242,7 +241,7 @@ export default Section;
 export const pageQuery = graphql`
   query TagPage($id: String) {
     resources: allMarkdownRemark(
-      limit: 12
+      limit: 4
       sort: { fields: [frontmatter___createdAt], order: DESC }
       filter: { frontmatter: { sections: { in: [$id] } } }
     ) {
