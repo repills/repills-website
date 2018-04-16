@@ -78,7 +78,7 @@ class Index extends React.Component {
     return (
       <div style={transition && transition.style}>
         <Seo />
-        <Header style={{backgroundColor: 'transparent'}}>
+        <Header style={{backgroundColor: '#2a2a2a'}}>
           <SimpleHeaderContent style={{paddingBottom: '60px'}}>
             <HomePageHeader
               subTitle="for web developers and UI designers"
@@ -86,7 +86,8 @@ class Index extends React.Component {
             />
             <FeatureList
               features={features}
-              style={{borderTop: '1px solid #e5ded7', paddingTop: '32px'}}
+              skin="dark"
+              style={{borderTop: '1px solid rgba(102,102,102,0.4)', paddingTop: '32px'}}
             />
           </SimpleHeaderContent>
         </Header>
