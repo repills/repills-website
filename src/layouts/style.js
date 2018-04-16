@@ -35,7 +35,7 @@ export const page = css`
 `;
 
 export const pageWrapper = css`
-
+  background-color: ${neutral.lowest};
 `;
 
 export const navigationWrapper = pageWrapper;
@@ -43,7 +43,7 @@ export const navigationWrapper = pageWrapper;
 export const footer = css`
   ${typography.small}
   color: ${neutral.high};
-  background-color: ${neutral.highest};
+  background-color: ${neutral.lower};
   margin-top: ${extRem(52)};
   padding: ${extRem(32,20)};
   
