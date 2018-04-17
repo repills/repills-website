@@ -1,6 +1,7 @@
 const config = require('repills-config');
 const sectionsConfig = config.sections;
 const typesConfig = config.types;
+const resourceUtils = require('./resources');
 
 module.exports = edges => {
 
@@ -74,6 +75,13 @@ module.exports = edges => {
         });
       }
     });
+
+  Object.keys(data).map(sectionKey => {
+    const topics = data[sectionKey].topics;
+    Object.keys(topics).map(topicKey => {
+      topics[topicKey].stats = resourceUtils.getResourcesStats(topics[topicKey].resources)
+    });
+  });
 
   return data;
 };
