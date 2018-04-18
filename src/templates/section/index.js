@@ -60,8 +60,7 @@ class Section extends React.Component {
 
     const {
       data,
-      pathContext,
-      transition
+      pathContext
     } = this.props;
 
     const {
@@ -92,7 +91,7 @@ class Section extends React.Component {
     const shareUrl = `https://repills.com${path}`;
 
     return (
-      <div style={transition && transition.style}>
+      <div>
         <Helmet>
           <title>{name}</title>
           <meta name="description" content={metaDescription} />
@@ -143,6 +142,7 @@ class Section extends React.Component {
             <PageContentMain>
               <PageBlock
                 title='Last added'
+                simple
               >
                 <ResourcesListWithDetail
                   resources={lastResources}
@@ -162,6 +162,7 @@ class Section extends React.Component {
                 <PageBlock
                   contentsCount={topicsCount}
                   title={`Topic${topicsCount === 1 ? '' : 's'}`}
+                  simple
                 >
                   <TopicsList
                     breaks={{ XS: 8, SM: 16 }}

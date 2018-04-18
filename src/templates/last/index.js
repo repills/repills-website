@@ -27,8 +27,7 @@ class Last extends React.Component {
   render() {
 
     const {
-      pathContext,
-      transition
+      pathContext
     } = this.props;
 
     const {
@@ -40,7 +39,7 @@ class Last extends React.Component {
     const metaTitle = 'Last added resource';
 
     return (
-      <div style={transition && transition.style}>
+      <div>
         <Helmet>
           <title>{metaTitle}</title>
           <meta property="og:title" content={`${metaTitle} - Repills.com`} />

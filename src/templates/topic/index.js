@@ -46,8 +46,7 @@ class Topic extends React.Component {
 
 
     const {
-      pathContext,
-      transition
+      pathContext
     } = this.props;
 
     const {
@@ -67,7 +66,7 @@ class Topic extends React.Component {
     const shareUrl = `${config.baseUrl}/${paths.getTopicPagePath({index: pagination.currentPage, basePath: topic.path})}`;
 
     return (
-      <div style={transition && transition.style}>
+      <div>
         <Helmet>
           <title>{topic.title}</title>
           <meta name="description" content={metaDescription} />

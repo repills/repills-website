@@ -39,6 +39,27 @@ const features = [
   }
 ];
 
+/*
+const carouselSettings = {
+  slidesToShow: 3,
+  responsive: [
+    {
+      breakpoint: 900,
+      settings: {
+        slidesToShow: 2.25,
+        initialSlide: 2
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 1.25
+      }
+    }
+  ]
+};
+*/
+
 class Index extends React.Component {
 
   constructor(props) {
@@ -59,8 +80,7 @@ class Index extends React.Component {
 
     const {
       data,
-      pathContext,
-      transition
+      pathContext
     } = this.props;
 
     const {sections} = pathContext;
@@ -76,7 +96,7 @@ class Index extends React.Component {
     const allSections = [...activeSections, ...noActiveSections];
 
     return (
-      <div style={transition && transition.style}>
+      <div>
         <Seo />
         <Header style={{backgroundColor: '#2a2a2a'}}>
           <SimpleHeaderContent style={{paddingBottom: '60px'}}>
@@ -104,6 +124,7 @@ class Index extends React.Component {
               <SectionsList
                 navigateTo={path => navigateTo(path)}
                 sections={allSections}
+                // settings={carouselSettings}
               />
             </PageBlock>
           </SimplePageContent>
