@@ -42,7 +42,8 @@ module.exports = {
         trackingId: "UA-117143286-1",
         head: false
       },
-    }
+    },
+    'gatsby-plugin-nprogress'
   ]
 };
 

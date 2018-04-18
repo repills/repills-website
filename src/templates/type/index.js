@@ -25,8 +25,7 @@ class Type extends React.Component {
   render() {
 
     const {
-      pathContext,
-      transition
+      pathContext
     } = this.props;
 
     const {
@@ -42,7 +41,7 @@ class Type extends React.Component {
     const metaDescription = `Free ${type.label.plural} about '${section.name}' and other amazing contents. Discover everyday what's new in the web development and UI design.`;
 
     return (
-      <div style={transition && transition.style}>
+      <div>
         <Helmet>
           <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
