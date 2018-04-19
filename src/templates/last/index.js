@@ -69,7 +69,7 @@ class Last extends React.Component {
             <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
-                handleNavigateToPage={page => navigateTo(`/last-added/${page}`)}
+                handleNavigateToPage={page => navigateTo(paths.getLastAddedPagePath(page))}
                 itemsPerPage={pagination.perPage}
                 itemsTotalCount={pagination.totalCount}
                 buildPagePath={paths.getLastAddedPagePath}
