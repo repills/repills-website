@@ -13,7 +13,7 @@ import paths from '../../../utils/paths';
 import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
 import {
-  SimpleHeader,
+  Header,
   HeaderContentMain,
   HeaderContent,
   Page,
@@ -49,7 +49,7 @@ class Type extends React.Component {
           <meta property="og:description" content={metaDescription} />
           <meta property="og:url" content={`https://repills.com${type.path}`} />
         </Helmet>
-        <SimpleHeader>
+        <Header>
           <HeaderContent>
             <HeaderContentMain>
               <TypePageHeader
@@ -62,9 +62,9 @@ class Type extends React.Component {
               />
             </HeaderContentMain>
           </HeaderContent>
-        </SimpleHeader>
+        </Header>
         <Page>
-          <SimplePageContent style={{paddingTop: 0}}>
+          <SimplePageContent>
             <TypesList
               navigateTo={path => navigateTo(path)}
               types={types}

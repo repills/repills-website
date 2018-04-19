@@ -7888,17 +7888,17 @@ repeating@^2.0.0:
   dependencies:
     is-finite "^1.0.0"
 
-"repills-config@git+https://github.com/repills/repills-config.git#1.8.0":
-  version "1.8.0"
-  resolved "git+https://github.com/repills/repills-config.git#7fae8ffc784cb5e4b06a896d3db16f8cd7fa136c"
+"repills-config@git+https://github.com/repills/repills-config.git#1.8.1":
+  version "1.8.1"
+  resolved "git+https://github.com/repills/repills-config.git#a26213499d95783aa0c2357a57f10133e335c6c1"
 
 "repills-config@git+https://github.com/repills/repills-config.git#1.8.2":
   version "1.8.2"
   resolved "git+https://github.com/repills/repills-config.git#218021f29781e10bbeb2c675001238ea0029c185"
 
-"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.48.6":
-  version "0.48.6"
-  resolved "git+https://github.com/repills/repills-react-components.git#e677de4c37e90887bbe827ae5e6075dccfb0cfcf"
+"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.48.8":
+  version "0.48.8"
+  resolved "git+https://github.com/repills/repills-react-components.git#f79012dda3f3a1b85cea1750931dbf026ad2389f"
   dependencies:
     babel-polyfill "^6.26.0"
     classnames "^2.2.5"
@@ -7914,7 +7914,7 @@ repeating@^2.0.0:
     react-element-to-jsx-string "^13.1.0"
     react-slick "^0.23.1"
     react-syntax-highlighter "^7.0.0"
-    repills-config "git+https://github.com/repills/repills-config.git#1.8.0"
+    repills-config "git+https://github.com/repills/repills-config.git#1.8.1"
     simple-pagination "^1.0.0"
     slick-carousel "^1.8.1"
     styled-components "^2.4.0"
