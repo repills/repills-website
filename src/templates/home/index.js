@@ -6,8 +6,10 @@ import {
   Select,
   FeatureList,
   PageBlock,
-  VerticalSpacing
+  VerticalSpacing,
+  theme
 } from 'repills-react-components';
+const { neutral } = theme.palettes;
 import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
@@ -24,18 +26,18 @@ import {
 const features = [
   {
     icon: 'SquarePill',
-    title: 'Learn pill by pill',
-    description: 'Repills is a place to learn about web development and design through high-quality resources.'
+    title: 'Learn pill-by-pill',
+    description: 'Thanks to the daily web resources, you can get the training you need from industry experts improving your skills day by day, pill-by-pill!'
   },
   {
     icon: 'Star',
-    title: 'Free resources',
-    description: 'The "pills" proposed are free and also grouped by section and topic. Browse them and discover what\'s new!'
+    title: 'Stay up-to-date',
+    description: 'There are number of technologies that are used to develop websites and web applications. Repills helps you to stay up-to-date with the cutting-edge technologies!'
   },
   {
     icon: 'PullRequest',
     title: 'Open source project',
-    description: 'Discover the project on <a target="_blank" rel="nofollow" href="https://github.com/repills/repills-website">GitHub</a> and <a target="_blank" rel="nofollow" href="https://repills.github.io/repills-generator/">contribute</a> by adding new amazing resources.'
+    description: 'Discover and support the project on <a target="_blank" rel="nofollow" href="https://github.com/repills/repills-website">GitHub</a> and <a target="_blank" rel="nofollow" href="https://repills.github.io/repills-generator/">contribute</a> by adding new amazing resources.'
   }
 ];
 
@@ -98,61 +100,67 @@ class Index extends React.Component {
     return (
       <div>
         <Seo />
-        <Header style={{backgroundColor: '#2a2a2a'}}>
-          <SimpleHeaderContent style={{paddingBottom: '60px'}}>
+        <Header style={{backgroundColor: neutral.highest}}>
+          <SimpleHeaderContent>
             <HomePageHeader
               subTitle="for web developers and UI designers"
               title="Free <strong>pills</strong> to get more <strong>skills</strong>"
-            />
-            <FeatureList
-              features={features}
-              skin="dark"
-              style={{borderTop: '1px solid rgba(102,102,102,0.4)', paddingTop: '32px'}}
+              description="Repills is going to be the place to learn about web development and design through well-organized high-quality resources."
             />
           </SimpleHeaderContent>
         </Header>
         <Page
-          style={{backgroundColor: '#f9f8f6'}}
+          style={{backgroundColor: neutral.lower}}
         >
           <SimplePageContent
           >
-            <PageBlock
-              align="CENTER"
-              title="Learn by topic"
-              simple
+            <FeatureList
+              features={features}
+              style={{paddingBottom: '32px', borderBottom: `1px solid ${neutral.low}`}}
+            />
+            <VerticalSpacing
+              size="large"
             >
-              <SectionsList
-                navigateTo={path => navigateTo(path)}
-                sections={allSections}
-                // settings={carouselSettings}
-              />
-            </PageBlock>
-          </SimplePageContent>
-        </Page>
-        <Page>
-          <SimplePageContent>
-            <PageBlock
-              align="CENTER"
-              title='Last added Pills'
-              simple
-            >
-              {
-                <ResourcesListWithDetail
-                  breaks={{ XS: 4, SM: 6 }}
-                  resources={latestSharedResources}
-                  dateType={'createdAt'}
-                  generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-                  navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-                  navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
-                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
-                  showAllAction={{
-                    onClick: this.navigateToLastAdded
-                  }}
+              <PageBlock
+                align="CENTER"
+                title="Learn by topic"
+                description="Explore our sections and get the resources you need from industry experts."
+                simple
+              >
+                <SectionsList
+                  navigateTo={path => navigateTo(path)}
+                  sections={allSections}
+                  // settings={carouselSettings}
                 />
-              }
-            </PageBlock>
+              </PageBlock>
+            </VerticalSpacing>
+            <VerticalSpacing
+              size="large"
+            >
+              <PageBlock
+                align="CENTER"
+                title='Last added Pills'
+                simple
+                style={{backgroundColor: neutral.lower, borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
+              >
+                {
+                  <ResourcesListWithDetail
+                    breaks={{ XS: 4, SM: 6 }}
+                    resources={latestSharedResources}
+                    dateType={'createdAt'}
+                    generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
+                    navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
+                    navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
+                    generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                    navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
+                    generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
+                    showAllAction={{
+                      onClick: this.navigateToLastAdded
+                    }}
+                  />
+                }
+              </PageBlock>
+            </VerticalSpacing>
           </SimplePageContent>
         </Page>
       </div>
