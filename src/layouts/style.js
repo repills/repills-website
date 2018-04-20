@@ -44,8 +44,8 @@ export const footer = css`
   ${typography.small}
   color: ${neutral.high};
   background-color: ${neutral.lower};
-  margin-top: ${extRem(52)};
   padding: ${extRem(32,20)};
+  border-top: 2px solid ${neutral.low};
   
   a {
     color: currentColor;

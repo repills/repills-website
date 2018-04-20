@@ -15,7 +15,7 @@ import config from '../../../config';
 import {
   HeaderContent,
   HeaderContentMain,
-  SimpleHeader,
+  Header,
   Page,
   SimplePageContent
 } from '../../style/layout-columns';
@@ -45,7 +45,7 @@ class Last extends React.Component {
           <meta property="og:title" content={`${metaTitle} - Repills.com`} />
           <meta property="og:url" content={`${config.baseUrl}/${paths.getLastAddedPagePath(pagination.currentPage)}`} />
         </Helmet>
-        <SimpleHeader>
+        <Header>
           <HeaderContent>
             <HeaderContentMain>
               <SimplePageHeader
@@ -53,9 +53,9 @@ class Last extends React.Component {
               />
             </HeaderContentMain>
           </HeaderContent>
-        </SimpleHeader>
+        </Header>
         <Page>
-          <SimplePageContent style={{paddingTop: 0}}>
+          <SimplePageContent>
             <ResourcesListWithDetail
               resources={resources.map(e => normalizeResource(e))}
               dateType={'createdAt'}
