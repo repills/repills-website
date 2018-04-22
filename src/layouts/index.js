@@ -1,5 +1,9 @@
 import React from 'react';
-import { TopNavigation, Spinner } from 'repills-react-components';
+import {
+  TopNavigation,
+  Spinner,
+  Newsletter
+} from 'repills-react-components';
 import styled from 'styled-components';
 import { navigateTo } from 'gatsby-link';
 import Helmet from 'react-helmet';
@@ -10,7 +14,9 @@ import {
   page,
   pageWrapper,
   footer,
-  navigationWrapper
+  navigationWrapper,
+  newsletter,
+  newsletterWrapper
 } from './style';
 
 const BaseStyle = styled.div`${base}`;
@@ -19,6 +25,8 @@ const PageStyle = styled.div`${page}`;
 const NavigationWrapperStyle = styled.div`${navigationWrapper}`;
 const PageWrapperStyle = styled.div`${pageWrapper}`;
 const FooterStyle = styled.footer`${footer}`;
+const NewsletterStyle = styled.div`${newsletter}`;
+const NewsletterWrapperStyle = styled.div`${newsletterWrapper}`;
 
 export default class Template extends React.Component {
 
@@ -76,8 +84,17 @@ export default class Template extends React.Component {
           <PageStyle id="page">
             <PageWrapperStyle>
               {children()}
+              <NewsletterStyle>
+                <NewsletterWrapperStyle>
+                  <Newsletter
+                    intro={`Repills is brought to you by the same authors of <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>, the weekly newsletter that aims to keep aspiring and experienced full stack developers up to date.`}
+                    label="Subscribe now to the weekly email."
+                    note="You will receive the <strong>best 7 links</strong> in your inbox every week, for free! No spam, ever :)"
+                  />
+                </NewsletterWrapperStyle>
+              </NewsletterStyle>
               <FooterStyle>
-                Repills.com - Made with passion and a bit of automation (powered by <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>)
+                Repills.com - Made with passion and a bit of automation.
               </FooterStyle>
             </PageWrapperStyle>
           </PageStyle>

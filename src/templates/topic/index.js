@@ -62,7 +62,7 @@ class Topic extends React.Component {
 
     const section = sections.find(s => s.id === sectionId);
     const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire more skills!`;
-    const metaDescription = `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
+    const metaDescription = topic.description ? topic.description : `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
     const shareUrl = `${config.baseUrl}/${paths.getTopicPagePath({index: pagination.currentPage, basePath: topic.path})}`;
 
     return (
@@ -82,6 +82,7 @@ class Topic extends React.Component {
                 icon={section.icon}
                 label="Topic"
                 title={topic.title}
+                description={topic.description}
               />
             </HeaderContentMain>
             <HeaderContentSecondary>

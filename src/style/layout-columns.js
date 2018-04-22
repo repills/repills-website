@@ -23,7 +23,7 @@ export const Page = styled.div`
   padding: ${extRem(0, 20, 60)};
 `;
 
-const commonContent = css`
+export const commonContent = css`
   ${media.XL`
     max-width: ${extRem(1150)};
     margin: 0 auto;
