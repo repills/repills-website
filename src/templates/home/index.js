@@ -113,6 +113,7 @@ class Index extends React.Component {
           style={{backgroundColor: neutral.lower}}
         >
           <SimplePageContent
+            style={{paddingTop: '32px'}}
           >
             <FeatureList
               features={features}

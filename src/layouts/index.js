@@ -47,7 +47,7 @@ export default class Template extends React.Component {
     const { loading } = this.state;
 
     const title = "REPILLS | Free pills to get more skills";
-    const description = "Repills.com is a place to learn about web development and UI design through high-quality resources. Discover new articles, tutorials, courses, tools, books everyday!";
+    const description = "Repills.com is the place to learn about web development and design through well-organized high-quality resources. You can discover articles, tutorials, courses, tools, books about React.js, Serverless, Redux, Vue.js";
 
     return (
       <BaseStyle>
