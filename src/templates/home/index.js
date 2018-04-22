@@ -155,7 +155,8 @@ class Index extends React.Component {
                     navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
                     generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
                     showAllAction={{
-                      onClick: this.navigateToLastAdded
+                      onClick: this.navigateToLastAdded,
+                      href: paths.getLastAddedPagePath()
                     }}
                   />
                 }
