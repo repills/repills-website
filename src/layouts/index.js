@@ -87,14 +87,13 @@ export default class Template extends React.Component {
               <NewsletterStyle>
                 <NewsletterWrapperStyle>
                   <Newsletter
-                    intro={`Repills is brought to you by the same authors of <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>, the weekly newsletter that aims to keep aspiring and experienced full stack developers up to date.`}
-                    label="Subscribe now to the weekly email."
+                    intro={`Repills is brought to you by the same authors of <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>, the weekly newsletter that aims to keep inspiring and keeping up to date full stack developers.`}
                     note="You will receive the <strong>best 7 links</strong> in your inbox every week, for free! No spam, ever :)"
                   />
                 </NewsletterWrapperStyle>
               </NewsletterStyle>
               <FooterStyle>
-                Repills.com - Made with passion and a bit of automation.
+                ©‎ Repills.com 2018 - Made with passion and a bit of automation.
               </FooterStyle>
             </PageWrapperStyle>
           </PageStyle>
