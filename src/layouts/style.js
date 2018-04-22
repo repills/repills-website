@@ -1,5 +1,4 @@
 import { css } from 'styled-components';
-import { rgba } from 'polished';
 import {
   extRem,
   media,
@@ -50,4 +49,15 @@ export const footer = css`
   a {
     color: currentColor;
   }
+`;
+
+export const newsletterWrapper = `
+  max-width: ${extRem(900)};
+  margin: 0 auto;
+  padding: ${extRem(52)} 0;
+`;
+
+export const newsletter = css`
+  background-color: ${neutral.highest};
+  padding: 0 ${extRem(20)};
 `;
