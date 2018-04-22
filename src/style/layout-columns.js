@@ -20,7 +20,7 @@ export const SimpleHeader = styled.div`
 `;
 
 export const Page = styled.div`
-  padding: ${extRem(0, 20, 60)};
+  padding: ${extRem(0, 20, 100)};
 `;
 
 export const commonContent = css`
