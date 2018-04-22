@@ -27,7 +27,7 @@ const features = [
   {
     icon: 'SquarePill',
     title: 'Learn pill-by-pill',
-    description: 'Thanks to the daily web resources, you can get the training you need from industry experts improving your skills day by day, pill-by-pill!'
+    description: 'Thanks to the daily web resources, you can get the training you need from experts improving your skills day by day, pill-by-pill!'
   },
   {
     icon: 'Star',
