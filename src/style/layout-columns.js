@@ -42,7 +42,6 @@ export const PageContent = styled.div`
 
 export const SimplePageContent = styled.div`
   ${commonContent}
-  padding-top: ${extRem(52)};
 `;
 
 export const HeaderContent = styled.div`

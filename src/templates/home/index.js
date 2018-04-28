@@ -118,13 +118,7 @@ class Index extends React.Component {
           </SimpleHeaderContent>
         </Header>
         <Page>
-          <SimplePageContent
-            style={{paddingTop: '32px'}}
-          >
-            <FeatureList
-              features={features}
-              style={{paddingBottom: '32px', borderBottom: `1px solid ${neutral.low}`}}
-            />
+          <SimplePageContent>
             <VerticalSpacing
               size="large"
             >
@@ -169,6 +163,13 @@ class Index extends React.Component {
                   />
                 }
               </PageBlock>
+            </VerticalSpacing>
+            <VerticalSpacing
+              size="large"
+            >
+              <FeatureList
+                features={features}
+              />
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
