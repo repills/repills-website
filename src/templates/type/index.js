@@ -65,11 +65,13 @@ class Type extends React.Component {
         </Header>
         <Page>
           <SimplePageContent>
-            <TypesList
-              navigateTo={path => navigateTo(path)}
-              types={types}
-              activeKey={type.id}
-            />
+            <VerticalSpacing size="medium">
+              <TypesList
+                navigateTo={path => navigateTo(path)}
+                types={types}
+                activeKey={type.id}
+              />
+            </VerticalSpacing>
             <VerticalSpacing size="medium">
               <ResourcesListWithDetail
                 resources={type.resources.map(resource => resource.frontmatter)}
