@@ -157,7 +157,7 @@ class Section extends React.Component {
               </PageBlock>
 
               <VerticalSpacing
-                size="large"
+                size="medium"
               >
                 <PageBlock
                   contentsCount={topicsCount}

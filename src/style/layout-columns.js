@@ -20,7 +20,7 @@ export const SimpleHeader = styled.div`
 `;
 
 export const Page = styled.div`
-  padding: ${extRem(0, 20, 100)};
+  padding: ${extRem(0, 20, 60)};
 `;
 
 export const commonContent = css`
@@ -33,7 +33,7 @@ export const commonContent = css`
 export const PageContent = styled.div`
   ${grid()}
   ${commonContent}
-  padding-top: ${extRem(60)};
+  padding-top: ${extRem(52)};
   
   &.is-neutral-low {
     background-color: ${neutral.low};
@@ -42,12 +42,12 @@ export const PageContent = styled.div`
 
 export const SimplePageContent = styled.div`
   ${commonContent}
-  padding-top: ${extRem(60)};
+  padding-top: ${extRem(52)};
 `;
 
 export const HeaderContent = styled.div`
   ${grid()}
-  padding-top: ${extRem(60)};
+  padding-top: ${extRem(52)};
   align-items: center;
   ${commonContent}
 `;
@@ -70,7 +70,7 @@ export const PageContentMain = styled.div`
 
 export const HeaderContentMain = styled.div`
   ${commonMain}
-  padding-bottom: ${extRem(60)};
+  padding-bottom: ${extRem(52)};
 `;
 
 const commonSecondary = css`
@@ -82,7 +82,7 @@ const commonSecondary = css`
 
 export const PageContentSecondary = styled.div`
   ${commonSecondary}
-  margin-top: ${extRem(60)};
+  margin-top: ${extRem(52)};
 
   ${media.LG`
     margin-top: 0;
@@ -90,6 +90,6 @@ export const PageContentSecondary = styled.div`
 `;
 export const HeaderContentSecondary = styled.div`
   ${commonSecondary}
-  padding-bottom: ${extRem(60)};
+  padding-bottom: ${extRem(52)};
   align-items: center;
 `;
