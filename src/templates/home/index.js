@@ -15,6 +15,8 @@ import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
 import paths from '../../../utils/paths';
 import { Seo } from '../../components';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-117143286-1');
 
 import {
   Header,
@@ -41,27 +43,6 @@ const features = [
   }
 ];
 
-/*
-const carouselSettings = {
-  slidesToShow: 3,
-  responsive: [
-    {
-      breakpoint: 900,
-      settings: {
-        slidesToShow: 2.25,
-        initialSlide: 2
-      }
-    },
-    {
-      breakpoint: 600,
-      settings: {
-        slidesToShow: 1.25
-      }
-    }
-  ]
-};
-*/
-
 class Index extends React.Component {
 
   constructor(props) {
@@ -72,7 +53,35 @@ class Index extends React.Component {
     }
   }
 
-  navigateToLastAdded = () => navigateTo(paths.getLastAddedPagePath());
+  componentDidMount() {
+    ReactGA.event({
+      category: 'Test',
+      action: 'Action Test',
+      label: 'Test',
+      nonInteraction: true
+    });
+  }
+
+  navigateToLastAdded = () =>
+    navigateTo(paths.getLastAddedPagePath());
+
+  navigateToResourceDetail = ({ slug, publishedAt }) =>
+    navigateTo(paths.getResourcePagePath({ slug, publishedAt }));
+
+  generateDetailResourceUrl = ({ slug, publishedAt }) =>
+    paths.getResourcePagePath({ slug, publishedAt });
+
+  navigateToSection = sectionSlug =>
+    navigateTo(`/${sectionSlug}/`);
+
+  generateSectionUrl = sectionSlug =>
+    `/${sectionSlug}/`;
+
+  navigateToTopic = topicPath =>
+    navigateTo(paths.getTopicPagePath({basePath: topicPath}));
+
+  generateTopicUrl = topicPath =>
+    paths.getTopicPagePath({basePath: topicPath});
 
   render() {
 
@@ -109,9 +118,7 @@ class Index extends React.Component {
             />
           </SimpleHeaderContent>
         </Header>
-        <Page
-          style={{backgroundColor: neutral.lower}}
-        >
+        <Page>
           <SimplePageContent
             style={{paddingTop: '32px'}}
           >
@@ -142,19 +149,19 @@ class Index extends React.Component {
                 align="CENTER"
                 title='Last added Pills'
                 simple
-                style={{backgroundColor: neutral.lower, borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
+                style={{borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
               >
                 {
                   <ResourcesListWithDetail
                     breaks={{ XS: 4, SM: 6 }}
                     resources={latestSharedResources}
                     dateType={'createdAt'}
-                    generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-                    navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-                    navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                    generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-                    navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
-                    generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
+                    generateDetailUrl={this.generateDetailResourceUrl}
+                    navigateToDetail={this.navigateToResourceDetail}
+                    navigateToSection={this.navigateToSection}
+                    generateSectionUrl={this.generateSectionUrl}
+                    navigateToTopic={this.navigateToTopic}
+                    generateTopicUrl={this.generateTopicUrl}
                     showAllAction={{
                       onClick: this.navigateToLastAdded,
                       href: paths.getLastAddedPagePath()

@@ -7368,6 +7368,13 @@ react-error-overlay@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/react-error-overlay/-/react-error-overlay-3.0.0.tgz#c2bc8f4d91f1375b3dad6d75265d51cd5eeaf655"
 
+react-ga@^2.5.0:
+  version "2.5.0"
+  resolved "https://registry.yarnpkg.com/react-ga/-/react-ga-2.5.0.tgz#fbba2b33d41ce727f7d4cf383d54dbbfbf96c507"
+  optionalDependencies:
+    prop-types "^15.6.0"
+    react "^15.6.2 || ^16.0"
+
 react-helmet@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.0.tgz#a81811df21313a6d55c5f058c4aeba5d6f3d97a7"
@@ -7462,6 +7469,15 @@ react@^15.5.4, react@^15.6.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.0"
     prop-types "^15.5.10"
+
+"react@^15.6.2 || ^16.0":
+  version "16.3.2"
+  resolved "https://registry.yarnpkg.com/react/-/react-16.3.2.tgz#fdc8420398533a1e58872f59091b272ce2f91ea9"
+  dependencies:
+    fbjs "^0.8.16"
+    loose-envify "^1.1.0"
+    object-assign "^4.1.1"
+    prop-types "^15.6.0"
 
 react@^16.2.0:
   version "16.2.0"
@@ -7896,9 +7912,9 @@ repeating@^2.0.0:
   version "1.9.1"
   resolved "git+https://github.com/repills/repills-config.git#ca730bb384b8ce7f37bf8eb068e3884a513eb641"
 
-"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.51.2":
-  version "0.51.2"
-  resolved "git+https://github.com/repills/repills-react-components.git#d15b5aa242af791df48b20ddd6faa4091b964164"
+"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.51.3":
+  version "0.51.3"
+  resolved "git+https://github.com/repills/repills-react-components.git#83694bcc33d8e71b43b5298880a09d1419d12b4f"
   dependencies:
     babel-polyfill "^6.26.0"
     classnames "^2.2.5"
