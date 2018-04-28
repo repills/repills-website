@@ -39,6 +39,5 @@ module.exports = ({ createPage, sections }) => () =>
           context: page
         });
       });
-
     });
   });

@@ -21,6 +21,12 @@ export default class HTML extends React.Component {
             href="https://fonts.gstatic.com"
             rel="preconnect"
           />
+          <link
+            rel="stylesheet"
+            type="text/css"
+            href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css"
+          />
+          <script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js" />
           {this.props.headComponents}
         </head>
         <body style={style.body}>
