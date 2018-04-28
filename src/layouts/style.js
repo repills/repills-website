@@ -54,14 +54,13 @@ export const footer = css`
 export const newsletterWrapper = `
   max-width: ${extRem(900)};
   margin: 0 auto;
-  background-color: ${neutral.highest};
-  padding: 2rem;
+  padding: 2.5rem 2rem;
 `;
 
 export const newsletter = css`
-  
+  background-color: #000;
+
   ${media.MD`
     padding: 0 ${extRem(20)};
-    margin-bottom: 2rem;
   `};
 `;

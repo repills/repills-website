@@ -53,15 +53,6 @@ class Index extends React.Component {
     }
   }
 
-  componentDidMount() {
-    ReactGA.event({
-      category: 'Test',
-      action: 'Action Test',
-      label: 'Test',
-      nonInteraction: true
-    });
-  }
-
   navigateToLastAdded = () =>
     navigateTo(paths.getLastAddedPagePath());
 
@@ -82,6 +73,14 @@ class Index extends React.Component {
 
   generateTopicUrl = topicPath =>
     paths.getTopicPagePath({basePath: topicPath});
+
+  handleDetailView = ({ resource }) => {
+    ReactGA.event({
+      category: 'Resource browsing',
+      action: 'See resource detail',
+      label: 'Resource modal detail'
+    });
+  };
 
   render() {
 
@@ -156,6 +155,7 @@ class Index extends React.Component {
                     breaks={{ XS: 4, SM: 6 }}
                     resources={latestSharedResources}
                     dateType={'createdAt'}
+                    handleDetailView={this.handleDetailView}
                     generateDetailUrl={this.generateDetailResourceUrl}
                     navigateToDetail={this.navigateToResourceDetail}
                     navigateToSection={this.navigateToSection}
@@ -175,7 +175,7 @@ class Index extends React.Component {
       </div>
     );
   }
-};
+}
 
 export default Index;
 
