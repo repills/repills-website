@@ -60,6 +60,8 @@ class Topic extends React.Component {
       openTopicsModal
     } = this.state;
 
+    console.log(topic)
+
     const section = sections.find(s => s.id === sectionId);
     const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire more skills!`;
     const metaDescription = topic.description ? topic.description : `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;

@@ -16,6 +16,8 @@ import {
 
 class ResourceTemplate extends React.Component {
 
+  //@TODO add helmet and set ${config.baseUrl}/images/covers/cover-${types[resource.type[0]].id}.jpg as sharing image
+
   constructor(props) {
     super(props);
     const resource = this.props.data.markdownRemark.frontmatter;

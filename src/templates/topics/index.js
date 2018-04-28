@@ -1,27 +1,18 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import {
-  ResourcesListWithDetail,
-  ResponsivePagination,
-  SectionPageHeader,
-  Counter,
-  Modal,
+  SimplePageHeader,
   TopicsList,
-  Button,
-  ShareBar,
-  getResourcesStats,
-  VerticalSpacing,
-  KeywordsCloud
+  VerticalSpacing
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
 import paths from '../../../utils/paths';
 
 import {
-  Header,
   HeaderContent,
   HeaderContentMain,
-  HeaderContentSecondary,
+  Header,
   Page,
   SimplePageContent
 } from '../../style/layout-columns';
@@ -29,9 +20,36 @@ import {
 class Topics extends React.Component {
 
   render() {
+
+    const {
+      pathContext
+    } = this.props;
+
+    const {
+      section,
+      topics
+    } = pathContext;
+
     return (
       <div>
-        topics
+        <Header>
+          <HeaderContent>
+            <HeaderContentMain>
+              <SimplePageHeader
+                title={`Topics in ${section.name}`}
+              />
+            </HeaderContentMain>
+          </HeaderContent>
+        </Header>
+        <Page>
+          <SimplePageContent>
+            <TopicsList
+              navigateTo={path => navigateTo(path)}
+              topics={Object.keys(topics).map(topicId => (topics[topicId]))}
+              type="extended"
+            />
+          </SimplePageContent>
+        </Page>
       </div>
     );
   }

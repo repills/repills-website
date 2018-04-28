@@ -7,9 +7,9 @@ module.exports = {
     return (index && index !== 1) ? `/last-added/${index}/` : `/last-added/`;
   },
   getTopicPagePath: ({index, basePath}) => {
-    return (index && index !== 1) ? `${basePath}/${index}/` : `${basePath}/`;
+    return (index && index !== 1) ? `${basePath}${index}/` : `${basePath}`;
   },
   getTypePagePath: ({index, basePath}) => {
-    return (index && index !== 1) ? `${basePath}/${index}/` : `${basePath}/`;
+    return (index && index !== 1) ? `${basePath}${index}/` : `${basePath}`;
   }
 };

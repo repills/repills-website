@@ -40,6 +40,9 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         // Section Overview Pages
         pageBuilder.createSectionPages();
 
+        // Section Topics Pages
+        // pageBuilder.createTopicsPages();
+
         // Topic Pages
         pageBuilder.createTopicPages();
 

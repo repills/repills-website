@@ -38,6 +38,24 @@ export default class Template extends React.Component {
   }
 
   componentDidMount() {
+    console.log(window)
+    const windowGlobal = typeof window !== 'undefined' && window;
+
+    if (windowGlobal) {
+      console.log('entra')
+      windowGlobal.cookieconsent.initialise({
+        "palette": {
+          "popup": {
+            "background": "#2f2220"
+          },
+          "button": {
+            "background": "#ffda00",
+            "text": "#998300"
+          }
+        },
+        "theme": "edgeless"
+      })
+    }
     setTimeout(() => this.setState({loading: false}), 300);
   }
 
