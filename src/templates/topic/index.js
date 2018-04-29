@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import {
-  ResourcesListWithDetail,
   ResponsivePagination,
   SectionPageHeader,
   Counter,
@@ -14,9 +13,12 @@ import {
   KeywordsCloud
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
+import { ResourcesList } from '../../components';
 import { sections } from 'repills-config';
 import paths from '../../../utils/paths';
 import config from '../../../config';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-117143286-1');
 
 import {
   Header,
@@ -42,8 +44,15 @@ class Topic extends React.Component {
 
   onClose = () => this.setState({ openTopicsModal: false });
 
-  render() {
+  handleDetailView = ({ resource }) => {
+    ReactGA.event({
+      category: 'Resource browsing',
+      action: 'See resource detail (Topic)',
+      label: 'Resource modal detail'
+    });
+  };
 
+  render() {
 
     const {
       pathContext
@@ -75,7 +84,7 @@ class Topic extends React.Component {
           <meta property="og:url" content={shareUrl} />
         </Helmet>
         <Header>
-          <HeaderContent style={{alignItems: 'center'}}>
+          <HeaderContent>
             <HeaderContentMain>
               <SectionPageHeader
                 color={section.color}
@@ -112,32 +121,26 @@ class Topic extends React.Component {
           </HeaderContent>
         </Header>
         <Page>
-          <SimplePageContent style={{paddingTop: '36px'}}>
+          <SimplePageContent>
             <div style={{textAlign: 'left'}}>
-              <div>
+              <VerticalSpacing size="small">
                 <Button
-                  label="Back to section"
-                  skin="ghost"
-                  onClick={this.backToSection}
-                  size="S"
-                />
-                <Button
-                  label="Switch topic"
-                  skin="ghost"
-                  onClick={this.openTopicsModal}
-                  size="S"
-                />
-              </div>
+                    label="Back to section"
+                    skin="ghost"
+                    onClick={this.backToSection}
+                    size="S"
+                  />
+                  <Button
+                    label="Switch topic"
+                    skin="ghost"
+                    onClick={this.openTopicsModal}
+                    size="S"
+                  />
+              </VerticalSpacing>
               <VerticalSpacing size="medium">
-                <ResourcesListWithDetail
+                <ResourcesList
                   resources={topic.resources.map(resource => resource.frontmatter)}
-                  dateType={'createdAt'}
-                  generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-                  navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-                  navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
-                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
+                  handleDetailView={this.handleDetailView}
                 />
               </VerticalSpacing>
               <VerticalSpacing size="medium">

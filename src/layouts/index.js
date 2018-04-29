@@ -7,6 +7,7 @@ import {
 import styled from 'styled-components';
 import { navigateTo } from 'gatsby-link';
 import Helmet from 'react-helmet';
+import config from '../../config';
 
 import {
   base,
@@ -86,8 +87,8 @@ export default class Template extends React.Component {
           <meta property="og:type" content="website" />
           <meta property="og:url" content="https://repills.com" />
           <meta property="og:site_name" content="Repills.com" />
-          <meta property="og:image" content="https://repills.com/images/share-facebook.jpg" />
-          <meta name="twitter:image" content="https://repills.com/images/share-twitter.jpg" />
+          <meta property="og:image" content={`${config.baseUrl}/images/share-facebook.jpg`} />
+          <meta name="twitter:image" content={`${config.baseUrl}/images/share-twitter.jpg`} />
           <meta property="og:locale" content="en_EN" />
         </Helmet>
         { loading && <Spinner position="fixed" />}
