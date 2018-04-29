@@ -15,8 +15,8 @@ import { ResourcesList } from '../../components';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-117143286-1');
 import config from '../../../config';
+ReactGA.initialize(config.ga.trackingId);
 
 import {
   Header,

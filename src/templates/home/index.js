@@ -8,6 +8,7 @@ import {
   VerticalSpacing,
   theme
 } from 'repills-react-components';
+import config from '../../../config';
 const { neutral } = theme.palettes;
 import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
@@ -15,7 +16,7 @@ import { normalizeResource } from '../../../utils/resources';
 import paths from '../../../utils/paths';
 import { Seo, ResourcesList } from '../../components';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-117143286-1');
+ReactGA.initialize(config.ga.trackingId);
 
 import {
   Header,

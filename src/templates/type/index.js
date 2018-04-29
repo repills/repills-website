@@ -13,8 +13,8 @@ import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
 import { ResourcesList } from '../../components';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-117143286-1');
 import config from '../../../config';
+ReactGA.initialize(config.ga.trackingId);
 
 import {
   Header,
