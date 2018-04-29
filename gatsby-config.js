@@ -1,3 +1,4 @@
+// @TODO: get tracking Id from config
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://repills.com',

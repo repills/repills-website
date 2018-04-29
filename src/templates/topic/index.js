@@ -18,7 +18,7 @@ import { sections } from 'repills-config';
 import paths from '../../../utils/paths';
 import config from '../../../config';
 import ReactGA from 'react-ga';
-ReactGA.initialize('UA-117143286-1');
+ReactGA.initialize(config.ga.trackingId);
 
 import {
   Header,
