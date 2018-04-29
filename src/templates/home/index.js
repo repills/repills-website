@@ -2,7 +2,6 @@ import React from 'react';
 import {
   SectionsList,
   HomePageHeader,
-  ResourcesListWithDetail,
   Select,
   FeatureList,
   PageBlock,
@@ -14,7 +13,7 @@ import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
 import paths from '../../../utils/paths';
-import { Seo } from '../../components';
+import { Seo, ResourcesList } from '../../components';
 import ReactGA from 'react-ga';
 ReactGA.initialize('UA-117143286-1');
 
@@ -53,31 +52,12 @@ class Index extends React.Component {
     }
   }
 
-  navigateToLastAdded = () =>
-    navigateTo(paths.getLastAddedPagePath());
-
-  navigateToResourceDetail = ({ slug, publishedAt }) =>
-    navigateTo(paths.getResourcePagePath({ slug, publishedAt }));
-
-  generateDetailResourceUrl = ({ slug, publishedAt }) =>
-    paths.getResourcePagePath({ slug, publishedAt });
-
-  navigateToSection = sectionSlug =>
-    navigateTo(`/${sectionSlug}/`);
-
-  generateSectionUrl = sectionSlug =>
-    `/${sectionSlug}/`;
-
-  navigateToTopic = topicPath =>
-    navigateTo(paths.getTopicPagePath({basePath: topicPath}));
-
-  generateTopicUrl = topicPath =>
-    paths.getTopicPagePath({basePath: topicPath});
+  navigateToLastAdded = () => navigateTo(paths.getLastAddedPagePath());
 
   handleDetailView = ({ resource }) => {
     ReactGA.event({
       category: 'Resource browsing',
-      action: 'See resource detail',
+      action: 'See resource detail (Home)',
       label: 'Resource modal detail'
     });
   };
@@ -145,17 +125,10 @@ class Index extends React.Component {
                 style={{borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
               >
                 {
-                  <ResourcesListWithDetail
+                  <ResourcesList
                     breaks={{ XS: 4, SM: 6 }}
-                    resources={latestSharedResources}
-                    dateType={'createdAt'}
                     handleDetailView={this.handleDetailView}
-                    generateDetailUrl={this.generateDetailResourceUrl}
-                    navigateToDetail={this.navigateToResourceDetail}
-                    navigateToSection={this.navigateToSection}
-                    generateSectionUrl={this.generateSectionUrl}
-                    navigateToTopic={this.navigateToTopic}
-                    generateTopicUrl={this.generateTopicUrl}
+                    resources={latestSharedResources}
                     showAllAction={{
                       onClick: this.navigateToLastAdded,
                       href: paths.getLastAddedPagePath()

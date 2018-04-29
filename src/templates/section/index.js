@@ -3,7 +3,6 @@ import {
   TypesList,
   TopicsList,
   SectionPageHeader,
-  ResourcesListWithDetail,
   PageBlock,
   ShareBar,
   Counter,
@@ -12,9 +11,12 @@ import {
   getResourcesStats,
   VerticalSpacing
 } from 'repills-react-components';
+import { ResourcesList } from '../../components';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
-import paths from '../../../utils/paths';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-117143286-1');
+import config from '../../../config';
 
 import {
   Header,
@@ -56,6 +58,14 @@ class Section extends React.Component {
     }),
   };
 
+  handleDetailView = ({ resource }) => {
+    ReactGA.event({
+      category: 'Resource browsing',
+      action: 'See resource detail (Section)',
+      label: 'Resource modal detail'
+    });
+  };
+
   render() {
 
     const {
@@ -72,7 +82,7 @@ class Section extends React.Component {
       topics,
       resourcesCount,
       topicsCount,
-      maintainers,
+      // maintainers,
       path,
       types,
       icon
@@ -88,7 +98,7 @@ class Section extends React.Component {
 
     const metaTitle = `${name} | Learn pill by pill and acquire more skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
-    const shareUrl = `https://repills.com${path}`;
+    const shareUrl = `${config.baseUrl}${path}`;
 
     return (
       <div>
@@ -144,15 +154,9 @@ class Section extends React.Component {
                 title='Last added'
                 simple
               >
-                <ResourcesListWithDetail
+                <ResourcesList
+                  handleDetailView={this.handleDetailView}
                   resources={lastResources}
-                  dateType={'createdAt'}
-                  generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-                  navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-                  navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                  generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-                  navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
-                  generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
                 />
               </PageBlock>
 
@@ -202,23 +206,6 @@ class Section extends React.Component {
                   style={{marginTop: '32px'}}
                 />
               </VerticalSpacing>
-              {
-                /*
-                 <div style={{marginTop: '32px'}}>
-                 {
-                 maintainers.length > 0 &&
-                 <div>
-                 <h3>Maintainer{maintainers.length !== 1 ? 's' : ''}</h3>
-                 {
-                 maintainers.map(maintainer => (
-                 <div>{maintainer.name} ({maintainer.github})</div>
-                 ))
-                 }
-                 </div>
-                 }
-                 </div>
-                 */
-              }
               <VerticalSpacing size="medium">
                 <ContributorsList
                   contributors={contributors}

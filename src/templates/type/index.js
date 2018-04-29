@@ -1,6 +1,5 @@
 import React from 'react';
 import {
-  ResourcesListWithDetail,
   ResponsivePagination,
   TypesList,
   PageBlock,
@@ -12,6 +11,11 @@ import { navigateTo } from 'gatsby-link';
 import paths from '../../../utils/paths';
 import Helmet from 'react-helmet';
 import { sections } from 'repills-config';
+import { ResourcesList } from '../../components';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-117143286-1');
+import config from '../../../config';
+
 import {
   Header,
   HeaderContentMain,
@@ -21,6 +25,18 @@ import {
 } from '../../style/layout-columns';
 
 class Type extends React.Component {
+
+  handleDetailView = ({ resource }) => {
+    ReactGA.event({
+      category: 'Resource browsing',
+      action: 'See resource detail (Type)',
+      label: 'Resource modal detail'
+    });
+  };
+
+  navigateToPage = index => navigateTo(paths.getTypePagePath({index, basePath: this.props.pathContext.type.path}));
+
+  buildNavigationToPagePath = index => paths.getTypePagePath({index, basePath: this.props.pathContext.type.path});
 
   render() {
 
@@ -47,7 +63,7 @@ class Type extends React.Component {
           <meta name="description" content={metaDescription} />
           <meta property="og:title" content={`Resources about ${section.name} grouped by type`} />
           <meta property="og:description" content={metaDescription} />
-          <meta property="og:url" content={`https://repills.com${type.path}`} />
+          <meta property="og:url" content={`${config.baseUrl}${type.path}`} />
         </Helmet>
         <Header>
           <HeaderContent>
@@ -73,24 +89,18 @@ class Type extends React.Component {
               />
             </VerticalSpacing>
             <VerticalSpacing size="medium">
-              <ResourcesListWithDetail
+              <ResourcesList
+                handleDetailView={this.handleDetailView}
                 resources={type.resources.map(resource => resource.frontmatter)}
-                dateType={'createdAt'}
-                generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-                navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-                navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-                navigateToTopic={topicPath => navigateTo(paths.getTopicPagePath({basePath: topicPath}))}
-                generateTopicUrl={topicPath => paths.getTopicPagePath({basePath: topicPath})}
               />
             </VerticalSpacing>
             <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
-                handleNavigateToPage={index => navigateTo(paths.getTypePagePath({index, basePath: type.path}))}
+                handleNavigateToPage={this.navigateToPage}
                 itemsPerPage={pagination.perPage}
                 itemsTotalCount={pagination.totalCount}
-                buildPagePath={index => paths.getTypePagePath({index, basePath: type.path})}
+                buildPagePath={this.buildNavigationToPagePath}
               />
             </VerticalSpacing>
           </SimplePageContent>

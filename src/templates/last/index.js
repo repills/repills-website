@@ -1,7 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import {
-  ResourcesListWithDetail,
   ResponsivePagination,
   PageBlock,
   SimplePageHeader,
@@ -11,6 +10,9 @@ import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
 import paths from '../../../utils/paths';
 import config from '../../../config';
+import { ResourcesList } from '../../components';
+import ReactGA from 'react-ga';
+ReactGA.initialize('UA-117143286-1');
 
 import {
   HeaderContent,
@@ -23,6 +25,13 @@ import { normalizeResource } from '../../../utils/resources';
 
 class Last extends React.Component {
 
+  handleDetailView = ({ resource }) => {
+    ReactGA.event({
+      category: 'Resource browsing',
+      action: 'See resource detail (Last added)',
+      label: 'Resource modal detail'
+    });
+  };
 
   render() {
 
@@ -43,7 +52,7 @@ class Last extends React.Component {
         <Helmet>
           <title>{metaTitle}</title>
           <meta property="og:title" content={`${metaTitle} - Repills.com`} />
-          <meta property="og:url" content={`${config.baseUrl}/${paths.getLastAddedPagePath(pagination.currentPage)}`} />
+          <meta property="og:url" content={`${config.baseUrl}${paths.getLastAddedPagePath(pagination.currentPage)}`} />
         </Helmet>
         <Header>
           <HeaderContent>
@@ -56,16 +65,12 @@ class Last extends React.Component {
         </Header>
         <Page>
           <SimplePageContent>
-            <ResourcesListWithDetail
-              resources={resources.map(e => normalizeResource(e))}
-              dateType={'createdAt'}
-              generateDetailUrl={({ slug, publishedAt }) => paths.getResourcePagePath({ slug, publishedAt })}
-              navigateToDetail={({ slug, publishedAt }) => navigateTo(paths.getResourcePagePath({ slug, publishedAt }))}
-              navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-              navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-              generateTopicUrl={topicSlug => `/${topicSlug}`}
-              generateSectionUrl={sectionSlug => `/${sectionSlug}`}
-            />
+            <VerticalSpacing size="medium">
+              <ResourcesList
+                resources={resources.map(e => normalizeResource(e))}
+                handleDetailView={this.handleDetailView}
+              />
+            </VerticalSpacing>
             <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
