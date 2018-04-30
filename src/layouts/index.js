@@ -110,7 +110,7 @@ export default class Template extends React.Component {
                 </NewsletterWrapperStyle>
               </NewsletterStyle>
               <FooterStyle>
-                ©‎ Repills.com 2018 - Made with passion and a bit of automation.
+                ©‎ Repills 2018 - Made with passion and a bit of automation.
               </FooterStyle>
             </PageWrapperStyle>
           </PageStyle>

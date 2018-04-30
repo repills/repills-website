@@ -123,6 +123,7 @@ class Index extends React.Component {
                 align="CENTER"
                 title='Last added Pills'
                 simple
+                description="Get the latest news, tutorials, tips, and guides on software and UI development."
                 style={{borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
               >
                 {

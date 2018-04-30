@@ -42,7 +42,6 @@ export const navigationWrapper = pageWrapper;
 export const footer = css`
   ${typography.small}
   color: ${neutral.high};
-  background-color: ${neutral.lower};
   padding: ${extRem(32,20)};
   border-top: 1px solid ${neutral.low};
   
@@ -54,11 +53,11 @@ export const footer = css`
 export const newsletterWrapper = `
   max-width: ${extRem(900)};
   margin: 0 auto;
-  padding: 2.5rem 2rem;
+  padding: ${extRem(32)} 2rem;
 `;
 
 export const newsletter = css`
-  background-color: #000;
+  background-color: ${neutral.highest};
 
   ${media.MD`
     padding: 0 ${extRem(20)};
