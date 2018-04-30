@@ -167,6 +167,7 @@ class Section extends React.Component {
                   contentsCount={topicsCount}
                   title={`Topic${topicsCount === 1 ? '' : 's'}`}
                   simple
+                  description={`Deep dive into the ${name} available topics`}
                 >
                   <TopicsList
                     breaks={{ XS: 8, SM: 16 }}
