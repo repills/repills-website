@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-22T01:55:57.167Z
 reference: aHR0cHM6Ly9ibG9nLmxvZ3JvY2tldC5jb20vYnVpbGRpbmctc2VydmVyLXJlbmRlcmVkLWFwcHMtaW4tdnVlLXVzaW5nLW51eHQtanMtYzEyYzZjMjUzMjc0
 slug: building-serverrendered-apps-in-vue-using-nuxtjs-by-christian-nwamba
+abstract: "This post will walk you through the process of building server-rendered webpages in Vue — a progressive JavaScript framework that is simple to start using. I'll also discuss Nuxt, a tool that makes the server-rendering process seamless. Finally, as a practical example, we will build an app that shows pictures of dogs based on their breed."
 ---

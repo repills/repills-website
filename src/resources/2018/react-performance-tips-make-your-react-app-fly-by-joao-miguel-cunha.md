@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-29T19:18:26.319Z
 reference: aHR0cHM6Ly9tZWRpdW0uY29tL0Bqb29taWd1ZWxjdW5oYS9yZWFjdC1wZXJmb3JtYW5jZS10aXBzLTVmYTE5OWE0NTBiMg
 slug: react-performance-tips-make-your-react-app-fly-by-joao-miguel-cunha
+abstract: "React allows you to start building apps with ease, be it small and simple apps or big and complex apps. As applications evolve, it is only natural for requirements to do so as well and, in consequence, you will eventually need to boost some performance out of your app. In this article, we'll also look at some optimization tips as well as best coding practices."
 ---

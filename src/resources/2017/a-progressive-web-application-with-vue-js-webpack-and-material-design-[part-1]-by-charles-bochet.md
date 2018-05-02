@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-19T21:54:55.451Z
 reference: aHR0cHM6Ly9ibG9nLnNpY2FyYS5jb20vYS1wcm9ncmVzc2l2ZS13ZWItYXBwbGljYXRpb24td2l0aC12dWUtanMtd2VicGFjay1tYXRlcmlhbC1kZXNpZ24tcGFydC0xLWMyNDNlMmU2ZTQwMg
 slug: a-progressive-web-application-with-vue-js-webpack-and-material-design-by-charles-bochet
+abstract: "Progressive web applications are the future. A Progressive Web Application (PWA) is a web application that offers an app-like user experience. PWAs benefit from the modern Web technological innovations (Service Workers, Native APIs, JS frameworks) and raise web application quality standard."
 ---

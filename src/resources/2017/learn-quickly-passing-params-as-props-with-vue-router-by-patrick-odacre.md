@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-19T21:53:41.639Z
 reference: aHR0cHM6Ly9tZWRpdW0uY29tL3Z1ZS1ieS1leGFtcGxlL2xlYXJuLXF1aWNrbHktcGFzc2luZy1wYXJhbXMtYXMtcHJvcHMtd2l0aC12dWUtcm91dGVyLWY0OTA1NzM1Yjc0Nw
 slug: learn-quickly-passing-params-as-props-with-vue-router-by-patrick-odacre
+abstract: "In this article you will learn how to pass required data on a route change to a route component, how to pass optional data on a route change to a route component and how to use that same component as a child component that uses required data."
 ---
