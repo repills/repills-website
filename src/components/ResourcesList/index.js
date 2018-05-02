@@ -24,6 +24,7 @@ class ResourcesList extends React.Component {
       breaks,
       handleDetailView,
       showAllAction,
+      showSimpleItems,
       resources
     } = this.props;
 
@@ -40,6 +41,7 @@ class ResourcesList extends React.Component {
         navigateToTopic={this.navigateToTopic}
         generateTopicUrl={this.generateTopicUrl}
         showAllAction={showAllAction}
+        showSimpleItems={showSimpleItems}
       />
     )
   }

@@ -9,8 +9,10 @@ import {
   TileCta,
   ContributorsList,
   getResourcesStats,
-  VerticalSpacing
+  VerticalSpacing,
+  theme
 } from 'repills-react-components';
+const { neutral } = theme.palettes;
 import { ResourcesList } from '../../components';
 import Helmet from 'react-helmet';
 import PropTypes from 'prop-types';
@@ -24,6 +26,7 @@ import {
   HeaderContentMain,
   HeaderContentSecondary,
   Page,
+  SimplePageContent,
   PageContent,
   PageContentMain,
   PageContentSecondary
@@ -146,77 +149,80 @@ class Section extends React.Component {
             </HeaderContentSecondary>
           </HeaderContent>
         </Header>
+        <Page style={{backgroundColor: neutral.lower, paddingBottom: '40px'}}>
+          <SimplePageContent>
+            <PageBlock
+              title='Last added resources'
+              simple
+            >
+              <ResourcesList
+                handleDetailView={this.handleDetailView}
+                resources={lastResources}
+                showSimpleItems
+              />
+            </PageBlock>
+          </SimplePageContent>
+        </Page>
         <Page>
-          <PageContent>
-
-            <PageContentMain>
+          <SimplePageContent>
+            <VerticalSpacing size="medium">
               <PageBlock
-                title='Last added'
+                contentsCount={topicsCount}
+                title={`Topic${topicsCount === 1 ? '' : 's'}`}
                 simple
+                description={`Deep dive into the ${name} available topics`}
               >
-                <ResourcesList
-                  handleDetailView={this.handleDetailView}
-                  resources={lastResources}
+                <TopicsList
+                  breaks={{ XS: 8, SM: 16 }}
+                  navigateTo={path => navigateTo(path)}
+                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
                 />
               </PageBlock>
-
-              <VerticalSpacing
-                size="medium"
+            </VerticalSpacing>
+            <VerticalSpacing size="large">
+              <PageBlock
+                title="Browse resource by type"
+                simple
               >
-                <PageBlock
-                  contentsCount={topicsCount}
-                  title={`Topic${topicsCount === 1 ? '' : 's'}`}
-                  simple
-                  description={`Deep dive into the ${name} available topics`}
-                >
-                  <TopicsList
-                    breaks={{ XS: 8, SM: 16 }}
-                    navigateTo={path => navigateTo(path)}
-                    topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                  />
-                </PageBlock>
-              </VerticalSpacing>
-            </PageContentMain>
-
-            <PageContentSecondary>
-              <TypesList
-                navigateTo={path => navigateTo(path)}
-                types={types}
-              />
-              <VerticalSpacing size="medium">
-                <TileCta
-                  cta={{
-                    label: 'Contribute',
-                    onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
-                  }}
-                  description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
-                  icon="GitHub"
-                  title="Let's do great things together!"
+                <TypesList
+                  navigateTo={path => navigateTo(path)}
+                  types={types}
                 />
-              </VerticalSpacing>
-              <VerticalSpacing size="medium">
-                <TileCta
-                  cta={{
-                    label: 'Contact us',
-                    onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
-                    skin: 'outline'
-                  }}
-                  description="Great! Propose yourself as maintainer and help us to select high-level contents."
-                  icon="User"
-                  title={`Are you an expert in "${name}"?`}
-                  style={{marginTop: '32px'}}
-                />
-              </VerticalSpacing>
-              <VerticalSpacing size="medium">
-                <ContributorsList
-                  contributors={contributors}
-                />
-              </VerticalSpacing>
-
-            </PageContentSecondary>
-
-          </PageContent>
+              </PageBlock>
+            </VerticalSpacing>
+          </SimplePageContent>
         </Page>
+        {
+          /*
+           <TileCta
+           cta={{
+           label: 'Contribute',
+           onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
+           }}
+           description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
+           icon="GitHub"
+           title="Let's do great things together!"
+           />
+           <VerticalSpacing size="medium">
+           <TileCta
+           cta={{
+           label: 'Contact us',
+           onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
+           skin: 'outline'
+           }}
+           description="Great! Propose yourself as maintainer and help us to select high-level contents."
+           icon="User"
+           title={`Are you an expert in "${name}"?`}
+           style={{marginTop: '32px'}}
+           />
+           </VerticalSpacing>
+           <VerticalSpacing size="medium">
+           <ContributorsList
+           contributors={contributors}
+           />
+           </VerticalSpacing>
+           */
+        }
       </div>
     );
   }
@@ -230,7 +236,7 @@ export default Section;
 export const pageQuery = graphql`
   query TagPage($id: String) {
     resources: allMarkdownRemark(
-      limit: 4
+      limit: 6
       sort: { fields: [frontmatter___createdAt], order: DESC }
       filter: { frontmatter: { sections: { in: [$id] } } }
     ) {
@@ -246,8 +252,8 @@ export const pageQuery = graphql`
             topics
             suggestedBy
             createdAt
-            reference
-            slug
+            reference,
+            slug,
             abstract
           }
         }
