@@ -51,6 +51,10 @@ class ResourceTemplate extends React.Component {
         },
       }]
     };
+
+    if (resource.abstract) {
+      this.seoData.structuredData[0].description = resource.abstract;
+    }
   }
 
   handleNavigateTo = link => () => window.open(link, '_blank');
@@ -65,6 +69,10 @@ class ResourceTemplate extends React.Component {
       <div>
         <Seo info={this.seoData.info} structuredData={this.seoData.structuredData}>
           <title>{resource.title}</title>
+          {
+            resource.abstract &&
+            <meta name="description" content={resource.abstract} />
+          }
           <meta property="og:title" content={resource.title} />
         </Seo>
         <Page>
@@ -75,10 +83,10 @@ class ResourceTemplate extends React.Component {
                 color={type.color}
                 typeLabel={type.label.singular}
                 navigateTo={this.handleNavigateTo(resource.link)}
-                navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}`)}
-                navigateToTopic={topicSlug => navigateTo(`/${topicSlug}`)}
-                generateTopicUrl={topicSlug => `/${topicSlug}`}
-                generateSectionUrl={sectionSlug => `/${sectionSlug}`}
+                navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}/`)}
+                navigateToTopic={topicSlug => navigateTo(`/${topicSlug}/`)}
+                generateTopicUrl={topicSlug => `/${topicSlug}/`}
+                generateSectionUrl={sectionSlug => `/${sectionSlug}/`}
               />
             </div>
           </SimplePageContent>
@@ -94,7 +102,6 @@ export const ResourceQuery = graphql`
   query ResourceByReference($reference: String!) {
     markdownRemark(frontmatter: { reference: { eq: $reference } }) {
       id
-      html
       frontmatter {
         sections,
         link,
@@ -106,7 +113,8 @@ export const ResourceQuery = graphql`
         slug,
         suggestedBy,
         createdAt,
-        reference
+        reference,
+        abstract
       }
     }
   }

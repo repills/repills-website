@@ -143,6 +143,7 @@ class Index extends React.Component {
               size="large"
             >
               <FeatureList
+                style={{borderTop: `1px solid ${neutral.low}`, paddingTop: '32px'}}
                 features={features}
               />
             </VerticalSpacing>
@@ -180,6 +181,7 @@ export const pageQuery = graphql`
             createdAt
             reference
             slug
+            abstract
           }
         }
       }

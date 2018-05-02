@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-29T19:24:50.017Z
 reference: aHR0cHM6Ly9sZWdhY3kuZ2l0Ym9vay5jb20vYm9vay9rcmFzaW1pci9yZWFjdC1pbi1wYXR0ZXJucy9kZXRhaWxz
 slug: react-in-patterns-by-krasimir-tsonev
+abstract: "A book about common design patterns used while developing with React. It includes techniques for composition, data flow, dependency management and more."
 ---
