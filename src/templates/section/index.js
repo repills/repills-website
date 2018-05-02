@@ -246,8 +246,9 @@ export const pageQuery = graphql`
             topics
             suggestedBy
             createdAt
-            reference,
+            reference
             slug
+            abstract
           }
         }
       }

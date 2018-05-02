@@ -9,7 +9,7 @@ const transformMapResource = [
 ];
 
 function normalizeResource({ node }) {
-  return n.normalize(node.frontmatter, transformMapResource, true);
+  return n.normalize(node.frontmatter, transformMapResource, true)
 }
 
 function getResourcesStats(resources, relative, sorting) {
