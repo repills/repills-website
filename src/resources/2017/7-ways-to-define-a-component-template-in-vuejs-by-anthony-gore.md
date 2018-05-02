@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-22T01:57:19.496Z
 reference: aHR0cHM6Ly92dWVqc2RldmVsb3BlcnMuY29tLzIwMTcvMDMvMjQvdnVlLWpzLWNvbXBvbmVudC10ZW1wbGF0ZXMv
 slug: 7-ways-to-define-a-component-template-in-vuejs-by-anthony-gore
+abstract: "There’s plenty of choice when it comes to defining component templates in Vue. In this article we'll go through examples of each and address the pros and cons so you know which one is the best to use in any particular situation."
 ---

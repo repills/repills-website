@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-22T10:39:43.194Z
 reference: aHR0cHM6Ly9jb2RlYnVyc3QuaW8vYnVpbGRpbmctYS1idWRnZXQtbWFuYWdlci13aXRoLXZ1ZS1qcy1hbmQtbm9kZS1qcy1wYXJ0LWktZjNkNzMxMTgyMmE4
 slug: building-a-budget-manager-with-vuejs-and-nodejs-part-i-by-ustavo-domaradzki
+abstract: "In this tutorial series you'll learn how to build a complete Vue.js and Node.js Budget Manager application. For simplicity we will not be using Vuex and try to stay as simple and clean as possible."
 ---
