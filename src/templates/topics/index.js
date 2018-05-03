@@ -7,7 +7,6 @@ import {
 } from 'repills-react-components';
 import { navigateTo } from 'gatsby-link';
 import { sections } from 'repills-config';
-import paths from '../../../utils/paths';
 
 import {
   HeaderContent,
@@ -43,11 +42,13 @@ class Topics extends React.Component {
         </Header>
         <Page>
           <SimplePageContent>
-            <TopicsList
-              navigateTo={path => navigateTo(path)}
-              topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-              type="extended"
-            />
+            <VerticalSpacing size="medium">
+              <TopicsList
+                navigateTo={path => navigateTo(path)}
+                topics={Object.keys(topics).map(topicId => (topics[topicId]))}
+                type="extended"
+              />
+            </VerticalSpacing>
           </SimplePageContent>
         </Page>
       </div>

@@ -82,13 +82,6 @@ class Type extends React.Component {
         <Page>
           <SimplePageContent>
             <VerticalSpacing size="medium">
-              <TypesList
-                navigateTo={path => navigateTo(path)}
-                types={types}
-                activeKey={type.id}
-              />
-            </VerticalSpacing>
-            <VerticalSpacing size="medium">
               <ResourcesList
                 handleDetailView={this.handleDetailView}
                 resources={type.resources.map(resource => resource.frontmatter)}
@@ -101,6 +94,13 @@ class Type extends React.Component {
                 itemsPerPage={pagination.perPage}
                 itemsTotalCount={pagination.totalCount}
                 buildPagePath={this.buildNavigationToPagePath}
+              />
+            </VerticalSpacing>
+            <VerticalSpacing size="medium">
+              <TypesList
+                navigateTo={path => navigateTo(path)}
+                types={types}
+                activeKey={type.id}
               />
             </VerticalSpacing>
           </SimplePageContent>

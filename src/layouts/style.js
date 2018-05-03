@@ -49,17 +49,3 @@ export const footer = css`
     color: currentColor;
   }
 `;
-
-export const newsletterWrapper = `
-  max-width: ${extRem(900)};
-  margin: 0 auto;
-  padding: ${extRem(32)} 2rem;
-`;
-
-export const newsletter = css`
-  background-color: ${neutral.highest};
-
-  ${media.MD`
-    padding: 0 ${extRem(20)};
-  `};
-`;

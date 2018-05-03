@@ -94,10 +94,13 @@ class Section extends React.Component {
     const { resources:dataResources, contributors:dataContributors } = data;
     // const filledTopics = data.topics.group;
     const lastResources = dataResources.edges.map(e => normalizeResource(e));
+
+    /*
     const contributors = dataContributors.group.map(c => ({
       nickname: c.fieldValue,
       publishedCount: c.totalCount
     }));
+    */
 
     const metaTitle = `${name} | Learn pill by pill and acquire more skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
@@ -171,23 +174,39 @@ class Section extends React.Component {
                 simple
                 description={`Deep dive into the ${name} available topics`}
               >
-                <TopicsList
-                  breaks={{ XS: 8, SM: 16 }}
-                  navigateTo={path => navigateTo(path)}
-                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                />
+                {
+                  topics.length > 3 &&
+                  <div>
+                    <TopicsList
+                      type="extended"
+                      breaks={{ XS: 8, SM: 16 }}
+                      navigateTo={path => navigateTo(path)}
+                      topics={topics.slice(0,3)}
+                    />
+                    <TopicsList
+                      style={{marginTop: '1rem'}}
+                      breaks={{ XS: 8, SM: 16 }}
+                      navigateTo={path => navigateTo(path)}
+                      topics={topics.slice(3,topics.length)}
+                    />
+                  </div>
+                }
+                {
+                  topics.length <= 3 &&
+                  <TopicsList
+                    breaks={{ XS: 8, SM: 16 }}
+                    navigateTo={path => navigateTo(path)}
+                    topics={topics}
+                  />
+                }
+
               </PageBlock>
             </VerticalSpacing>
             <VerticalSpacing size="large">
-              <PageBlock
-                title="Browse resource by type"
-                simple
-              >
-                <TypesList
-                  navigateTo={path => navigateTo(path)}
-                  types={types}
-                />
-              </PageBlock>
+              <TypesList
+                navigateTo={path => navigateTo(path)}
+                types={types}
+              />
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
