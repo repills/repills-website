@@ -71,7 +71,7 @@ class Last extends React.Component {
                 handleDetailView={this.handleDetailView}
               />
             </VerticalSpacing>
-            <VerticalSpacing size="medium">
+            <VerticalSpacing size="small">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
                 handleNavigateToPage={page => navigateTo(paths.getLastAddedPagePath(page))}

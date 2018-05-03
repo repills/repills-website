@@ -46,7 +46,7 @@ export const SimplePageContent = styled.div`
 
 export const HeaderContent = styled.div`
   ${grid()}
-  padding-top: ${extRem(40)};
+  padding-top: ${extRem(32)};
   ${commonContent}
 `;
 
@@ -68,7 +68,7 @@ export const PageContentMain = styled.div`
 
 export const HeaderContentMain = styled.div`
   ${commonMain}
-  padding-bottom: ${extRem(40)};
+  padding-bottom: ${extRem(32)};
 `;
 
 const commonSecondary = css`

@@ -143,7 +143,7 @@ class Topic extends React.Component {
                   handleDetailView={this.handleDetailView}
                 />
               </VerticalSpacing>
-              <VerticalSpacing size="medium">
+              <VerticalSpacing size="small">
                 <ResponsivePagination
                   currentPage={pagination.currentPage}
                   handleNavigateToPage={index => navigateTo(paths.getTopicPagePath({index, basePath: topic.path}))}
