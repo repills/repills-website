@@ -6,8 +6,11 @@ import {
   FeatureList,
   PageBlock,
   VerticalSpacing,
-  theme
+  theme,
+  Newsletter
 } from 'repills-react-components';
+import styled from 'styled-components';
+
 import config from '../../../config';
 const { neutral } = theme.palettes;
 import {sections as sectionsData} from 'repills-config';
@@ -24,6 +27,14 @@ import {
   Page,
   SimplePageContent
 } from '../../style/layout-columns';
+
+import {
+  newsletter,
+  newsletterWrapper
+} from './style';
+
+const NewsletterStyle = styled.div`${newsletter}`;
+const NewsletterWrapperStyle = styled.div`${newsletterWrapper}`;
 
 const features = [
   {
@@ -149,6 +160,14 @@ class Index extends React.Component {
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
+        <NewsletterStyle>
+          <NewsletterWrapperStyle>
+            <Newsletter
+              intro={`Repills is brought to you by the same authors of <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>, the weekly newsletter that aims to keep inspiring and keeping up to date full stack developers.`}
+              note="You will receive the <strong>best 7 links</strong> in your inbox every week, for free! No spam, ever :)"
+            />
+          </NewsletterWrapperStyle>
+        </NewsletterStyle>
       </div>
     );
   }
