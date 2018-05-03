@@ -41,7 +41,7 @@ class ResourcesList extends React.Component {
         navigateToTopic={this.navigateToTopic}
         generateTopicUrl={this.generateTopicUrl}
         showAllAction={showAllAction}
-        showSimpleItems={showSimpleItems}
+        showSimpleItems={showSimpleItems || true}
       />
     )
   }

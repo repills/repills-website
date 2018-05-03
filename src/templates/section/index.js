@@ -158,7 +158,6 @@ class Section extends React.Component {
               <ResourcesList
                 handleDetailView={this.handleDetailView}
                 resources={lastResources}
-                showSimpleItems
               />
             </PageBlock>
           </SimplePageContent>
