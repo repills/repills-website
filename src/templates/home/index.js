@@ -100,12 +100,16 @@ class Index extends React.Component {
     return (
       <div>
         <Seo />
-        <Header style={{backgroundColor: neutral.highest}}>
+        <Header style={{backgroundColor: neutral.lower, paddingTop: '3.5rem', paddingBottom: '3.5rem'}}>
           <SimpleHeaderContent>
             <HomePageHeader
-              subTitle="for web developers and UI designers"
-              title="Free <strong>pills</strong> to get more <strong>skills</strong>"
+              title="<strong>Stay up to date</strong> with the latest cutting-edge technologies and <strong>improve your skills pill by pill</strong>, day by day."
               description="Repills is going to be the place to learn about web development and design through well-organized high-quality resources."
+              secondaryAction={{
+                label: `${data.totalResources.totalCount} resources available yet`,
+                onClick: this.navigateToLastAdded,
+                href: paths.getLastAddedPagePath()
+              }}
             />
           </SimpleHeaderContent>
         </Header>

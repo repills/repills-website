@@ -69,6 +69,8 @@ export default class Template extends React.Component {
     const title = "REPILLS | Free pills to get more skills";
     const description = "Repills.com is the place to learn about web development and design through well-organized high-quality resources. You can discover articles, tutorials, courses, tools, books about React.js, Serverless, Redux, Vue.js";
 
+    const currentDate = new Date();
+
     return (
       <BaseStyle>
         <Helmet
@@ -97,7 +99,10 @@ export default class Template extends React.Component {
             <PageWrapperStyle>
               {children()}
               <FooterStyle>
-                ©‎ Repills 2018 - Made with passion and a bit of automation.
+                 Repills ©{currentDate.getFullYear()} - Free pills to get more skills!
+                <div>
+                  Repills is a discovery place for web developers where they stay up to date with the latest trends through well-organized high-quality resources.
+                </div>
               </FooterStyle>
             </PageWrapperStyle>
           </PageStyle>
