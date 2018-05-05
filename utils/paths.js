@@ -11,5 +11,8 @@ module.exports = {
   },
   getTypePagePath: ({index, basePath}) => {
     return (index && index !== 1) ? `${basePath}${index}/` : `${basePath}`;
+  },
+  getSectionTopicsPagePath: ({sectionBasePath}) => {
+    return `${sectionBasePath}topics`;
   }
 };

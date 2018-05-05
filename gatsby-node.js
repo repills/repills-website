@@ -41,7 +41,7 @@ exports.createPages = ({ boundActionCreators, graphql }) => {
         pageBuilder.createSectionPages();
 
         // Section Topics Pages
-        // pageBuilder.createTopicsPages();
+        pageBuilder.createTopicsPages();
 
         // Topic Pages
         pageBuilder.createTopicPages();

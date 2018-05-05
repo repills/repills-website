@@ -81,7 +81,7 @@ class Type extends React.Component {
         </Header>
         <Page>
           <SimplePageContent>
-            <VerticalSpacing size="medium">
+            <VerticalSpacing size="large">
               <ResourcesList
                 handleDetailView={this.handleDetailView}
                 resources={type.resources.map(resource => resource.frontmatter)}

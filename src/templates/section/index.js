@@ -19,6 +19,7 @@ import { rgba } from 'polished';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
 import config from '../../../config';
+import paths from '../../../utils/paths';
 ReactGA.initialize(config.ga.trackingId);
 
 import {
@@ -159,6 +160,10 @@ class Section extends React.Component {
             <PageBlock
               title='Last added resources'
               simple
+              primaryAction={{
+                label: 'Suggest resource',
+                onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
+              }}
             >
               <ResourcesList
                 handleDetailView={this.handleDetailView}
@@ -175,6 +180,10 @@ class Section extends React.Component {
                 title={`Topic${topicsCount === 1 ? '' : 's'}`}
                 simple
                 description={`Deep dive into the ${name} available topics`}
+                primaryAction={{
+                  label: 'Topics detail',
+                  onClick: () => navigateTo(paths.getSectionTopicsPagePath({sectionBasePath: path}))
+                }}
               >
                 {
                   topics.length > 3 &&
