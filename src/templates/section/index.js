@@ -15,6 +15,7 @@ import {
 const { neutral } = theme.palettes;
 import { ResourcesList } from '../../components';
 import Helmet from 'react-helmet';
+import { rgba } from 'polished';
 import PropTypes from 'prop-types';
 import ReactGA from 'react-ga';
 import config from '../../../config';
@@ -102,7 +103,7 @@ class Section extends React.Component {
     }));
     */
 
-    const metaTitle = `${name} | Learn pill by pill and acquire more skills!`;
+    const metaTitle = `${name} | Free pills and get more skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
     const shareUrl = `${config.baseUrl}${path}`;
 
@@ -127,21 +128,22 @@ class Section extends React.Component {
               />
             </HeaderContentMain>
             <HeaderContentSecondary>
-              <div style={{borderBottom: '1px solid #e5ded7', paddingBottom: '20px'}}>
+              <div style={{borderBottom: `1px solid ${rgba(neutral.highest,.3)}`, paddingBottom: '1.25rem'}}>
                 <Counter
                   count={resourcesCount}
                   label="total pills"
-                  stats={getResourcesStats(resources, true)}
+                  showStats={false}
                 />
               </div>
               <ShareBar
+                color={neutral.lowest}
                 link={shareUrl}
                 text={metaDescription}
                 title={metaTitle}
                 types={[
                   'facebook',
                   'twitter',
-                  'email'
+                  'linkedin'
                 ]}
                 style={{
                   marginTop: '24px',
@@ -152,7 +154,7 @@ class Section extends React.Component {
             </HeaderContentSecondary>
           </HeaderContent>
         </Header>
-        <Page style={{backgroundColor: neutral.lower, paddingBottom: '40px'}}>
+        <Page style={{backgroundColor: neutral.lower, paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
           <SimplePageContent>
             <PageBlock
               title='Last added resources'

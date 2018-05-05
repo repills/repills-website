@@ -1,4 +1,5 @@
 import { css } from 'styled-components';
+import { rgba } from 'polished';
 import {
   extRem,
   media,
@@ -7,7 +8,7 @@ import {
 } from 'repills-react-components';
 
 const { palettes } = theme;
-const { neutral } = palettes;
+const { basic, neutral } = palettes;
 
 export const base = css`
   display: flex;
@@ -19,8 +20,8 @@ export const base = css`
 export const navigation = css`
   position: relative;
   z-index: ${theme.zIndex.navbar};
-  background-color: ${neutral.lowest};
-  border-bottom: 1px solid ${neutral.low};
+  background-color: ${basic.secondary};
+  border-bottom: 1px solid ${rgba(neutral.highest, .2)};
 
   ${media.MD`
     padding: ${extRem(0, 24)};
@@ -34,7 +35,6 @@ export const page = css`
 `;
 
 export const pageWrapper = css`
-  background-color: ${neutral.lowest};
 `;
 
 export const navigationWrapper = pageWrapper;
