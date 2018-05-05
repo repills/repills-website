@@ -24,6 +24,18 @@ const NavigationWrapperStyle = styled.div`${navigationWrapper}`;
 const PageWrapperStyle = styled.div`${pageWrapper}`;
 const FooterStyle = styled.footer`${footer}`;
 
+// @TODO build nav programmatically
+const navItems = [
+  {
+    label: 'React.js',
+    onClick: () => navigateTo('/reactjs/')
+  },
+  {
+    label: 'Vue.js',
+    onClick: () => navigateTo('/vuejs/')
+  }
+];
+
 export default class Template extends React.Component {
 
   constructor(props) {
@@ -92,7 +104,10 @@ export default class Template extends React.Component {
         <BaseStyle>
           <NavigationStyle>
             <NavigationWrapperStyle>
-              <TopNavigation onClickLogo={() => navigateTo('/')} />
+              <TopNavigation
+                items={navItems}
+                onClickLogo={() => navigateTo('/')}
+              />
             </NavigationWrapperStyle>
           </NavigationStyle>
           <PageStyle id="page">

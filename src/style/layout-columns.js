@@ -7,11 +7,11 @@ import { grid } from 'styled-components-grid';
 import styled, { css } from 'styled-components';
 
 const { palettes } = theme;
-const { neutral } = palettes;
+const { basic, neutral } = palettes;
 
 
 export const Header = styled.div`
-  background-color: ${neutral.lower};
+  background-color: ${basic.secondary};
   padding: ${extRem(0, 20)};
 `;
 

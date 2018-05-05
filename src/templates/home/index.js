@@ -12,7 +12,7 @@ import {
 import styled from 'styled-components';
 
 import config from '../../../config';
-const { neutral } = theme.palettes;
+const { basic, neutral } = theme.palettes;
 import {sections as sectionsData} from 'repills-config';
 import { navigateTo } from 'gatsby-link';
 import { normalizeResource } from '../../../utils/resources';
@@ -100,15 +100,15 @@ class Index extends React.Component {
     return (
       <div>
         <Seo />
-        <Header style={{backgroundColor: neutral.lower, paddingTop: '3.5rem', paddingBottom: '3.5rem'}}>
+        <Header style={{backgroundColor: basic.secondary, paddingTop: '3.5rem', paddingBottom: '3.5rem'}}>
           <SimpleHeaderContent>
             <HomePageHeader
-              title="<strong>Stay up to date</strong> with the latest cutting-edge technologies and <strong>improve your skills pill by pill</strong>, day by day."
+              title="Stay up to date with the latest cutting-edge technologies and improve your skills pill by pill."
               description="Repills is going to be the place to learn about web development and design through well-organized high-quality resources."
               secondaryAction={{
                 label: `${data.totalResources.totalCount} resources available yet`,
                 onClick: this.navigateToLastAdded,
-                href: paths.getLastAddedPagePath()
+                // href: paths.getLastAddedPagePath()
               }}
             />
           </SimpleHeaderContent>
