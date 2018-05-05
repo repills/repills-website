@@ -10,8 +10,10 @@ import {
   ShareBar,
   getResourcesStats,
   VerticalSpacing,
-  KeywordsCloud
+  KeywordsCloud,
+  theme
 } from 'repills-react-components';
+import { rgba } from 'polished';
 import { navigateTo } from 'gatsby-link';
 import { ResourcesList } from '../../components';
 import { sections } from 'repills-config';
@@ -28,6 +30,7 @@ import {
   Page,
   SimplePageContent
 } from '../../style/layout-columns';
+const { neutral } = theme.palettes;
 
 class Topic extends React.Component {
 
@@ -95,14 +98,15 @@ class Topic extends React.Component {
               />
             </HeaderContentMain>
             <HeaderContentSecondary>
-              <div style={{borderBottom: '1px solid #e5ded7', paddingBottom: '20px'}}>
+              <div style={{borderBottom: `1px solid ${rgba(neutral.highest,.3)}`, paddingBottom: '1.25rem'}}>
                 <Counter
                   count={pagination.totalCount}
                   label="total pills"
-                  stats={getResourcesStats(topic.resources, true)}
+                  showsStats={false}
                 />
               </div>
               <ShareBar
+                color={neutral.lowest}
                 link={shareUrl}
                 text={metaDescription}
                 title={metaTitle}
