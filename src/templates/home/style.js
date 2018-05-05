@@ -7,18 +7,19 @@ import {
 } from 'repills-react-components';
 
 const { palettes } = theme;
-const { neutral } = palettes;
+const { basic } = palettes;
 
 export const newsletterWrapper = `
-  max-width: ${extRem(900)};
-  margin: 0 auto;
-  padding: ${extRem(32)} 2rem;
+  padding: 2rem;
 `;
 
 export const newsletter = css`
-  background-color: ${neutral.highest};
-
+  background-color: ${basic.secondary};
+  max-width: ${extRem(1100)};
+  margin: 0 auto -1px;
+  
   ${media.MD`
-    padding: 0 ${extRem(20)};
+    padding: 0 1.25rem;
+    margin-bottom: 4rem;
   `};
 `;
