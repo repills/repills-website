@@ -104,7 +104,7 @@ class Index extends React.Component {
           <SimpleHeaderContent>
             <HomePageHeader
               title="Stay up to date with the latest cutting-edge technologies and improve your skills pill by pill."
-              description="Repills is going to be the place to learn about web development and design through well-organized high-quality resources."
+              description="Repills is going to be the place to learn about web development and UI design through well-organized high-quality resources."
               secondaryAction={{
                 label: `${data.totalResources.totalCount} resources available yet`,
                 onClick: this.navigateToLastAdded,
