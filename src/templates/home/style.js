@@ -17,6 +17,7 @@ export const newsletter = css`
   background-color: ${basic.secondary};
   max-width: ${extRem(1100)};
   margin: 0 auto -1px;
+  border-radius: 5px;
   
   ${media.MD`
     padding: 0 1.25rem;
