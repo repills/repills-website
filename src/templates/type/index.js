@@ -87,7 +87,7 @@ class Type extends React.Component {
                 resources={type.resources.map(resource => resource.frontmatter)}
               />
             </VerticalSpacing>
-            <VerticalSpacing size="small">
+            <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
                 handleNavigateToPage={this.navigateToPage}

@@ -114,8 +114,8 @@ export default class Template extends React.Component {
             <PageWrapperStyle>
               {children()}
               <FooterStyle>
-                 Repills ©{currentDate.getFullYear()} - Free pills to get more skills!
-                <div>
+                <div>Repills ©{currentDate.getFullYear()} - Free pills to get more skills!</div>
+                <div style={{marginTop: '0.25rem'}}>
                   Repills is a discovery place for web developers where they stay up to date with the latest trends through well-organized high-quality resources.
                 </div>
               </FooterStyle>

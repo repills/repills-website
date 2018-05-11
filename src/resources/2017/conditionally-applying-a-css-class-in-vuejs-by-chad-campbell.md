@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-18T23:12:32.913Z
 reference: aHR0cHM6Ly93d3cuc2l0ZXBvaW50LmNvbS9jb25kaXRpb25hbGx5LWFwcGx5aW5nLWNzcy1jbGFzcy12dWUtanMv
 slug: conditionally-applying-a-css-class-in-vuejs-by-chad-campbell
+abstract: "There are times you need to change an element’s CSS classes at runtime. But when changing classes, it’s sometimes best to apply style details conditionally. This article explains you how to do this through a pratical example."
 ---

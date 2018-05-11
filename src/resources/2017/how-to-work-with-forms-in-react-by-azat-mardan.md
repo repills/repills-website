@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-10T16:17:20.732Z
 reference: aHR0cHM6Ly93d3cuc2l0ZXBvaW50LmNvbS93b3JrLXdpdGgtZm9ybXMtaW4tcmVhY3Qv
 slug: how-to-work-with-forms-in-react-by-azat-mardan
+abstract: "This article covers how to capture text input and input via other form elements like input, textarea, and option. Working with them is paramount to web development, because they allow our applications to receive data (e.g. text) and actions (e.g. clicks) from users."
 ---
