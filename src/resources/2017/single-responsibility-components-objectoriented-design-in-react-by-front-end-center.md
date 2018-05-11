@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-09T16:37:36.359Z
 reference: aHR0cHM6Ly93d3cueW91dHViZS5jb20vd2F0Y2g_dj1wU2RwOTJVcDhPOA
 slug: single-responsibility-components-objectoriented-design-in-react-by-front-end-center
+abstract: "The Functional Programming (FP) aspects of React are fairly prominent, but components themselves are an example of Object-Oriented (OO) programming. In this episode, we'll look at how one idea from OO—The Single Responsibility Principle—can help us design and extract more readable, reusable, and maintainable React components."
 ---
