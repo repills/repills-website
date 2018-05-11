@@ -37,10 +37,13 @@ export const page = css`
 export const pageWrapper = css`
 `;
 
-export const navigationWrapper = pageWrapper;
+export const navigationWrapper = `
+  max-width: ${extRem(1150)};
+  margin: 0 auto;
+`;
 
 export const footer = css`
-  ${typography.small}
+  ${typography.mini}
   color: ${neutral.high};
   padding: ${extRem(32,20)};
   border-top: 1px solid ${neutral.low};

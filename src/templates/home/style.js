@@ -10,17 +10,17 @@ const { palettes } = theme;
 const { basic } = palettes;
 
 export const newsletterWrapper = `
-  padding: 2rem;
+  padding: 1.25rem;
 `;
 
 export const newsletter = css`
   background-color: ${basic.secondary};
   max-width: ${extRem(1100)};
   margin: 0 auto -1px;
-  border-radius: 5px;
   
   ${media.MD`
     padding: 0 1.25rem;
     margin-bottom: 4rem;
+    border-radius: 5px;
   `};
 `;

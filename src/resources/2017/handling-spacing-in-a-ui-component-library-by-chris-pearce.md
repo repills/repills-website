@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-09T17:27:59.950Z
 reference: aHR0cHM6Ly9tZWRpdW0uY29tL2ZlZC1vci1kZWFkL2hhbmRsaW5nLXNwYWNpbmctaW4tYS11aS1jb21wb25lbnQtbGlicmFyeS03MGYzYjIyZWM4OQ
 slug: handling-spacing-in-a-ui-component-library-by-chris-pearce
+abstract: "Building a highly consumable UI component library is no easy feat and this article will focus on one particular tricky aspect of it: outer component spacing."
 ---
