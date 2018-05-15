@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-06T10:51:55.193Z
 reference: aHR0cDovL25lb3N0YWNrLmNvbS9vcGVuc291cmNlL3JlYWN0LXNsaWNr
 slug: react-slick-carousel-by-akiran
+abstract: "Carousel component built with React. It is a react port of slick carousel"
 ---

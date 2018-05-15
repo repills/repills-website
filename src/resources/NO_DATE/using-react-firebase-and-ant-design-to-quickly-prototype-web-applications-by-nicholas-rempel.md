@@ -10,4 +10,5 @@ suggestedBy: [andreamangano]
 createdAt: 2018-04-09T16:33:44.906Z
 reference: aHR0cHM6Ly9ucmVtcGVsLmNvbS9ndWlkZXMvcmVhY3QtZmlyZWJhc2UtYW50LWRlc2lnbi8
 slug: using-react-firebase-and-ant-design-to-quickly-prototype-web-applications-by-nicholas-rempel
+abstract: "In this guide I will show you how to use Firebase, React, and Ant Design as building blocks to build functional, high-fidelity web applications. To illustrate this, we'll go through an example of building a todo list app."
 ---
