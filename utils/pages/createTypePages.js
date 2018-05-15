@@ -10,12 +10,12 @@ module.exports = ({ createPage, sections }) => () =>
     const section = sections[sectionId];
     const types = section.types;
     Object.keys(types).forEach(typeId => {
-
       const type = Object.assign({}, types[typeId]);
       const pages = [];
-      const typeResources = type.resources;
+      const typeResources = type.resources.sort((a,b) => (new Date(b.frontmatter.publishedAt) - new Date(a.frontmatter.publishedAt)));
+      const maxIterations = Math.ceil(typeResources.length / resourcesPerPage);
 
-      for (let i = 0; i < Math.ceil(typeResources.length / resourcesPerPage); i++) {
+      for (let i = 0; i < maxIterations; i++) {
         pages[i] = {};
         pages[i].types = types;
         pages[i].sections = sections;

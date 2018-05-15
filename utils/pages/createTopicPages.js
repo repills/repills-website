@@ -13,9 +13,10 @@ module.exports = ({ createPage, sections }) => () =>
 
       const topic = Object.assign({}, topics[topicId]);
       const pages = [];
-      const topicResources = topic.resources;
+      const topicResources = topic.resources.sort((a,b) => (new Date(b.frontmatter.publishedAt) - new Date(a.frontmatter.publishedAt)));
+      const maxIterations = Math.ceil(topicResources.length / resourcesPerPage);
 
-      for (let i = 0; i < Math.ceil(topicResources.length / resourcesPerPage); i++) {
+      for (let i = 0; i < maxIterations; i++) {
         pages[i] = {};
         pages[i].topics = topics;
         pages[i].sections = sections;
