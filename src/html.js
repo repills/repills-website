@@ -50,7 +50,7 @@ const style = {
   body: {
     padding: 0,
     margin: 0,
-    backgroundColor: theme.palettes.neutral.lowest,
+    backgroundColor: theme.palettes.neutral.lower,
     height: '100%'
   },
   root: {
