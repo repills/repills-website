@@ -155,7 +155,7 @@ class Section extends React.Component {
             </HeaderContentSecondary>
           </HeaderContent>
         </Header>
-        <Page style={{backgroundColor: neutral.lower, paddingTop: '2.5rem', paddingBottom: '2.5rem' }}>
+        <Page style={{backgroundColor: neutral.lower, paddingTop: '2.5rem', paddingBottom: '0' }}>
           <SimplePageContent>
             <PageBlock
               title='Last added resources'

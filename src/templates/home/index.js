@@ -141,17 +141,15 @@ class Index extends React.Component {
                 description="Get the latest news, tutorials, tips, and guides on software and UI development."
                 style={{borderTop: `1px solid ${neutral.low}`, paddingTop: '52px'}}
               >
-                {
-                  <ResourcesList
-                    breaks={{ XS: 4, SM: 6 }}
-                    handleDetailView={this.handleDetailView}
-                    resources={latestSharedResources}
-                    showAllAction={{
-                      onClick: this.navigateToLastAdded,
-                      href: paths.getLastAddedPagePath()
-                    }}
-                  />
-                }
+                <ResourcesList
+                  breaks={{ XS: 4, SM: 6 }}
+                  handleDetailView={this.handleDetailView}
+                  resources={latestSharedResources}
+                  showAllAction={{
+                    onClick: this.navigateToLastAdded,
+                    href: paths.getLastAddedPagePath()
+                  }}
+                />
               </PageBlock>
             </VerticalSpacing>
             <VerticalSpacing
