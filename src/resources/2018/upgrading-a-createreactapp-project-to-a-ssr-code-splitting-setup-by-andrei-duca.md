@@ -1,7 +1,7 @@
 ---
 sections: [reactjs]
 link: https://medium.com/bucharestjs/upgrading-a-create-react-app-project-to-a-ssr-code-splitting-setup-9da57df2040a
-title: "Upgrading a create-react-app project to a SSR   code splitting setup"
+title: "Upgrading a create-react-app project to a SSR + code splitting setup"
 author: "Andrei Duca"
 publishedAt: 2018-01-18T00:00:00.000Z
 type: [tutorial]
