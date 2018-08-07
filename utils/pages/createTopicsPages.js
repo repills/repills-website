@@ -10,8 +10,7 @@ module.exports = ({ createPage, sections }) => () =>
       component: path.resolve(`src/templates/topics/index.js`),
       context: {
         section,
-        topics
+        topics,
       }
     });
-
   });

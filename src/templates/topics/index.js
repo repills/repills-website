@@ -1,13 +1,12 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import React from 'react'
+// import Helmet from 'react-helmet'
 import {
   SimplePageHeader,
   TopicsList,
   VerticalSpacing
-} from 'repills-react-components';
-import { navigateTo } from 'gatsby-link';
-import { sections } from 'repills-config';
-
+} from 'repills-react-components'
+import { push } from 'gatsby'
+import Layout from '../../components/Layout'
 import {
   HeaderContent,
   HeaderContentMain,
@@ -21,16 +20,19 @@ class Topics extends React.Component {
   render() {
 
     const {
-      pathContext
+      pageContext
     } = this.props;
 
     const {
       section,
       topics
-    } = pathContext;
+    } = pageContext;
+
+    // @TODO: meta tags
+    // @TODO: wrapper for TopicsList
 
     return (
-      <div>
+      <Layout>
         <Header>
           <HeaderContent>
             <HeaderContentMain>
@@ -44,14 +46,14 @@ class Topics extends React.Component {
           <SimplePageContent>
             <VerticalSpacing size="medium">
               <TopicsList
-                navigateTo={path => navigateTo(path)}
+                navigateTo={path => push(path)}
                 topics={Object.keys(topics).map(topicId => (topics[topicId]))}
                 type="extended"
               />
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
-      </div>
+      </Layout>
     );
   }
 }

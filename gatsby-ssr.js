@@ -1,11 +1,9 @@
-import React from 'react';
 /**
  * Implement Gatsby's SSR (Server Side Rendering) APIs in this file.
  *
  * See: https://www.gatsbyjs.org/docs/ssr-apis/
  */
-
- // You can delete this file if you're not using it
+import React from 'react';
 
 exports.onRenderBody = ({ setHeadComponents }) => {
   return setHeadComponents([
@@ -26,15 +24,15 @@ exports.onRenderBody = ({ setPostBodyComponents }) => {
         __html: `
         WebFontConfig = {
           google: {
-      families: ["Poppins:400,600"]
-    }
-   };
-   (function(d) {
-      var wf = d.createElement('script'), s = d.scripts[0];
-      wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-      wf.async = true;
-      s.parentNode.insertBefore(wf, s);
-   })(document);`
+            families: ["Poppins:400,600"]
+          }
+       };
+       (function(d) {
+          var wf = d.createElement('script'), s = d.scripts[0];
+          wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+          wf.async = true;
+          s.parentNode.insertBefore(wf, s);
+       })(document);`
       }}
     />
   ]);

@@ -6,6 +6,6 @@ module.exports = function({ createPage, sections, resources }) {
     createTopicPages: require('./createTopicPages')({ createPage, sections }),
     createTopicsPages: require('./createTopicsPages')({ createPage, sections }),
     createTypePages: require('./createTypePages')({ createPage, sections }),
-    createResourcePages: require('./createResourcePages')({ createPage, sections, resources })
+    createResourcePages: require('./createResourcePages')({ createPage, sections, resources }),
   };
 };

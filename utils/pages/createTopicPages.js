@@ -30,14 +30,14 @@ module.exports = ({ createPage, sections }) => () =>
       createPage({
         path: paths.getTopicPagePath({basePath: pages[0].topic.path}),
         component: path.resolve(`src/templates/topic/index.js`),
-        context: pages[0]
+        context: pages[0],
       });
 
       pages.forEach((page, index) => {
         createPage({
           path: paths.getTopicPagePath({index: index + 1, basePath: page.topic.path}),
           component: path.resolve(`src/templates/topic/index.js`),
-          context: page
+          context: page,
         });
       });
     });

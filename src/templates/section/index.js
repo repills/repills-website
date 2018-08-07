@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 import {
   TypesList,
   TopicsList,
@@ -6,22 +6,17 @@ import {
   PageBlock,
   ShareBar,
   Counter,
-  TileCta,
-  ContributorsList,
-  getResourcesStats,
   VerticalSpacing,
   theme
-} from 'repills-react-components';
-const { neutral } = theme.palettes;
-import { ResourcesList } from '../../components';
-import Helmet from 'react-helmet';
-import { rgba } from 'polished';
-import PropTypes from 'prop-types';
-import ReactGA from 'react-ga';
-import config from '../../../config';
-import paths from '../../../utils/paths';
-ReactGA.initialize(config.ga.trackingId);
-
+} from 'repills-react-components'
+import ResourcesList from '../../components/wrappers/ResourcesList'
+import Layout from '../../components/Layout'
+import Helmet from 'react-helmet'
+import { rgba } from 'polished'
+import PropTypes from 'prop-types'
+import ReactGA from 'react-ga'
+import config from '../../../config'
+import paths from '../../../utils/paths'
 import {
   Header,
   HeaderContent,
@@ -29,39 +24,17 @@ import {
   HeaderContentSecondary,
   Page,
   SimplePageContent,
-  PageContent,
-  PageContentMain,
-  PageContentSecondary
-} from '../../style/layout-columns';
+} from '../../style/layout-columns'
+import { normalizeResource } from '../../../utils/resources';
+import {
+  push,
+  graphql,
+} from 'gatsby';
 
-// Components
-import { normalizeResource } from '../../../utils/resources/index';
-
-import { navigateTo } from 'gatsby-link';
-
+ReactGA.initialize(config.ga.trackingId);
+const { neutral } = theme.palettes;
 
 class Section extends React.Component {
-
-  static propTypes = {
-    pathContext: PropTypes.shape({
-      // TODO
-    }),
-    data: PropTypes.shape({
-      allMarkdownRemark: PropTypes.shape({
-        totalCount: PropTypes.number.isRequired,
-        edges: PropTypes.arrayOf(
-          PropTypes.shape({
-            node: PropTypes.shape({
-              frontmatter: PropTypes.shape({
-                title: PropTypes.string.isRequired,
-                // TODO
-              }),
-            }),
-          }).isRequired
-        ),
-      }),
-    }),
-  };
 
   handleDetailView = ({ resource }) => {
     ReactGA.event({
@@ -71,29 +44,35 @@ class Section extends React.Component {
     });
   };
 
+  navigateToSectionTopics = () =>
+    push(paths.getSectionTopicsPagePath({sectionBasePath: this.props.pageContext.basePath}));
+
+  navigateToPath = path => push(path);
+
   render() {
 
     const {
       data,
-      pathContext
+      pageContext
     } = this.props;
 
     const {
-      id,
+      // id,
       name,
       color,
-      resources,
+      // resources,
       description,
       topics,
       resourcesCount,
       topicsCount,
       // maintainers,
-      path,
+      basePath,
       types,
       icon
-    } = pathContext;
+    } = pageContext;
 
-    const { resources:dataResources, contributors:dataContributors } = data;
+    // const { resources: dataResources, contributors: dataContributors } = data;
+    const { resources: dataResources } = data;
     // const filledTopics = data.topics.group;
     const lastResources = dataResources.edges.map(e => normalizeResource(e));
 
@@ -106,10 +85,10 @@ class Section extends React.Component {
 
     const metaTitle = `${name} | Free pills and get more skills!`;
     const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
-    const shareUrl = `${config.baseUrl}${path}`;
+    const shareUrl = `${config.baseUrl}${basePath}`;
 
     return (
-      <div>
+      <Layout>
         <Helmet>
           <title>{name}</title>
           <meta name="description" content={metaDescription} />
@@ -182,7 +161,7 @@ class Section extends React.Component {
                 description={`Deep dive into the ${name} available topics`}
                 primaryAction={{
                   label: 'Topics detail',
-                  onClick: () => navigateTo(paths.getSectionTopicsPagePath({sectionBasePath: path}))
+                  onClick: this.navigateToSectionTopics
                 }}
               >
                 {
@@ -191,13 +170,13 @@ class Section extends React.Component {
                     <TopicsList
                       type="extended"
                       breaks={{ XS: 8, SM: 16 }}
-                      navigateTo={path => navigateTo(path)}
+                      navigateTo={this.navigateToPath}
                       topics={topics.slice(0,3)}
                     />
                     <TopicsList
                       style={{marginTop: '1rem'}}
                       breaks={{ XS: 8, SM: 16 }}
-                      navigateTo={path => navigateTo(path)}
+                      navigateTo={this.navigateToPath}
                       topics={topics.slice(3,topics.length)}
                     />
                   </div>
@@ -206,7 +185,7 @@ class Section extends React.Component {
                   topics.length <= 3 &&
                   <TopicsList
                     breaks={{ XS: 8, SM: 16 }}
-                    navigateTo={path => navigateTo(path)}
+                    navigateTo={this.navigateToPath}
                     topics={topics}
                   />
                 }
@@ -215,7 +194,7 @@ class Section extends React.Component {
             </VerticalSpacing>
             <VerticalSpacing size="large">
               <TypesList
-                navigateTo={path => navigateTo(path)}
+                navigateTo={this.navigateToPath}
                 types={types}
               />
             </VerticalSpacing>
@@ -252,12 +231,33 @@ class Section extends React.Component {
            </VerticalSpacing>
            */
         }
-      </div>
+      </Layout>
     );
   }
 }
 
 export default Section;
+
+Section.propTypes = {
+  pageContext: PropTypes.shape({
+    // TODO make it general
+  }),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      totalCount: PropTypes.number.isRequired,
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              title: PropTypes.string.isRequired,
+              // TODO make it general
+            }),
+          }),
+        }).isRequired
+      ),
+    }),
+  }),
+};
 
 // Actually there is no sorting for group query in Gatsby
 // https://github.com/gatsbyjs/gatsby/issues/3684

@@ -1,21 +1,18 @@
-import React from 'react';
+import React from 'react'
 import {
   ResponsivePagination,
   TypesList,
-  PageBlock,
   TypePageHeader,
-  ShareBar,
   VerticalSpacing
-} from 'repills-react-components';
-import { navigateTo } from 'gatsby-link';
-import paths from '../../../utils/paths';
-import Helmet from 'react-helmet';
-import { sections } from 'repills-config';
-import { ResourcesList } from '../../components';
-import ReactGA from 'react-ga';
-import config from '../../../config';
-ReactGA.initialize(config.ga.trackingId);
-
+} from 'repills-react-components'
+import { push } from 'gatsby'
+import paths from '../../../utils/paths'
+import Helmet from 'react-helmet'
+import { sections } from 'repills-config'
+import ResourcesList from '../../components/wrappers/ResourcesList'
+import Layout from '../../components/Layout'
+import ReactGA from 'react-ga'
+import config from '../../../config'
 import {
   Header,
   HeaderContentMain,
@@ -23,6 +20,8 @@ import {
   Page,
   SimplePageContent
 } from '../../style/layout-columns';
+
+ReactGA.initialize(config.ga.trackingId);
 
 class Type extends React.Component {
 
@@ -34,14 +33,14 @@ class Type extends React.Component {
     });
   };
 
-  navigateToPage = index => navigateTo(paths.getTypePagePath({index, basePath: this.props.pathContext.type.path}));
+  navigateToPage = index => push(paths.getTypePagePath({index, basePath: this.props.pageContext.type.path}));
 
-  buildNavigationToPagePath = index => paths.getTypePagePath({index, basePath: this.props.pathContext.type.path});
+  buildNavigationToPagePath = index => paths.getTypePagePath({index, basePath: this.props.pageContext.type.path});
 
   render() {
 
     const {
-      pathContext
+      pageContext
     } = this.props;
 
     const {
@@ -49,7 +48,7 @@ class Type extends React.Component {
       types,
       pagination,
       type
-    } = pathContext;
+    } = pageContext;
 
     const section = sections.find(s => s.id === sectionId);
 
@@ -57,7 +56,7 @@ class Type extends React.Component {
     const metaDescription = `Free ${type.label.plural} about '${section.name}' and other amazing contents. Discover everyday what's new in the web development and UI design.`;
 
     return (
-      <div>
+      <Layout>
         <Helmet>
           <title>{metaTitle}</title>
           <meta name="description" content={metaDescription} />
@@ -72,7 +71,7 @@ class Type extends React.Component {
                 color={type.color}
                 count={pagination.totalCount}
                 icon={type.label.singular}
-                topicAction={() => navigateTo(section.path)}
+                topicAction={() => push(section.path)}
                 topicName={section.name}
                 typeName={type.label}
               />
@@ -98,14 +97,14 @@ class Type extends React.Component {
             </VerticalSpacing>
             <VerticalSpacing size="medium">
               <TypesList
-                navigateTo={path => navigateTo(path)}
+                navigateTo={path => push(path)}
                 types={types}
                 activeKey={type.id}
               />
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
-      </div>
+      </Layout>
     );
   }
 }

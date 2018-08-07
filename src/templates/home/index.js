@@ -1,25 +1,22 @@
-import React from 'react';
+import React from 'react'
 import {
   SectionsList,
   HomePageHeader,
-  Select,
   FeatureList,
   PageBlock,
   VerticalSpacing,
-  theme,
-  Newsletter
-} from 'repills-react-components';
-import styled from 'styled-components';
+  theme
+} from 'repills-react-components'
 
-import config from '../../../config';
-const { basic, neutral } = theme.palettes;
-import {sections as sectionsData} from 'repills-config';
-import { navigateTo } from 'gatsby-link';
-import { normalizeResource } from '../../../utils/resources';
-import paths from '../../../utils/paths';
-import { Seo, ResourcesList } from '../../components';
-import ReactGA from 'react-ga';
-ReactGA.initialize(config.ga.trackingId);
+import config from '../../../config'
+import {sections as sectionsData} from 'repills-config'
+import { normalizeResource } from '../../../utils/resources'
+import paths from '../../../utils/paths'
+import Layout from '../../components/Layout'
+import Seo from '../../components/Seo' // @TODO Integrated seo componente into the Layout
+import ResourcesList from '../../components/wrappers/ResourcesList'
+import ReactGA from 'react-ga'
+import { push, graphql } from 'gatsby'
 
 import {
   Header,
@@ -28,13 +25,8 @@ import {
   SimplePageContent
 } from '../../style/layout-columns';
 
-import {
-  newsletter,
-  newsletterWrapper
-} from './style';
-
-const NewsletterStyle = styled.div`${newsletter}`;
-const NewsletterWrapperStyle = styled.div`${newsletterWrapper}`;
+const { basic, neutral } = theme.palettes;
+ReactGA.initialize(config.ga.trackingId);
 
 const features = [
   {
@@ -64,7 +56,7 @@ class Index extends React.Component {
     }
   }
 
-  navigateToLastAdded = () => navigateTo(paths.getLastAddedPagePath());
+  navigateToLastAdded = () => push(paths.getLastAddedPagePath());
 
   handleDetailView = ({ resource }) => {
     ReactGA.event({
@@ -82,10 +74,10 @@ class Index extends React.Component {
 
     const {
       data,
-      pathContext
+      pageContext,
     } = this.props;
 
-    const {sections} = pathContext;
+    const {sections} = pageContext;
 
     const activeSectionKeys = Object.keys(sections);
     const activeSections = activeSectionKeys.map(sectionId => (sections[sectionId]));
@@ -98,7 +90,7 @@ class Index extends React.Component {
     const allSections = [...activeSections, ...noActiveSections];
 
     return (
-      <div>
+      <Layout>
         <Seo />
         <Header style={{backgroundColor: basic.secondary, paddingTop: '3.5rem', paddingBottom: '3.5rem'}}>
           <SimpleHeaderContent>
@@ -108,7 +100,6 @@ class Index extends React.Component {
               secondaryAction={{
                 label: `${data.totalResources.totalCount} resources available yet`,
                 onClick: this.navigateToLastAdded,
-                // href: paths.getLastAddedPagePath()
               }}
             />
           </SimpleHeaderContent>
@@ -125,9 +116,8 @@ class Index extends React.Component {
                 simple
               >
                 <SectionsList
-                  navigateTo={path => navigateTo(path)}
+                  navigateTo={path => push(path)}
                   sections={allSections}
-                  // settings={carouselSettings}
                 />
               </PageBlock>
             </VerticalSpacing>
@@ -162,22 +152,12 @@ class Index extends React.Component {
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
-        <NewsletterStyle>
-          <NewsletterWrapperStyle>
-            <Newsletter
-              intro={`Repills is brought to you by the same authors of <a href="http://fullstackbulletin.com/" target="_blank">Fullstack Bulletin</a>, the weekly newsletter that aims to keep inspiring and keeping up to date full stack developers.`}
-              note="You will receive the <strong>best 7 links</strong> in your inbox every week, for free! No spam, ever :)"
-            />
-          </NewsletterWrapperStyle>
-        </NewsletterStyle>
-      </div>
+      </Layout>
     );
   }
 }
 
 export default Index;
-
-// TODO: use fragment
 
 export const pageQuery = graphql`
   query IndexQuery {
@@ -209,5 +189,3 @@ export const pageQuery = graphql`
     }
   }
 `;
-
-

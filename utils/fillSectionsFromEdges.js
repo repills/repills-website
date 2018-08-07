@@ -22,7 +22,7 @@ module.exports = edges => {
             data[section] = Object.assign(
               {},
               sectionConfig,
-              { resources: [], topics: {}, types: {}, path: sectionConfig.path }
+              { resources: [], topics: {}, types: {}, basePath: sectionConfig.basePath }
             );
           }
 
@@ -40,10 +40,10 @@ module.exports = edges => {
                   topicConfig,
                   {
                     resources: [],
-                    path: `/${topicConfig.slug}/`,
+                    basePath: `/${topicConfig.slug}/`,
                     sectionIcon: data[section].icon
                   }
-                );
+                )
               }
 
               data[section].topics[topic].resources.push(node);
@@ -59,7 +59,7 @@ module.exports = edges => {
                 data[section].types[type] = Object.assign(
                   {},
                   typeConfig,
-                  { resources: [], path: `/${section}-${type}/` }
+                  { resources: [], basePath: `/${section}-${type}/` }
                 );
               }
 

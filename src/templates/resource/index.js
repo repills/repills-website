@@ -1,22 +1,26 @@
 import React from 'react'
-import {types} from 'repills-config'
-import { navigateTo } from 'gatsby-link';
-import { Seo } from '../../components';
-import paths from '../../../utils/paths';
-import config from '../../../config';
+import { types } from 'repills-config'
+import {
+  push,
+  graphql,
+} from 'gatsby'
+import Seo from '../../components/Seo'
+import Layout from '../../components/Layout'
+import paths from '../../../utils/paths'
+import config from '../../../config'
 
 import {
   ResourceDetail
-} from 'repills-react-components';
+} from 'repills-react-components'
 import {
   Page,
   SimplePageContent
-} from '../../style/layout-columns';
+} from '../../style/layout-columns'
 
 
 class ResourceTemplate extends React.Component {
 
-  //@TODO add helmet and set ${config.baseUrl}/images/covers/cover-${types[resource.type[0]].id}.jpg as sharing image
+  // @TODO add helmet and set ${config.baseUrl}/images/covers/cover-${types[resource.type[0]].id}.jpg as sharing image
 
   constructor(props) {
     super(props);
@@ -66,7 +70,7 @@ class ResourceTemplate extends React.Component {
     const type = types[resource.type.join('_')];
 
     return (
-      <div>
+      <Layout>
         <Seo info={this.seoData.info} structuredData={this.seoData.structuredData}>
           <title>{resource.title}</title>
           {
@@ -83,15 +87,15 @@ class ResourceTemplate extends React.Component {
                 color={type.color}
                 typeLabel={type.label.singular}
                 navigateTo={this.handleNavigateTo(resource.link)}
-                navigateToSection={sectionSlug => navigateTo(`/${sectionSlug}/`)}
-                navigateToTopic={topicSlug => navigateTo(`/${topicSlug}/`)}
+                navigateToSection={sectionSlug => push(`/${sectionSlug}/`)}
+                navigateToTopic={topicSlug => push(`/${topicSlug}/`)}
                 generateTopicUrl={topicSlug => `/${topicSlug}/`}
                 generateSectionUrl={sectionSlug => `/${sectionSlug}/`}
               />
             </div>
           </SimplePageContent>
         </Page>
-      </div>
+      </Layout>
     )
   }
 }

@@ -1,5 +1,6 @@
-import React from 'react';
-import { normalizeResource } from '../../utils/resources';
+import React from 'react'
+import { graphql } from 'gatsby'
+// import { normalizeResource } from '../../utils/resources';
 
 
 export default function Index({ data }) {

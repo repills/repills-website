@@ -1,5 +1,5 @@
-import React from 'react';
-import Helmet from 'react-helmet';
+import React from 'react'
+import Helmet from 'react-helmet'
 import {
   ResponsivePagination,
   SectionPageHeader,
@@ -8,20 +8,20 @@ import {
   TopicsList,
   Button,
   ShareBar,
-  getResourcesStats,
   VerticalSpacing,
   KeywordsCloud,
   theme
-} from 'repills-react-components';
-import { rgba } from 'polished';
-import { navigateTo } from 'gatsby-link';
-import { ResourcesList } from '../../components';
-import { sections } from 'repills-config';
-import paths from '../../../utils/paths';
-import config from '../../../config';
-import ReactGA from 'react-ga';
-ReactGA.initialize(config.ga.trackingId);
-
+} from 'repills-react-components'
+import {
+  push,
+} from 'gatsby';
+import ResourcesList from '../../components/wrappers/ResourcesList'
+import Layout from '../../components/Layout'
+import { rgba } from 'polished'
+import { sections } from 'repills-config'
+import paths from '../../../utils/paths'
+import config from '../../../config'
+import ReactGA from 'react-ga'
 import {
   Header,
   HeaderContent,
@@ -29,7 +29,9 @@ import {
   HeaderContentSecondary,
   Page,
   SimplePageContent
-} from '../../style/layout-columns';
+} from '../../style/layout-columns'
+
+ReactGA.initialize(config.ga.trackingId);
 const { neutral } = theme.palettes;
 
 class Topic extends React.Component {
@@ -43,7 +45,7 @@ class Topic extends React.Component {
 
   openTopicsModal = () => this.setState({ openTopicsModal: true });
 
-  backToSection = () => navigateTo('/'+this.props.pathContext.sectionId);
+  backToSection = () => push(`/${this.props.pageContext.sectionId}`);
 
   onClose = () => this.setState({ openTopicsModal: false });
 
@@ -58,7 +60,7 @@ class Topic extends React.Component {
   render() {
 
     const {
-      pathContext
+      pageContext
     } = this.props;
 
     const {
@@ -66,7 +68,7 @@ class Topic extends React.Component {
       pagination,
       topic,
       topics
-    } = pathContext;
+    } = pageContext;
 
     const {
       openTopicsModal
@@ -78,7 +80,7 @@ class Topic extends React.Component {
     const shareUrl = `${config.baseUrl}/${paths.getTopicPagePath({index: pagination.currentPage, basePath: topic.path})}`;
 
     return (
-      <div>
+      <Layout>
         <Helmet>
           <title>{topic.title}</title>
           <meta name="description" content={metaDescription} />
@@ -129,17 +131,17 @@ class Topic extends React.Component {
             <div style={{textAlign: 'left'}}>
               <VerticalSpacing size="small">
                 <Button
-                    label="Back to section"
-                    skin="ghost"
-                    onClick={this.backToSection}
-                    size="S"
-                  />
-                  <Button
-                    label="Switch topic"
-                    skin="ghost"
-                    onClick={this.openTopicsModal}
-                    size="S"
-                  />
+                  label="Back to section"
+                  skin="ghost"
+                  onClick={this.backToSection}
+                  size="S"
+                />
+                <Button
+                  label="Switch topic"
+                  skin="ghost"
+                  onClick={this.openTopicsModal}
+                  size="S"
+                />
               </VerticalSpacing>
               <VerticalSpacing size="medium">
                 <ResourcesList
@@ -150,7 +152,7 @@ class Topic extends React.Component {
               <VerticalSpacing size="medium">
                 <ResponsivePagination
                   currentPage={pagination.currentPage}
-                  handleNavigateToPage={index => navigateTo(paths.getTopicPagePath({index, basePath: topic.path}))}
+                  handleNavigateToPage={index => push(paths.getTopicPagePath({index, basePath: topic.path}))}
                   itemsPerPage={pagination.perPage}
                   itemsTotalCount={pagination.totalCount}
                   buildPagePath={index => paths.getTopicPagePath({index, basePath: topic.path})}
@@ -167,16 +169,16 @@ class Topic extends React.Component {
               handleClose={this.onClose}
               open={openTopicsModal}
             >
-              <div style={{padding: '24px'}}>
+              <VerticalSpacing size="medium">
                 <TopicsList
-                  navigateTo={path => navigateTo(path)}
+                  navigateTo={path => push(path)}
                   topics={Object.keys(topics).map(topicId => (topics[topicId]))}
                 />
-              </div>
+              </VerticalSpacing>
             </Modal>
           </SimplePageContent>
         </Page>
-      </div>
+      </Layout>
     );
   }
 }

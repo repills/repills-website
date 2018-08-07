@@ -20,16 +20,15 @@ module.exports = ({ createPage, sections, resources }) => () => {
   createPage({
     path: paths.getLastAddedPagePath(),
     component: path.resolve('src/templates/last/index.js'),
-    context: pages[0]
+    context: pages[0],
   });
 
   pages.forEach((page, index) => {
     createPage({
       path: paths.getLastAddedPagePath(index + 1),
       component: path.resolve('src/templates/last/index.js'),
-      context: page
+      context: page,
     });
   });
-
 };
 
