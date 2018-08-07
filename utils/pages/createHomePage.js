@@ -5,6 +5,6 @@ module.exports = ({ createPage, sections }) => () =>
     path: `/`,
     component: path.resolve(`src/templates/home/index.js`),
     context: {
-      sections
+      sections,
     }
   });

@@ -3,8 +3,8 @@ const fillSectionsFromEdges = require('./utils/fillSectionsFromEdges');
 const pagesUtilities = require('./utils/pages');
 const frontmatter = config.resources;
 
-exports.createPages = ({ boundActionCreators, graphql }) => {
-  const { createPage } = boundActionCreators;
+exports.createPages = ({ actions, graphql }) => {
+  const { createPage } = actions;
 
   return new Promise((resolve, reject) => {
     graphql(`{

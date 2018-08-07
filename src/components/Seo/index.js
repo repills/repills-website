@@ -13,7 +13,7 @@ class Seo extends React.Component {
 
     const _info = info ? info : {};
 
-    // Prop to add new JSOLD Definition
+    // Prop to add new JSONLD Definition
 
     let schemaOrgJSONLD = [
       {
@@ -40,4 +40,4 @@ class Seo extends React.Component {
   }
 }
 
-export default Seo;
+export default Seo

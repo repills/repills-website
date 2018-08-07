@@ -2,26 +2,25 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import {
   ResponsivePagination,
-  PageBlock,
   SimplePageHeader,
   VerticalSpacing
-} from 'repills-react-components';
-import { navigateTo } from 'gatsby-link';
-import { sections } from 'repills-config';
-import paths from '../../../utils/paths';
-import config from '../../../config';
-import { ResourcesList } from '../../components';
-import ReactGA from 'react-ga';
-ReactGA.initialize('UA-117143286-1');
-
+} from 'repills-react-components'
+import { push } from 'gatsby'
+import paths from '../../../utils/paths'
+import Layout from '../../components/Layout'
+import ResourcesList from '../../components/wrappers/ResourcesList'
+import ReactGA from 'react-ga'
 import {
   HeaderContent,
   HeaderContentMain,
   Header,
   Page,
   SimplePageContent
-} from '../../style/layout-columns';
-import { normalizeResource } from '../../../utils/resources';
+} from '../../style/layout-columns'
+import { normalizeResource } from '../../../utils/resources'
+import config from '../../../config'
+
+ReactGA.initialize('UA-117143286-1');
 
 class Last extends React.Component {
 
@@ -36,21 +35,20 @@ class Last extends React.Component {
   render() {
 
     const {
-      pathContext
+      pageContext,
     } = this.props;
 
     const {
       resources,
       pagination,
-      sections
-    } = pathContext;
+    } = pageContext;
 
-    const metaTitle = 'Last added resource';
+    const metaTitle = 'Last added resources';
 
     return (
-      <div>
+      <Layout>
         <Helmet>
-          <title>{metaTitle}</title>
+          <title>{ metaTitle }</title>
           <meta property="og:title" content={`${metaTitle} - Repills.com`} />
           <meta property="og:url" content={`${config.baseUrl}${paths.getLastAddedPagePath(pagination.currentPage)}`} />
         </Helmet>
@@ -74,7 +72,7 @@ class Last extends React.Component {
             <VerticalSpacing size="medium">
               <ResponsivePagination
                 currentPage={pagination.currentPage}
-                handleNavigateToPage={page => navigateTo(paths.getLastAddedPagePath(page))}
+                handleNavigateToPage={page => push(paths.getLastAddedPagePath(page))}
                 itemsPerPage={pagination.perPage}
                 itemsTotalCount={pagination.totalCount}
                 buildPagePath={paths.getLastAddedPagePath}
@@ -82,7 +80,7 @@ class Last extends React.Component {
             </VerticalSpacing>
           </SimplePageContent>
         </Page>
-      </div>
+      </Layout>
     );
   }
 }

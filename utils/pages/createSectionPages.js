@@ -14,9 +14,8 @@ module.exports = ({ createPage, sections }) => () =>
     });
 
     createPage({
-      path: section.path,
+      path: section.basePath,
       component: path.resolve(`src/templates/section/index.js`),
-      context: Object.assign(section, {topics})
-      // layout: 'scroll-layout'
+      context: Object.assign(section, {topics}),
     });
   });
