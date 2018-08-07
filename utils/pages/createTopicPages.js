@@ -28,14 +28,14 @@ module.exports = ({ createPage, sections }) => () =>
 
       // Create first page also without page param
       createPage({
-        path: paths.getTopicPagePath({basePath: pages[0].topic.path}),
+        path: paths.getTopicPagePath({basePath: pages[0].topic.basePath}),
         component: path.resolve(`src/templates/topic/index.js`),
         context: pages[0],
       });
 
       pages.forEach((page, index) => {
         createPage({
-          path: paths.getTopicPagePath({index: index + 1, basePath: page.topic.path}),
+          path: paths.getTopicPagePath({index: index + 1, basePath: page.topic.basePath}),
           component: path.resolve(`src/templates/topic/index.js`),
           context: page,
         });

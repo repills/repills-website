@@ -8012,7 +8012,7 @@ react@15:
     object-assign "^4.1.0"
     prop-types "^15.5.10"
 
-"react@^15.6.2 || ^16.0", react@^16.3.2, react@^16.4.1:
+"react@^15.6.2 || ^16.0", react@^16.4.1:
   version "16.4.2"
   resolved "https://registry.yarnpkg.com/react/-/react-16.4.2.tgz#2cd90154e3a9d9dd8da2991149fdca3c260e129f"
   dependencies:
@@ -8351,9 +8351,9 @@ repeating@^2.0.0:
   version "1.8.1"
   resolved "git+https://github.com/repills/repills-config.git#a26213499d95783aa0c2357a57f10133e335c6c1"
 
-"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.56.0":
-  version "0.56.0"
-  resolved "git+https://github.com/repills/repills-react-components.git#c89cb04578d776a34e7beaed0d86057f558e3865"
+"repills-react-components@git+https://github.com/repills/repills-react-components.git#0.57.0":
+  version "0.57.0"
+  resolved "git+https://github.com/repills/repills-react-components.git#78ea1b8bc0a8d75b6768403988a3fb2da70f9b72"
   dependencies:
     babel-polyfill "^6.26.0"
     classnames "^2.2.5"
@@ -8362,7 +8362,7 @@ repeating@^2.0.0:
     path "^0.12.7"
     polished "^1.9.0"
     prop-types "^15.6.1"
-    react "^16.3.2"
+    react "^16.4.1"
     react-container-query "^0.11.0"
     react-copy-to-clipboard "^5.0.1"
     react-dom "^16.3.2"
