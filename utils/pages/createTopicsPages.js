@@ -6,7 +6,7 @@ module.exports = ({ createPage, sections }) => () =>
     const topics = section.topics;
 
     createPage({
-      path: `${section.path}topics/`,
+      path: `${section.basePath}topics/`,
       component: path.resolve(`src/templates/topics/index.js`),
       context: {
         section,
