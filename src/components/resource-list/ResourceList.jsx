@@ -1,6 +1,9 @@
 import React from 'react'
 import {Pagination} from 'antd'
+
 import ResourceCard from '../resource-card/ResourceCard'
+
+import * as styles from './ResourceList.style'
 
 const ResourceList = ({
   resources,
@@ -23,12 +26,14 @@ const ResourceList = ({
       }
       {
         pagination && pagination.pageCount > 1 && (
-          <Pagination
-            total={pagination.totalCount}
-            current={pagination.currentPage}
-            pageSize={pagination.perPage}
-            onChange={(page) => navigateTo(page)}
-          />
+          <div css={styles.pagination}>
+            <Pagination
+              total={pagination.totalCount}
+              current={pagination.currentPage}
+              pageSize={pagination.perPage}
+              onChange={(page) => navigateTo(page)}
+            />
+          </div>
         )
       }
     </div>

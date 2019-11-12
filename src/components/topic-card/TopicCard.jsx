@@ -1,5 +1,4 @@
 import React from 'react'
-import { Icon } from 'antd'
 import {Link} from 'gatsby'
 
 import {getTopicPagePath} from '../../paths'
