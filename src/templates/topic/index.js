@@ -1,185 +1,96 @@
 import React from 'react'
-import Helmet from 'react-helmet'
-import {
-  ResponsivePagination,
-  SectionPageHeader,
-  Counter,
-  Modal,
-  TopicsList,
-  Button,
-  ShareBar,
-  VerticalSpacing,
-  KeywordsCloud,
-  theme
-} from 'repills-react-components'
-import {
-  push,
-} from 'gatsby';
-import ResourcesList from '../../components/wrappers/ResourcesList'
-import Layout from '../../components/Layout'
-import { rgba } from 'polished'
-import { sections } from 'repills-config'
-import paths from '../../../utils/paths'
-import config from '../../../config'
-import ReactGA from 'react-ga'
-import {
-  Header,
-  HeaderContent,
-  HeaderContentMain,
-  HeaderContentSecondary,
-  Page,
-  SimplePageContent
-} from '../../style/layout-columns'
+import {Link,navigate} from 'gatsby'
+import {Dropdown, Button, Menu} from 'antd'
 
-ReactGA.initialize(config.ga.trackingId);
-const { neutral } = theme.palettes;
+import {convertTopicsToOrderedArray} from '../../utils/topics'
+import {getTopicPagePath} from '../../paths'
+import BaseLayout from '../../components/layout/Layout'
+import Hero from '../../components/hero/Hero'
+import ResourceList from '../../components/resource-list/ResourceList'
+import PageSection from '../../components/page-section/PageSection'
+import Divider from '../../components/divider/Divider'
+import PageBlock from '../../components/page-block/PageBlock'
 
-class Topic extends React.Component {
+const TopicPage = ({
+  pageContext
+}) => {
+  const {
+    pagination,
+    topic: currentTopic,
+    topics
+  } = pageContext
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      openTopicsModal: false
-    };
-  }
+  const reactTopics = convertTopicsToOrderedArray(topics)
 
-  openTopicsModal = () => this.setState({ openTopicsModal: true });
+  // @TODO useMemo ?
+  // @TODO change function
+  const menu = (
+    <Menu
+      selectedKeys={[currentTopic.slug]}
+    >
+      {reactTopics.map(topic => (
+        <Menu.Item key={topic.slug}>
+          <Link to={getTopicPagePath({topicSlug: topic.slug})}>
+            {topic.title} ({topic.resources.length})
+          </Link>
+        </Menu.Item>
+      ))}
+    </Menu>
+  );
 
-  backToSection = () => push(`/${this.props.pageContext.sectionId}`);
-
-  onClose = () => this.setState({ openTopicsModal: false });
-
-  handleDetailView = ({ resource }) => {
-    ReactGA.event({
-      category: 'Resource browsing',
-      action: 'See resource detail (Topic)',
-      label: 'Resource modal detail'
-    });
-  };
-
-  render() {
-
-    const {
-      pageContext
-    } = this.props;
-
-    const {
-      sectionId,
-      pagination,
-      topic,
-      topics
-    } = pageContext;
-
-    const {
-      openTopicsModal
-    } = this.state;
-
-    const section = sections.find(s => s.id === sectionId);
-    const metaTitle = `${section.name}: ${topic.title} | Learn pill by pill and acquire more skills!`;
-    const metaDescription = topic.description ? topic.description : `Free resources about '${topic.title}' and other hot topics in '${section.name}'. Discover everyday what's new in the web development and UI design.`;
-    const shareUrl = `${config.baseUrl}/${paths.getTopicPagePath({index: pagination.currentPage, basePath: topic.path})}`;
-
-    return (
-      <Layout>
-        <Helmet>
-          <title>{topic.title}</title>
-          <meta name="description" content={metaDescription} />
-          <meta property="og:title" content={metaTitle} />
-          <meta property="og:description" content={metaDescription} />
-          <meta property="og:url" content={shareUrl} />
-        </Helmet>
-        <Header>
-          <HeaderContent>
-            <HeaderContentMain>
-              <SectionPageHeader
-                color={section.color}
-                icon={section.icon}
-                label="Topic"
-                title={topic.title}
-                description={topic.description}
-              />
-            </HeaderContentMain>
-            <HeaderContentSecondary>
-              <div style={{borderBottom: `1px solid ${rgba(neutral.highest,.3)}`, paddingBottom: '1.25rem'}}>
-                <Counter
-                  count={pagination.totalCount}
-                  label="total pills"
-                  showsStats={false}
+  return (
+    <BaseLayout>
+      {
+        ({WrapperElement}) => (
+          <>
+            <PageSection>
+              <WrapperElement>
+                <Hero
+                  title={`Topic: ${currentTopic.title}`}
+                  description={currentTopic.description}
                 />
-              </div>
-              <ShareBar
-                color={neutral.lowest}
-                link={shareUrl}
-                text={metaDescription}
-                title={metaTitle}
-                types={[
-                  'facebook',
-                  'twitter',
-                  'email'
-                ]}
-                style={{
-                  marginTop: '24px',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}
-              />
-            </HeaderContentSecondary>
-          </HeaderContent>
-        </Header>
-        <Page>
-          <SimplePageContent>
-            <div style={{textAlign: 'left'}}>
-              <VerticalSpacing size="small">
-                <Button
-                  label="Back to section"
-                  skin="ghost"
-                  onClick={this.backToSection}
-                  size="S"
-                />
-                <Button
-                  label="Switch topic"
-                  skin="ghost"
-                  onClick={this.openTopicsModal}
-                  size="S"
-                />
-              </VerticalSpacing>
-              <VerticalSpacing size="medium">
-                <ResourcesList
-                  resources={topic.resources.map(resource => resource.frontmatter)}
-                  handleDetailView={this.handleDetailView}
-                />
-              </VerticalSpacing>
-              <VerticalSpacing size="medium">
-                <ResponsivePagination
-                  currentPage={pagination.currentPage}
-                  handleNavigateToPage={index => push(paths.getTopicPagePath({index, basePath: topic.path}))}
-                  itemsPerPage={pagination.perPage}
-                  itemsTotalCount={pagination.totalCount}
-                  buildPagePath={index => paths.getTopicPagePath({index, basePath: topic.path})}
-                />
-              </VerticalSpacing>
-              {
-                topic.similar &&
-                <VerticalSpacing size="medium">
-                  <KeywordsCloud keywords={topic.similar} />
-                </VerticalSpacing>
-              }
-            </div>
-            <Modal
-              handleClose={this.onClose}
-              open={openTopicsModal}
-            >
-              <VerticalSpacing size="medium">
-                <TopicsList
-                  navigateTo={path => push(path)}
-                  topics={Object.keys(topics).map(topicId => (topics[topicId]))}
-                />
-              </VerticalSpacing>
-            </Modal>
-          </SimplePageContent>
-        </Page>
-      </Layout>
-    );
-  }
+              </WrapperElement>
+            </PageSection>
+            <Divider />
+            <PageSection>
+              <WrapperElement>
+                <div>
+                  <Dropdown overlay={menu} placement="bottomLeft">
+                    <Button
+                      size="large"
+                    >
+                      Change topic
+                    </Button>
+                  </Dropdown>
+                  {
+                    /**
+                     <Button
+                        size="large"
+                      >
+                        Suggest resource
+                      </Button>
+                    */
+                  }
+                </div>
+              </WrapperElement>
+            </PageSection>
+            <Divider />
+            <PageSection>
+              <WrapperElement>
+                <PageBlock title={`${pagination.totalCount} resources`}>
+                  <ResourceList
+                    resources={currentTopic.resources}
+                    pagination={pagination}
+                    navigateTo={(page) => navigate(getTopicPagePath({index: page, topicSlug: currentTopic.slug}))}
+                  />
+                </PageBlock>
+              </WrapperElement>
+            </PageSection>
+          </>
+        )
+      }
+    </BaseLayout>
+  )
 }
-export default Topic;
+
+export default TopicPage;

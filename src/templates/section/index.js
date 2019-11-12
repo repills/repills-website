@@ -1,273 +1,99 @@
-import React from 'react'
-import {
-  TypesList,
-  TopicsList,
-  SectionPageHeader,
-  PageBlock,
-  ShareBar,
-  Counter,
-  VerticalSpacing,
-  theme
-} from 'repills-react-components'
-import ResourcesList from '../../components/wrappers/ResourcesList'
-import Layout from '../../components/Layout'
-import Helmet from 'react-helmet'
-import { rgba } from 'polished'
-import PropTypes from 'prop-types'
-import ReactGA from 'react-ga'
-import config from '../../../config'
-import paths from '../../../utils/paths'
-import {
-  Header,
-  HeaderContent,
-  HeaderContentMain,
-  HeaderContentSecondary,
-  Page,
-  SimplePageContent,
-} from '../../style/layout-columns'
-import { normalizeResource } from '../../../utils/resources';
-import {
-  push,
-  graphql,
-} from 'gatsby';
+import React, {useMemo} from 'react'
+import {graphql} from 'gatsby'
+import {Link} from 'gatsby'
+import {Button} from 'antd'
 
-ReactGA.initialize(config.ga.trackingId);
-const { neutral } = theme.palettes;
+import ResourceCard from '../../components/resource-card/ResourceCard'
+import BaseLayout from '../../components/layout/Layout'
+import {normalizeResource} from '../../utils/resources'
+import {convertTopicsToOrderedArray} from '../../utils/topics'
+import {getLastAddedPagePath} from '../../paths'
+import TopicList from '../../components/topic-list/TopicList'
+import Hero from '../../components/hero/Hero'
+import PageBlock from '../../components/page-block/PageBlock'
+import PageSection from '../../components/page-section/PageSection'
+import Divider from '../../components/divider/Divider'
 
-class Section extends React.Component {
+const DISPLAYED_TOPICS = 9;
 
-  handleDetailView = ({ resource }) => {
-    ReactGA.event({
-      category: 'Resource browsing',
-      action: 'See resource detail (Section)',
-      label: 'Resource modal detail'
-    });
-  };
+const SectionPage = ({
+  data,
+  pageContext,
+}) => {
+  const latestSharedResources = data.latestSharedResources.edges.map(normalizeResource)
+  const { section } = pageContext
 
-  navigateToSectionTopics = () =>
-    push(paths.getSectionTopicsPagePath({sectionBasePath: this.props.pageContext.basePath}));
+  const topicsData = useMemo(
+    () => convertTopicsToOrderedArray(section.topics),
+    [section.topics]
+  )
 
-  navigateToPath = path => push(path);
-
-  render() {
-
-    const {
-      data,
-      pageContext
-    } = this.props;
-
-    const {
-      // id,
-      name,
-      color,
-      // resources,
-      description,
-      topics,
-      resourcesCount,
-      topicsCount,
-      // maintainers,
-      basePath,
-      types,
-      icon
-    } = pageContext;
-
-    // const { resources: dataResources, contributors: dataContributors } = data;
-    const { resources: dataResources } = data;
-    // const filledTopics = data.topics.group;
-    const lastResources = dataResources.edges.map(e => normalizeResource(e));
-
-    /*
-    const contributors = dataContributors.group.map(c => ({
-      nickname: c.fieldValue,
-      publishedCount: c.totalCount
-    }));
-    */
-
-    const metaTitle = `${name} | Free pills and get more skills!`;
-    const metaDescription = `Free resources about '${name}' and other hot topics. Discover everyday what's new in the web development and UI design.`;
-    const shareUrl = `${config.baseUrl}${basePath}`;
-
-    return (
-      <Layout>
-        <Helmet>
-          <title>{name}</title>
-          <meta name="description" content={metaDescription} />
-          <meta property="og:title" content={metaTitle} />
-          <meta property="og:description" content={metaDescription} />
-          <meta property="og:url" content={shareUrl} />
-        </Helmet>
-        <Header>
-          <HeaderContent>
-            <HeaderContentMain>
-              <SectionPageHeader
-                color={color}
-                description={description}
-                icon={icon}
-                label="Section"
-                title={name}
-              />
-            </HeaderContentMain>
-            <HeaderContentSecondary>
-              <div style={{borderBottom: `1px solid ${rgba(neutral.highest,.3)}`, paddingBottom: '1.25rem'}}>
-                <Counter
-                  count={resourcesCount}
-                  label="total pills"
-                  showStats={false}
+  return (
+    <BaseLayout>
+      {
+        ({WrapperElement}) => (
+          <>
+            <PageSection>
+              <WrapperElement>
+                <Hero
+                  title={
+                    `Dive deep into ${section.name} through high-quality resources`
+                  }
                 />
-              </div>
-              <ShareBar
-                color={neutral.lowest}
-                link={shareUrl}
-                text={metaDescription}
-                title={metaTitle}
-                types={[
-                  'facebook',
-                  'twitter',
-                  'linkedin'
-                ]}
-                style={{
-                  marginTop: '24px',
-                  display: 'flex',
-                  justifyContent: 'center'
-                }}
-              />
-            </HeaderContentSecondary>
-          </HeaderContent>
-        </Header>
-        <Page style={{backgroundColor: neutral.lower, paddingTop: '2.5rem', paddingBottom: '0' }}>
-          <SimplePageContent>
-            <PageBlock
-              title='Last added resources'
-              simple
-              primaryAction={{
-                label: 'Suggest resource',
-                onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
-              }}
-            >
-              <ResourcesList
-                handleDetailView={this.handleDetailView}
-                resources={lastResources}
-              />
-            </PageBlock>
-          </SimplePageContent>
-        </Page>
-        <Page>
-          <SimplePageContent>
-            <VerticalSpacing size="medium">
-              <PageBlock
-                contentsCount={topicsCount}
-                title={`Topic${topicsCount === 1 ? '' : 's'}`}
-                simple
-                description={`Deep dive into the ${name} available topics`}
-                primaryAction={{
-                  label: 'Topics detail',
-                  onClick: this.navigateToSectionTopics
-                }}
-              >
-                {
-                  topics.length > 3 &&
-                  <div>
-                    <TopicsList
-                      type="extended"
-                      breaks={{ XS: 8, SM: 16 }}
-                      navigateTo={this.navigateToPath}
-                      topics={topics.slice(0,3)}
-                    />
-                    <TopicsList
-                      style={{marginTop: '1rem'}}
-                      breaks={{ XS: 8, SM: 16 }}
-                      navigateTo={this.navigateToPath}
-                      topics={topics.slice(3,topics.length)}
-                    />
-                  </div>
-                }
-                {
-                  topics.length <= 3 &&
-                  <TopicsList
-                    breaks={{ XS: 8, SM: 16 }}
-                    navigateTo={this.navigateToPath}
-                    topics={topics}
+              </WrapperElement>
+            </PageSection>
+            <Divider />
+            <PageSection>
+              <WrapperElement>
+                <PageBlock
+                  title={`${section.resourcesCount} ${section.name} resources`}
+                >
+                  {
+                    latestSharedResources.map(resource => (
+                      <div
+                        style={{ marginBottom: '1rem' }}
+                        key={resource.slug}
+                      >
+                        <ResourceCard {...resource} />
+                      </div>
+                    ))
+                  }
+                  <Button size="large">
+                    <Link to={getLastAddedPagePath({index: 2, sectionSlug: section.slug})}>
+                      See all resources
+                    </Link>
+                  </Button>
+                </PageBlock>
+              </WrapperElement>
+            </PageSection>
+            <Divider />
+            <PageSection>
+              <WrapperElement>
+                <PageBlock
+                  title={`${topicsData.length} Topics about ${section.name}`}
+                >
+                  <TopicList
+                    topics={topicsData}
+                    limit={DISPLAYED_TOPICS}
                   />
-                }
-
-              </PageBlock>
-            </VerticalSpacing>
-            <VerticalSpacing size="large">
-              <TypesList
-                navigateTo={this.navigateToPath}
-                types={types}
-              />
-            </VerticalSpacing>
-          </SimplePageContent>
-        </Page>
-        {
-          /*
-           <TileCta
-           cta={{
-           label: 'Contribute',
-           onClick: () => window.open('https://repills.github.io/repills-generator/','_blank')
-           }}
-           description={`Contribute to enrich this section by sharing new and amazing content about "${name}"`}
-           icon="GitHub"
-           title="Let's do great things together!"
-           />
-           <VerticalSpacing size="medium">
-           <TileCta
-           cta={{
-           label: 'Contact us',
-           onClick: () => window.location.href = `mailto:andreaman87@gmail.com?subject=${encodeURIComponent('Hi guys!')}`,
-           skin: 'outline'
-           }}
-           description="Great! Propose yourself as maintainer and help us to select high-level contents."
-           icon="User"
-           title={`Are you an expert in "${name}"?`}
-           style={{marginTop: '32px'}}
-           />
-           </VerticalSpacing>
-           <VerticalSpacing size="medium">
-           <ContributorsList
-           contributors={contributors}
-           />
-           </VerticalSpacing>
-           */
-        }
-      </Layout>
-    );
-  }
+                </PageBlock>
+              </WrapperElement>
+            </PageSection>
+          </>
+        )
+      }
+    </BaseLayout>
+  )
 }
 
-export default Section;
+export default SectionPage;
 
-Section.propTypes = {
-  pageContext: PropTypes.shape({
-    // TODO make it general
-  }),
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-              // TODO make it general
-            }),
-          }),
-        }).isRequired
-      ),
-    }),
-  }),
-};
-
-// Actually there is no sorting for group query in Gatsby
-// https://github.com/gatsbyjs/gatsby/issues/3684
-
-export const pageQuery = graphql`
-  query TagPage($id: String) {
-    resources: allMarkdownRemark(
-      limit: 6
-      sort: { fields: [frontmatter___createdAt], order: DESC }
-      filter: { frontmatter: { sections: { in: [$id] } } }
+export const sectionPageQuery = graphql`
+  query sectionPageQuery($sectionSlug: String!) {
+    latestSharedResources: allMarkdownRemark(
+      limit: 12,
+      sort: { order: DESC, fields: [frontmatter___createdAt] }
+      filter: { frontmatter: { sections: { in: [$sectionSlug] } } }
     ) {
       edges {
         node {
@@ -281,19 +107,11 @@ export const pageQuery = graphql`
             topics
             suggestedBy
             createdAt
-            reference,
-            slug,
+            reference
+            slug
             abstract
           }
         }
-      }
-    }
-    contributors: allMarkdownRemark(
-      filter: { frontmatter: { sections: { in: [$id] } } }
-    ) {
-      group(field: frontmatter___suggestedBy) {
-        fieldValue
-        totalCount
       }
     }
   }

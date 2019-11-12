@@ -1,43 +1,22 @@
 module.exports = {
   siteMetadata: {
     siteUrl: 'https://repills.com',
-    title: 'REPILLS | Free pills to get more skills',
-    author: 'Repills',
-    description: 'Repills.com is the place to learn about web development and design through well-organized high-quality resources. You can discover articles, tutorials, courses, tools, books about React.js, Serverless, Redux, Vue.js'
+    name: 'Repills',
+    title: 'REPILLS | React.js high-quality resources',
+    description: 'Repills.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.',
+    author: 'Andrea mangano',
   },
   plugins: [
+    'gatsby-plugin-antd',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-remark',
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: `gatsby-source-filesystem`,
       options: {
-        name: 'Repills website',
-        short_name: 'Repills',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
-        display: 'minimal-ui',
-        icon: 'src/favicon.png',
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
-    },
-    {
-      resolve: 'gatsby-plugin-favicon',
-      options: {
-        logo: './src/favicon.png',
-        injectHTML: true,
-        icons: {
-          android: true,
-          appleIcon: true,
-          appleStartup: true,
-          coast: false,
-          favicons: true,
-          firefox: true,
-          twitter: false,
-          yandex: false,
-          windows: false
-        }
-      }
     },
     {
       resolve: 'gatsby-source-filesystem',
@@ -47,16 +26,29 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-sitemap'
-    },
-    {
-      resolve: 'gatsby-plugin-google-analytics',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        trackingId: 'UA-117143286-1',
-        head: false
+        google: {
+          families: ['Poppins:400,500,700']
+        }
+      }
+    },
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `gatsby-starter-default`,
+        short_name: `starter`,
+        start_url: `/`,
+        background_color: `#663399`,
+        theme_color: `#663399`,
+        display: `minimal-ui`,
+        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
+    // this (optional) plugin enables Progressive Web App + Offline functionality
+    // To learn more, visit: https://gatsby.dev/offline
+    // `gatsby-plugin-offline`,
   ],
-};
-
+}

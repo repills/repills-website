@@ -1,87 +1,80 @@
-import React from 'react';
-import Helmet from 'react-helmet';
-import {
-  ResponsivePagination,
-  SimplePageHeader,
-  VerticalSpacing
-} from 'repills-react-components'
-import { push } from 'gatsby'
-import paths from '../../../utils/paths'
-import Layout from '../../components/Layout'
-import ResourcesList from '../../components/wrappers/ResourcesList'
-import ReactGA from 'react-ga'
-import {
-  HeaderContent,
-  HeaderContentMain,
-  Header,
-  Page,
-  SimplePageContent
-} from '../../style/layout-columns'
-import { normalizeResource } from '../../../utils/resources'
-import config from '../../../config'
+import React from 'react'
+import { navigate } from 'gatsby'
+import Helmet from 'react-helmet'
+import {StaticQuery,graphql} from 'gatsby'
 
-ReactGA.initialize('UA-117143286-1');
+import BaseLayout from '../../components/layout/Layout'
+import {getLastAddedPagePath} from '../../paths'
+import Hero from '../../components/hero/Hero'
+import ResourceList from '../../components/resource-list/ResourceList'
+import PageSection from '../../components/page-section/PageSection'
+import Divider from '../../components/divider/Divider'
+import PageBlock from '../../components/page-block/PageBlock'
 
-class Last extends React.Component {
+const LastPage = ({
+  pageContext,
+}) => {
+  const {
+    section,
+    resources,
+    pagination,
+  } = pageContext;
 
-  handleDetailView = ({ resource }) => {
-    ReactGA.event({
-      category: 'Resource browsing',
-      action: 'See resource detail (Last added)',
-      label: 'Resource modal detail'
-    });
-  };
+  const metaTitle = `Latest resouces about ${section.name}`;
 
-  render() {
-
-    const {
-      pageContext,
-    } = this.props;
-
-    const {
-      resources,
-      pagination,
-    } = pageContext;
-
-    const metaTitle = 'Last added resources';
-
-    return (
-      <Layout>
-        <Helmet>
-          <title>{ metaTitle }</title>
-          <meta property="og:title" content={`${metaTitle} - Repills.com`} />
-          <meta property="og:url" content={`${config.baseUrl}${paths.getLastAddedPagePath(pagination.currentPage)}`} />
-        </Helmet>
-        <Header>
-          <HeaderContent>
-            <HeaderContentMain>
-              <SimplePageHeader
-                title="Last added pills"
-              />
-            </HeaderContentMain>
-          </HeaderContent>
-        </Header>
-        <Page>
-          <SimplePageContent>
-            <VerticalSpacing size="medium">
-              <ResourcesList
-                resources={resources.map(e => normalizeResource(e))}
-                handleDetailView={this.handleDetailView}
-              />
-            </VerticalSpacing>
-            <VerticalSpacing size="medium">
-              <ResponsivePagination
-                currentPage={pagination.currentPage}
-                handleNavigateToPage={page => push(paths.getLastAddedPagePath(page))}
-                itemsPerPage={pagination.perPage}
-                itemsTotalCount={pagination.totalCount}
-                buildPagePath={paths.getLastAddedPagePath}
-              />
-            </VerticalSpacing>
-          </SimplePageContent>
-        </Page>
-      </Layout>
-    );
-  }
+  return (
+    <StaticQuery
+      query={graphql`
+        query LatestHeadingQuery {
+          site {
+            siteMetadata {
+              siteUrl
+            }
+          }
+        }
+      `}
+      render={({ site }) => (
+        <BaseLayout>
+          {
+            ({WrapperElement}) => (
+              <>
+                <Helmet>
+                  <title>{ metaTitle }</title>
+                  <meta property="og:title" content={`${metaTitle} - Repills.com`} />
+                  <meta
+                    property="og:url"
+                    content={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({index: pagination.currentPage, sectionSlug: section.slug})}`}
+                  />
+                  <link href={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({sectionSlug: section.slug})}`} rel="canonical"></link>
+                </Helmet>
+                <PageSection>
+                  <WrapperElement>
+                    <Hero
+                      title={`Latest added resources about ${section.name}`}
+                    />
+                  </WrapperElement>
+                </PageSection>
+                <Divider />
+                <PageSection>
+                  <WrapperElement>
+                    <PageBlock
+                      title={`${pagination.totalCount} available yet`}
+                    >
+                      <ResourceList
+                        resources={resources}
+                        pagination={pagination}
+                        navigateTo={(page) => navigate(getLastAddedPagePath({index: page, sectionSlug: section.slug}))}
+                      />
+                    </PageBlock>
+                  </WrapperElement>
+                </PageSection>
+              </>
+            )
+          }
+        </BaseLayout>
+      )}
+    />
+  )
 }
-export default Last;
+
+export default LastPage;

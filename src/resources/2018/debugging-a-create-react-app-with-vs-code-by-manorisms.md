@@ -1,6 +1,5 @@
 ---
-sections:
-  - reactjs
+sections: [reactjs]
 link: https://www.youtube.com/watch?v=UI7dpnVoad8
 title: "Debugging a Create React App with VS Code"
 author: "Manorisms"

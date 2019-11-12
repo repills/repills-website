@@ -1,6 +1,9 @@
-const config = require('repills-config');
-const fillSectionsFromEdges = require('./utils/fillSectionsFromEdges');
-const pagesUtilities = require('./utils/pages');
+
+const config = require('./src/config');
+const pagesUtilities = require('./src/utils/pages');
+const fillSectionsFromEdges = require('./src/utils/fillSectionsFromEdges');
+const resourcesUtils = require('./src/utils/resources');
+
 const frontmatter = config.resources;
 
 exports.createPages = ({ actions, graphql }) => {
@@ -8,51 +11,42 @@ exports.createPages = ({ actions, graphql }) => {
 
   return new Promise((resolve, reject) => {
     graphql(`{
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___createdAt] }
-    ) {
-      edges {
-        node {
-          excerpt(pruneLength: 250)
-          html
-          id
-          timeToRead
-          frontmatter {
-            ${frontmatter.join('\n')}
+      allMarkdownRemark(
+        sort: { order: DESC, fields: [frontmatter___createdAt] }
+      ) {
+        edges {
+          node {
+            excerpt(pruneLength: 250)
+            html
+            id
+            timeToRead
+            frontmatter {
+              ${frontmatter.join('\n')}
+            }
           }
         }
       }
-    }
-  }`)
-      .then(result => {
-        if (result.errors) { reject(result.errors); return; }
+    }`)
+    .then(result => {
+      if (result.errors) { reject(result.errors); return; }
 
-        const resources = result.data.allMarkdownRemark.edges;
-        const sections = fillSectionsFromEdges(resources);
-        const pageBuilder = pagesUtilities({ createPage, sections, resources });
+      const resources = result.data.allMarkdownRemark.edges.map(resourcesUtils.normalizeResource);
+      const sections = fillSectionsFromEdges(resources);
+      const pageBuilder = pagesUtilities({ createPage, sections });
 
-        // Page index
-        pageBuilder.createHomePage();
+      // Homepage
+      pageBuilder.createHomePage();
 
-        // Resource Pages
-        pageBuilder.createLastPage();
+      // Section Topics index pages
+      pageBuilder.createSectionTopicIndexPages();
 
-        // Section Overview Pages
-        pageBuilder.createSectionPages();
+      // Section topics resources pages
+      pageBuilder.createSectionTopicPages();
 
-        // Section Topics Pages
-        pageBuilder.createTopicsPages();
+      // Resource pages
+      pageBuilder.createSectionLatestResourcePage();
 
-        // Topic Pages
-        pageBuilder.createTopicPages();
-
-        // Type Pages
-        pageBuilder.createTypePages();
-
-        // Resource Pages
-        pageBuilder.createResourcePages();
-
-        resolve();
-      });
+      resolve();
+    });
   });
 };
