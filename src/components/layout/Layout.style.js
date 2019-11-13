@@ -20,6 +20,7 @@ export const header = ({ theme }) => css`
 export const footer = ({ theme }) => css`
   ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0])}
   color: ${theme.palettes.neutrals.medium};
+  text-align: center;
 `
 
 export const wrapper = ({

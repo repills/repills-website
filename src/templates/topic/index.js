@@ -10,6 +10,7 @@ import ResourceList from '../../components/resource-list/ResourceList'
 import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import PageBlock from '../../components/page-block/PageBlock'
+import TopicSelect from '../../components/topics-select/TopicSelect'
 
 const TopicPage = ({
   pageContext
@@ -21,22 +22,6 @@ const TopicPage = ({
   } = pageContext
 
   const reactTopics = convertTopicsToOrderedArray(topics)
-
-  // @TODO useMemo ?
-  // @TODO change function
-  const menu = (
-    <Menu
-      selectedKeys={[currentTopic.slug]}
-    >
-      {reactTopics.map(topic => (
-        <Menu.Item key={topic.slug}>
-          <Link to={getTopicPagePath({topicSlug: topic.slug})}>
-            {topic.title} ({topic.resources.length})
-          </Link>
-        </Menu.Item>
-      ))}
-    </Menu>
-  );
 
   return (
     <BaseLayout>
@@ -55,13 +40,10 @@ const TopicPage = ({
             <PageSection>
               <WrapperElement>
                 <div>
-                  <Dropdown overlay={menu} placement="bottomLeft">
-                    <Button
-                      size="large"
-                    >
-                      Change topic
-                    </Button>
-                  </Dropdown>
+                  <TopicSelect
+                    topics={reactTopics}
+                    current={currentTopic.slug}
+                  />
                   {
                     /**
                      <Button

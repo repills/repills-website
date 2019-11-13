@@ -8,9 +8,9 @@ export const base = ({
   backgroundColor,
 }) => css`
   background-color: ${backgroundColor ? getColor(theme, backgroundColor) : theme.palettes.neutrals.lightest};
-  ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0])}
+  ${getSpacing.padding(theme, [SPACING_NAMES.BIGGER, 0])}
 
   &:last-of-type {
-    ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0, SPACING_NAMES.BIGGEST])}
+    ${getSpacing.padding(theme, [SPACING_NAMES.BIGGER, 0, SPACING_NAMES.BIGGEST])}
   }
 `

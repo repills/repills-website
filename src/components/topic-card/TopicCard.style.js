@@ -16,7 +16,7 @@ export const description = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.SMALL)}
   ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
   color: ${theme.palettes.neutrals.medium};
-  height: 6rem;
+  height: 6.7rem;
   overflow: hidden;
   position: relative;
 

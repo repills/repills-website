@@ -1,8 +1,11 @@
 import React, {useMemo} from 'react'
-import TopicCard from '../topic-card/TopicCard'
 import {Button, Row, Col} from 'antd'
-import {getTopicsIndexPagePath} from '../../paths'
 import {Link} from 'gatsby'
+
+import {getTopicsIndexPagePath} from '../../paths'
+import TopicCard from '../topic-card/TopicCard'
+
+import * as styles from './TopicList.style'
 
 const TopicList = ({
   topics,
@@ -21,13 +24,13 @@ const TopicList = ({
 
   return (
     <>
-      <Row gutter={16}>
+      <Row gutter={[16, 16]}>
         {
           displayItems.map(topic => (
             <Col
               lg={{ span: 8 }}
               key={topic.slug}
-              style={{ marginBottom: '1rem' }}
+              css={styles.item}
             >
               <TopicCard {...topic} />
             </Col>
@@ -36,9 +39,11 @@ const TopicList = ({
       </Row>
       {
         secureLimit < topics.length && (
-          <Button size="large">
-            <Link to={getTopicsIndexPagePath('reactjs')}>See all topics</Link>
-          </Button>
+          <div css={styles.more}>
+            <Button size="large">
+              <Link to={getTopicsIndexPagePath('reactjs')}>See all topics</Link>
+            </Button>
+          </div>
         )
       }
     </>

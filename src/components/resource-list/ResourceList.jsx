@@ -1,5 +1,6 @@
 import React from 'react'
-import {Pagination} from 'antd'
+import {Pagination, Button} from 'antd'
+import {Link} from 'gatsby'
 
 import ResourceCard from '../resource-card/ResourceCard'
 
@@ -8,10 +9,11 @@ import * as styles from './ResourceList.style'
 const ResourceList = ({
   resources,
   pagination,
+  seeMore,
   navigateTo
 }) => {
   return (
-    <div>
+    <div css={styles.base}>
       {
         resources.map(resource => (
           <div
@@ -33,6 +35,17 @@ const ResourceList = ({
               pageSize={pagination.perPage}
               onChange={(page) => navigateTo(page)}
             />
+          </div>
+        )
+      }
+      {
+        seeMore && (
+          <div css={styles.more}>
+            <Button size="large">
+              <Link to={seeMore}>
+                See all resources
+              </Link>
+            </Button>
           </div>
         )
       }
