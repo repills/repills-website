@@ -64,12 +64,12 @@ const typographyConfig = {
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
-        fontSize: '1rem',
-        lineHeight: '1.75'
+        fontSize: '0.9rem',
+        lineHeight: '1.5'
       },
       desktop: {
         fontSize: '1.1rem',
-        lineHeight: '1.75'
+        lineHeight: '1.6'
       }
     }
   },
@@ -79,7 +79,7 @@ const typographyConfig = {
     variants: {
       mobile: {
         fontSize: '0.9rem',
-        lineHeight: '1.75'
+        lineHeight: '1.5'
       },
       desktop: {
         fontSize: '0.9rem',
