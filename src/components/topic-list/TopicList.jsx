@@ -30,7 +30,6 @@ const TopicList = ({
             <Col
               lg={{ span: 8 }}
               key={topic.slug}
-              css={styles.item}
             >
               <TopicCard {...topic} />
             </Col>
