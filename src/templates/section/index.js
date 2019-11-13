@@ -13,6 +13,7 @@ import Hero from '../../components/hero/Hero'
 import PageBlock from '../../components/page-block/PageBlock'
 import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
+import ResourceList from '../../components/resource-list/ResourceList'
 
 const DISPLAYED_TOPICS = 9;
 
@@ -39,6 +40,9 @@ const SectionPage = ({
                   title={
                     `Dive deep into ${section.name} through high-quality resources`
                   }
+                  description={`
+                  Repills.com is the place where you stay up to date with the latest ${section.name} news. You can discover articles, tutorials, courses, tools and books.
+                  `}
                 />
               </WrapperElement>
             </PageSection>
@@ -48,21 +52,10 @@ const SectionPage = ({
                 <PageBlock
                   title={`${section.resourcesCount} ${section.name} resources`}
                 >
-                  {
-                    latestSharedResources.map(resource => (
-                      <div
-                        style={{ marginBottom: '1rem' }}
-                        key={resource.slug}
-                      >
-                        <ResourceCard {...resource} />
-                      </div>
-                    ))
-                  }
-                  <Button size="large">
-                    <Link to={getLastAddedPagePath({index: 2, sectionSlug: section.slug})}>
-                      See all resources
-                    </Link>
-                  </Button>
+                  <ResourceList
+                    resources={latestSharedResources}
+                    seeMore={getLastAddedPagePath({index: 2, sectionSlug: section.slug})}
+                  />
                 </PageBlock>
               </WrapperElement>
             </PageSection>
@@ -70,7 +63,7 @@ const SectionPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  title={`${topicsData.length} Topics about ${section.name}`}
+                  title={`${topicsData.length} topics about ${section.name}`}
                 >
                   <TopicList
                     topics={topicsData}
