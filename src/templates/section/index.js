@@ -50,7 +50,7 @@ const SectionPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  title={`${section.resourcesCount} ${section.name} resources`}
+                  caption={`${section.resourcesCount} ${section.name} available resources`}
                 >
                   <ResourceList
                     resources={latestSharedResources}

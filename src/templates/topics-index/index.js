@@ -34,7 +34,7 @@ const TopicsPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  title={`${reactTopics.length} topics available yet`}
+                  caption={`${reactTopics.length} available topics`}
                 >
                   <TopicList topics={reactTopics} />
                 </PageBlock>

@@ -38,28 +38,22 @@ const TopicPage = ({
             </PageSection>
             <Divider />
             <PageSection>
-              <WrapperElement>
-                <div>
-                  <TopicSelect
-                    topics={reactTopics}
-                    current={currentTopic.slug}
-                  />
-                  {
-                    /**
-                     <Button
-                        size="large"
-                      >
-                        Suggest resource
-                      </Button>
-                    */
-                  }
-                </div>
-              </WrapperElement>
+              <div style={{textAlign: 'center'}}>
+                <TopicSelect
+                  topics={reactTopics}
+                  current={currentTopic.slug}
+                />
+              </div>
             </PageSection>
             <Divider />
             <PageSection>
               <WrapperElement>
-                <PageBlock title={`${pagination.totalCount} resources`}>
+                <PageBlock
+                  caption={`
+                    ${pagination.totalCount} resources available
+                    ${pagination.currentPage > 1 ? `- Page ${pagination.currentPage}` : ''}
+                  `}
+                >
                   <ResourceList
                     resources={currentTopic.resources}
                     pagination={pagination}

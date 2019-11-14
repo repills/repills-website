@@ -4,7 +4,7 @@ module.exports = {
     name: 'Repills',
     title: 'REPILLS | React.js high-quality resources',
     description: 'Repills.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.',
-    author: 'Andrea mangano',
+    author: 'Andrea Mangano',
   },
   plugins: [
     'gatsby-plugin-antd',
