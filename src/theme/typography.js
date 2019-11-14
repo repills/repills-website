@@ -36,7 +36,7 @@ const typographyConfig = {
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
-        fontSize: '1.2rem',
+        fontSize: '1.4rem',
         lineHeight: '1.4'
       },
       desktop: {
@@ -50,11 +50,11 @@ const typographyConfig = {
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
-        fontSize: '1.3rem',
+        fontSize: '1.2rem',
         lineHeight: '1.4'
       },
       desktop: {
-        fontSize: '1.5rem',
+        fontSize: '1.3rem',
         lineHeight: '1.4'
       }
     }
@@ -69,7 +69,23 @@ const typographyConfig = {
       },
       desktop: {
         fontSize: '1.1rem',
-        lineHeight: '1.6'
+        lineHeight: '1.8'
+      }
+    }
+  },
+  [TYPOGRAPHY_NAMES.CAPTION]: {
+    weight: 400,
+    family: PRIMARY_FONT_FAMILY,
+    variants: {
+      mobile: {
+        fontSize: '0.9rem',
+        lineHeight: '1.4',
+        textTransform: 'uppercase',
+      },
+      desktop: {
+        fontSize: '1rem',
+        lineHeight: '1.4',
+        textTransform: 'uppercase',
       }
     }
   },

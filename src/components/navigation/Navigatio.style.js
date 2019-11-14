@@ -13,6 +13,10 @@ export const base = ({ theme }) => css`
     width: 7rem;
     display: block;
 
+    &:hover {
+      color: ${theme.palettes.neutrals.lightest};
+    }
+
     ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
       width: 9rem;
     `}
