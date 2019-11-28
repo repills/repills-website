@@ -47,7 +47,9 @@ const LastPage = ({
                   />
                   <link href={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({sectionSlug: section.slug})}`} rel="canonical"></link>
                 </Helmet>
-                <PageSection>
+                <PageSection
+                  backgroundColor="primary.darker"
+                >
                   <WrapperElement>
                     <Hero
                       title={`Latest added resources about ${section.name}`}
@@ -58,7 +60,7 @@ const LastPage = ({
                 <PageSection>
                   <WrapperElement>
                     <PageBlock
-                      title={`${pagination.totalCount} available yet`}
+                      caption={`${pagination.totalCount} available yet`}
                     >
                       <ResourceList
                         resources={resources}

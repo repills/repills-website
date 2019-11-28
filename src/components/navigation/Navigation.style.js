@@ -8,7 +8,6 @@ export const base = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.H2)}
   ${getSpacing.padding(theme, [SPACING_NAMES.MEDIUM, 0])}
   display: flex;
-  justify-content: center;
 
   > a {
     color: ${theme.palettes.neutrals.lightest};
@@ -23,4 +22,8 @@ export const base = ({ theme }) => css`
       width: 12rem;
     `}
   }
+
+  ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
+    justify-content: center;
+  `}
 `

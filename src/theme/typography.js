@@ -1,6 +1,6 @@
 import { TYPOGRAPHY_NAMES } from './constants'
 
-export const PRIMARY_FONT_FAMILY = "'Poppins', sans-serif"
+export const PRIMARY_FONT_FAMILY = "'Lato', sans-serif"
 
 const typographyConfig = {
   [TYPOGRAPHY_NAMES.MEGA]: {
@@ -54,7 +54,7 @@ const typographyConfig = {
         lineHeight: '1.4'
       },
       desktop: {
-        fontSize: '1.3rem',
+        fontSize: '1.4rem',
         lineHeight: '1.4'
       }
     }
@@ -69,7 +69,7 @@ const typographyConfig = {
       },
       desktop: {
         fontSize: '1.1rem',
-        lineHeight: '1.8'
+        lineHeight: '1.6'
       }
     }
   },

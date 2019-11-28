@@ -10,6 +10,7 @@ export const title = ({ theme }) => css`
   font-weight: bold;
   line-height: 1.4 !important;
   height: 2.8rem;
+  margin: 0;
 `
 
 export const description = ({ theme }) => css`

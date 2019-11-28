@@ -31,7 +31,9 @@ const SectionPage = ({
       {
         ({WrapperElement}) => (
           <>
-            <PageSection>
+            <PageSection
+              backgroundColor="primary.darker"
+            >
               <WrapperElement>
                 <Hero
                   title={
@@ -57,7 +59,9 @@ const SectionPage = ({
               </WrapperElement>
             </PageSection>
             <Divider />
-            <PageSection>
+            <PageSection
+              backgroundColor="neutrals.light"
+            >
               <WrapperElement>
                 <PageBlock
                   title={`${topicsData.length} topics about ${section.name}`}

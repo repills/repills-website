@@ -1,7 +1,5 @@
 import React from 'react'
 
-import CardFrame from '../card-frame/CardFrame'
-
 import * as styles from './ResourceCard.style'
 
 const ResourceCard = ({
@@ -12,32 +10,30 @@ const ResourceCard = ({
   typeLabel,
   color,
 }) => (
-  <CardFrame>
-    <a
-      href={link}
-      target="_blank"
-      rel="noopener noreferrer"
-    >
-      <h4 css={styles.title}>
-        {title}
-      </h4>
-      {
-        abstract && (
-          <p css={styles.description}>
-            {abstract}
-          </p>
-        )
-      }
-      <div css={styles.details}>
-        <span
-          css={styles.type}
-          color={color}
-        >
-          {typeLabel}
-        </span> by <strong>{author}</strong>
-      </div>
-    </a>
-  </CardFrame>
+  <a
+    href={link}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    <h4 css={styles.title}>
+      {title}
+    </h4>
+    {
+      abstract && (
+        <p css={styles.description}>
+          {abstract.replace(/^(.{300}[^\s]*).*/, "$1")} [continue]
+        </p>
+      )
+    }
+    <div css={styles.details}>
+      <span
+        css={styles.type}
+        color={color}
+      >
+        {typeLabel}
+      </span> by <strong>{author}</strong>
+    </div>
+  </a>
 );
 
 export default ResourceCard;

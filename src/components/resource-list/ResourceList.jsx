@@ -17,7 +17,7 @@ const ResourceList = ({
       {
         resources.map(resource => (
           <div
-            style={{ marginBottom: '1rem' }}
+            css={styles.item}
             key={resource.slug}
           >
             <ResourceCard

@@ -23,7 +23,9 @@ const TopicsPage = ({
       {
         ({WrapperElement}) => (
           <>
-            <PageSection>
+            <PageSection
+              backgroundColor="primary.darker"
+            >
               <WrapperElement>
                 <Hero
                   title={`Topics about ${section.name}`}
