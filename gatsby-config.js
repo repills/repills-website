@@ -1,9 +1,11 @@
+const siteName = 'reactfeed';
+
 module.exports = {
   siteMetadata: {
-    siteUrl: 'https://repills.com',
-    name: 'Repills',
-    title: 'REPILLS | React.js high-quality resources',
-    description: 'Repills.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.',
+    siteUrl: `https://${siteName}.com`,
+    name: siteName,
+    title: `${siteName} | React.js high-quality resources`,
+    description: `${siteName}.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.`,
     author: 'Andrea Mangano',
   },
   plugins: [
@@ -29,7 +31,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Poppins:400,500,700']
+          families: ['Poppins:400,500,600']
         }
       }
     },
@@ -39,8 +41,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: 'Repills website',
-        short_name: 'Repills',
+        name: `${siteName} website`,
+        short_name: siteName,
         start_url: '/',
         background_color: '#663399',
         theme_color: '#663399',

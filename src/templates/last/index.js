@@ -40,7 +40,7 @@ const LastPage = ({
               <>
                 <Helmet>
                   <title>{ metaTitle }</title>
-                  <meta property="og:title" content={`${metaTitle} - Repills.com`} />
+                  <meta property="og:title" content={`${metaTitle} - reactfeed.com`} />
                   <meta
                     property="og:url"
                     content={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({index: pagination.currentPage, sectionSlug: section.slug})}`}

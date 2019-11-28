@@ -1,3 +1,3 @@
-# Repills (wip)
+# reactfeed (wip)
 
-The source code for [repills.com](https://repills.com) website.
+The source code for [reactfeed.com](https://reactfeed.com) website.

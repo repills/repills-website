@@ -46,6 +46,9 @@ exports.createPages = ({ actions, graphql }) => {
       // Resource pages
       pageBuilder.createSectionLatestResourcePage();
 
+      // Contribution page
+      // pageBuilder.createContributionPage()
+
       resolve();
     });
   });

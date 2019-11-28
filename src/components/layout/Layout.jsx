@@ -49,7 +49,7 @@ class BaseLayout extends React.Component {
             <div css={styles.base}>
               <Helmet
                 defaultTitle={site.siteMetadata.title}
-                titleTemplate={`%s | Repills.com`}
+                titleTemplate={`%s | reactfeed.com`}
               >
                 <meta name="description" content={site.siteMetadata.description} />
                 <meta name="twitter:card" content="summary_large_image" />
@@ -57,7 +57,7 @@ class BaseLayout extends React.Component {
                 <meta property="og:description" content={site.siteMetadata.description} />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content={site.siteMetadata.siteUrl} />
-                <meta property="og:site_name" content="Repills.com" />
+                <meta property="og:site_name" content="reactfeed.com" />
                 <meta property="og:image" content={`${site.siteMetadata.siteUrl}/images/share-facebook.jpg`} />
                 <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}/images/share-twitter.jpg`} />
                 <meta property="og:locale" content="en_EN" />
