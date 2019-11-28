@@ -21,7 +21,6 @@ function getSpacingStyle(
     variant,
   ) {
   const spacingProperty = `${type}${variant || ''}`;
-
   const mobileCSSRule = `${spacingProperty}: ${values.map((value) => theme.spaceUnits.mobile[value]).join(' ')};`;
   const desktopCSSRule = `${spacingProperty}: ${values.map((value) => theme.spaceUnits.desktop[value]).join(' ')};`;
 
