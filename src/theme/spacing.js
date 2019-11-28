@@ -18,10 +18,10 @@ const smallMobile = '0.8rem';
 const smallerMobile = '0.4rem';
 const smallestMobile = '0.2rem';
 
-const biggestDesktop = '7.5rem';
-const biggerDesktop = '5rem';
-const bigDesktop = '3.75rem';
-const mediumDesktop = '2.5rem';
+const biggestDesktop = '6rem';
+const biggerDesktop = '4rem';
+const bigDesktop = '3rem';
+const mediumDesktop = '2rem';
 const smallDesktop = '1.25rem';
 const smallerDesktop = '0.75rem';
 const smallestDesktop = '0.25rem';

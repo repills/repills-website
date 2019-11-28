@@ -22,12 +22,12 @@ function getSpacingStyle(
   ) {
   const spacingProperty = `${type}${variant || ''}`;
 
-  return css`
-    ${spacingProperty}: ${values.map((value) => theme.spaceUnits.mobile[value]).join(' ')};
+  const mobileCSSRule = `${spacingProperty}: ${values.map((value) => theme.spaceUnits.mobile[value]).join(' ')};`;
+  const desktopCSSRule = `${spacingProperty}: ${values.map((value) => theme.spaceUnits.desktop[value]).join(' ')};`;
 
-    ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
-      ${spacingProperty}: ${values.map((value) => theme.spaceUnits.desktop[value]).join(' ')};
-    `}
+  return css`
+    ${mobileCSSRule}
+    ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`${desktopCSSRule}`}
   `;
 }
 
