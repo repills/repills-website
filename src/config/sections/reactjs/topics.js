@@ -104,7 +104,7 @@ to really understand how React works and how to use it efficiently.
   react_managing_application_state: {
     title: 'Managing application state in React.js',
     slug: 'react-managing-application-state',
-    description: `One of the hardest parts of large application development is managing state. In this topics you will 
+    description: `One of the hardest parts of large application development is managing state. In this topics you will
 find ways to manage application state. They each are intended to solve some specific problems.`,
     similar: [
       'How to manage the application state in React',
@@ -241,6 +241,29 @@ order components (HOC), the provider pattern, etc.
       'Destructuring arguments',
       'Array as children',
       'Container presentational pattern'
+    ]
+  },
+  react_hooks: {
+    title: 'React hooks',
+    slug: 'react-hooks',
+    description: `Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+In this topic you will learn why Hooks are added to React and how they can help you write great applications.
+`,
+    similar: [
+      'What react hooks are',
+      'How to use react hooks',
+      'How to build custom Hooks',
+      'Test component that use hooks',
+      'How lifecycle methods correspond to Hooks',
+      'How hooks replace render props and higher-order components',
+      'Data fetching with hooks',
+      'UseState hook',
+      'UseCallback hook',
+      'Effect hook',
+      'UseMemo hook',
+      'useRef hook',
+      'How to get the previous props or state with hooks',
+      'How to memoize calculations with hooks'
     ]
   },
   routing_client_side: {

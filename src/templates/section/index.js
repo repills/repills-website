@@ -1,9 +1,6 @@
 import React, {useMemo} from 'react'
 import {graphql} from 'gatsby'
-import {Link} from 'gatsby'
-import {Button} from 'antd'
 
-import ResourceCard from '../../components/resource-card/ResourceCard'
 import BaseLayout from '../../components/layout/Layout'
 import {normalizeResource} from '../../utils/resources'
 import {convertTopicsToOrderedArray} from '../../utils/topics'
@@ -41,7 +38,7 @@ const SectionPage = ({
                     `Dive deep into ${section.name} through high-quality resources`
                   }
                   description={`
-                  Repills.com is the place where you stay up to date with the latest ${section.name} news. You can discover articles, tutorials, courses, tools and books.
+                    reactfeed.com is the place where you stay up to date with the latest ${section.name} news. You can discover articles, tutorials, courses, tools and books.
                   `}
                 />
               </WrapperElement>
