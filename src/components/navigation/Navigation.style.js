@@ -7,10 +7,12 @@ import { TYPOGRAPHY_NAMES, SPACING_NAMES, BREAKPOINTS_QUERY_NAMES } from '../../
 export const base = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.H2)}
   ${getSpacing.padding(theme, [SPACING_NAMES.MEDIUM, 0])}
+  display: flex;
+  justify-content: center;
 
   > a {
     color: ${theme.palettes.neutrals.lightest};
-    width: 7rem;
+    width: 9rem;
     display: block;
 
     &:hover {
@@ -18,7 +20,7 @@ export const base = ({ theme }) => css`
     }
 
     ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
-      width: 9rem;
+      width: 12rem;
     `}
   }
 `

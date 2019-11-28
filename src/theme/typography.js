@@ -4,7 +4,7 @@ export const PRIMARY_FONT_FAMILY = "'Poppins', sans-serif"
 
 const typographyConfig = {
   [TYPOGRAPHY_NAMES.MEGA]: {
-    weight: 700,
+    weight: 600,
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
@@ -18,7 +18,7 @@ const typographyConfig = {
     }
   },
   [TYPOGRAPHY_NAMES.H1]: {
-    weight: 700,
+    weight: 600,
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
@@ -32,7 +32,7 @@ const typographyConfig = {
     }
   },
   [TYPOGRAPHY_NAMES.H2]: {
-    weight: 700,
+    weight: 600,
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {

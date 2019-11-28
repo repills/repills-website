@@ -4,7 +4,7 @@ import { getSpacing } from '../../theme/utils'
 import { SPACING_NAMES } from '../../theme/constants'
 
 export const base = ({ theme }) => css`
-  ${getSpacing.padding(theme, SPACING_NAMES.MEDIUM)}
+  ${getSpacing.padding(theme, SPACING_NAMES.SMALL)}
   box-shadow: 0 1px 1px 1px rgba(10,16,34,.08);
   cursor: pointer;
   background-color: ${theme.palettes.neutrals.lightest};

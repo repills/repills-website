@@ -10,10 +10,10 @@ const smallerMobile = '0.5rem';
 const smallestMobile = '0.25rem';
 */
 
-const biggestMobile = '3.5rem';
-const biggerMobile = '2.5rem';
-const bigMobile = '2rem';
-const mediumMobile = '1.2rem';
+const biggestMobile = '3rem';
+const biggerMobile = '2rem';
+const bigMobile = '1.5rem';
+const mediumMobile = '1rem';
 const smallMobile = '0.8rem';
 const smallerMobile = '0.4rem';
 const smallestMobile = '0.2rem';

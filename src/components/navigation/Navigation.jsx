@@ -1,7 +1,7 @@
 import React from 'react'
 import {Link} from 'gatsby'
 
-import * as styles from './Navigatio.style'
+import * as styles from './Navigation.style'
 import Logo from '../logo/Logo'
 
 const Navigation = () => (
