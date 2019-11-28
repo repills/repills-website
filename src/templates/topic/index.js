@@ -45,6 +45,7 @@ const TopicPage = ({
                 placement="bottomCenter"
               />
             </div>
+            <Divider />
             <PageSection>
               <WrapperElement>
                 <PageBlock
