@@ -1,6 +1,5 @@
 import React from 'react'
-import {Link,navigate} from 'gatsby'
-import {Dropdown, Button, Menu} from 'antd'
+import {navigate} from 'gatsby'
 
 import {convertTopicsToOrderedArray} from '../../utils/topics'
 import {getTopicPagePath} from '../../paths'
@@ -11,6 +10,8 @@ import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import PageBlock from '../../components/page-block/PageBlock'
 import TopicSelect from '../../components/topics-select/TopicSelect'
+
+import * as styles from './style'
 
 const TopicPage = ({
   pageContext
@@ -37,15 +38,13 @@ const TopicPage = ({
               </WrapperElement>
             </PageSection>
             <Divider />
-            <PageSection>
-              <div style={{textAlign: 'center'}}>
-                <TopicSelect
-                  topics={reactTopics}
-                  current={currentTopic.slug}
-                />
-              </div>
-            </PageSection>
-            <Divider />
+            <div css={styles.actionBar}>
+              <TopicSelect
+                topics={reactTopics}
+                current={currentTopic.slug}
+                placement="bottomCenter"
+              />
+            </div>
             <PageSection>
               <WrapperElement>
                 <PageBlock
@@ -60,6 +59,17 @@ const TopicPage = ({
                     navigateTo={(page) => navigate(getTopicPagePath({index: page, topicSlug: currentTopic.slug}))}
                   />
                 </PageBlock>
+              </WrapperElement>
+            </PageSection>
+            <PageSection>
+              <WrapperElement>
+                {
+                  currentTopic && currentTopic.similar && currentTopic.similar.length > 0 && (
+                    <p css={styles.similar}>
+                      {currentTopic.similar.join(' / ')}
+                    </p>
+                  )
+                }
               </WrapperElement>
             </PageSection>
           </>
