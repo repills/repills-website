@@ -47,7 +47,7 @@ exports.createPages = ({ actions, graphql }) => {
       pageBuilder.createSectionLatestResourcePage();
 
       // Contribution page
-      pageBuilder.createContributionPage()
+      // pageBuilder.createContributionPage()
 
       resolve();
     });
