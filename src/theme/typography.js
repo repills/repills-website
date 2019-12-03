@@ -46,12 +46,12 @@ const typographyConfig = {
     }
   },
   [TYPOGRAPHY_NAMES.TITLE]: {
-    weight: 400,
+    weight: 600,
     family: PRIMARY_FONT_FAMILY,
     variants: {
       mobile: {
         fontSize: '1.2rem',
-        lineHeight: '1.4'
+        lineHeight: '1.3'
       },
       desktop: {
         fontSize: '1.4rem',

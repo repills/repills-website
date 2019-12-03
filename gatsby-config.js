@@ -50,6 +50,13 @@ module.exports = {
         icon: 'src/favicon.png',
       },
     },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "UA-153769947-1",
+        includeInDevelopment: false,
+      },
+    },
     /*
     {
       resolve: 'gatsby-plugin-favicon',
