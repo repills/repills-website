@@ -19,11 +19,16 @@ const SectionPage = ({
   pageContext,
 }) => {
   const latestSharedResources = data.latestSharedResources.edges.map(normalizeResource)
-  const { section } = pageContext
+  const {
+    sectionSlug,
+    sectionName,
+    resourcesCount,
+    topics,
+  } = pageContext
 
   const topicsData = useMemo(
-    () => convertTopicsToOrderedArray(section.topics),
-    [section.topics]
+    () => convertTopicsToOrderedArray(topics),
+    [topics]
   )
 
   return (
@@ -37,10 +42,10 @@ const SectionPage = ({
               <WrapperElement>
                 <Hero
                   title={
-                    `Dive deep into ${section.name} through high-quality resources`
+                    `Dive deep into ${sectionName} through high-quality resources`
                   }
                   description={`
-                    reactfeed.com is the place where you stay up to date with the latest ${section.name} news. You can discover articles, tutorials, courses, tools and books.
+                    reactfeed.com is the place where you stay up to date with the latest ${sectionName} news. You can discover articles, tutorials, courses, tools and books.
                   `}
                 />
               </WrapperElement>
@@ -49,11 +54,11 @@ const SectionPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  caption={`${section.resourcesCount} ${section.name} available resources`}
+                  caption={`${resourcesCount} available resources about ${sectionName}`}
                 >
                   <ResourceList
                     resources={latestSharedResources}
-                    seeMore={getLastAddedPagePath({index: 2, sectionSlug: section.slug})}
+                    seeMore={getLastAddedPagePath({index: 2, sectionSlug})}
                   />
                 </PageBlock>
               </WrapperElement>
@@ -64,7 +69,7 @@ const SectionPage = ({
             >
               <WrapperElement>
                 <PageBlock
-                  title={`${topicsData.length} topics about ${section.name}`}
+                  title={`${topicsData.length} topics about ${sectionName}`}
                 >
                   <TopicList
                     topics={topicsData}
@@ -83,9 +88,9 @@ const SectionPage = ({
 export default SectionPage;
 
 export const sectionPageQuery = graphql`
-  query sectionPageQuery($sectionSlug: String!) {
+  query sectionPageQuery($sectionSlug: String!, $limit: Int!) {
     latestSharedResources: allMarkdownRemark(
-      limit: 12,
+      limit: $limit,
       sort: { order: DESC, fields: [frontmatter___createdAt] }
       filter: { frontmatter: { sections: { in: [$sectionSlug] } } }
     ) {
