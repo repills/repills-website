@@ -32,7 +32,7 @@ exports.createPages = ({ actions, graphql }) => {
 
       const resources = result.data.allMarkdownRemark.edges.map(resourcesUtils.normalizeResource);
       const sections = fillSectionsFromEdges(resources);
-      const pageBuilder = pagesUtilities({ createPage, sections });
+      const pageBuilder = pagesUtilities({ createPage, sections, resources });
 
       // Homepage
       pageBuilder.createHomePage();
