@@ -24,7 +24,7 @@ const TopicsPage = ({
         ({WrapperElement}) => (
           <>
             <PageSection
-              backgroundColor="primary.darker"
+              backgroundColor="primary.basic"
             >
               <WrapperElement>
                 <Hero

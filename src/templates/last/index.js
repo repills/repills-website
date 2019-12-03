@@ -48,7 +48,7 @@ const LastPage = ({
                   <link href={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({sectionSlug: section.slug})}`} rel="canonical"></link>
                 </Helmet>
                 <PageSection
-                  backgroundColor="primary.darker"
+                  backgroundColor="primary.basic"
                 >
                   <WrapperElement>
                     <Hero
