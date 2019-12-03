@@ -4,6 +4,6 @@ module.exports = function({ createPage, sections, resources }) {
     createSectionTopicIndexPages: require('./createSectionTopicIndexPages')({ createPage, sections }),
     createSectionTopicPages: require('./createSectionTopicPages')({ createPage, sections }),
     createSectionLatestResourcePage: require('./createSectionLatestResourcePage')({ createPage, sections, resources }),
-    createContributionPage: require('./createContributionPage')({ createPage, sections }),
+    // createContributionPage: require('./createContributionPage')({ createPage, sections }),
   };
 };
