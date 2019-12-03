@@ -11,11 +11,14 @@ import Divider from '../../components/divider/Divider'
 const TopicsPage = ({
   pageContext,
 }) => {
-  const { section } = pageContext
+  const {
+    sectionName,
+    topics,
+  } = pageContext
 
-  const reactTopics = useMemo(
-    () => convertTopicsToOrderedArray(section.topics),
-    [section.topics]
+  const sectionTopics = useMemo(
+    () => convertTopicsToOrderedArray(topics),
+    [topics]
   );
 
   return (
@@ -28,7 +31,7 @@ const TopicsPage = ({
             >
               <WrapperElement>
                 <Hero
-                  title={`Topics about ${section.name}`}
+                  title={`Topics about ${sectionName}`}
                 />
               </WrapperElement>
             </PageSection>
@@ -36,9 +39,9 @@ const TopicsPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  caption={`${reactTopics.length} available topics`}
+                  caption={`${sectionTopics.length} available topics`}
                 >
-                  <TopicList topics={reactTopics} />
+                  <TopicList topics={sectionTopics} />
                 </PageBlock>
               </WrapperElement>
             </PageSection>

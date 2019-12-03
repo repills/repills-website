@@ -9,7 +9,8 @@ module.exports = ({ createPage, sections }) => () =>
       path: paths.getTopicsIndexPagePath(section.slug),
       component: path.resolve(`src/templates/topics-index/index.js`),
       context: {
-        section
+        sectionName: section.name,
+        topics: section.topics,
       },
     });
   });
