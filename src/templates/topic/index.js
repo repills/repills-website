@@ -1,7 +1,8 @@
 import React from 'react'
 import {navigate} from 'gatsby'
+import {graphql} from 'gatsby'
 
-import {convertTopicsToOrderedArray} from '../../utils/topics'
+import {normalizeResource} from '../../utils/resources'
 import {getTopicPagePath} from '../../paths'
 import BaseLayout from '../../components/layout/Layout'
 import Hero from '../../components/hero/Hero'
@@ -14,15 +15,19 @@ import TopicSelect from '../../components/topics-select/TopicSelect'
 import * as styles from './style'
 
 const TopicPage = ({
-  pageContext
+  pageContext,
+  data
 }) => {
   const {
+    topicSlug,
+    topicTitle,
+    topicDescription,
     pagination,
-    topic: currentTopic,
-    topics
+    topicsList
   } = pageContext
 
-  const reactTopics = convertTopicsToOrderedArray(topics)
+  const currentTopic = topicsList[topicSlug]
+  const topicResources = data.topicResources.edges.map(normalizeResource)
 
   return (
     <BaseLayout>
@@ -34,18 +39,20 @@ const TopicPage = ({
             >
               <WrapperElement>
                 <Hero
-                  title={`Topic: ${currentTopic.title}`}
-                  description={currentTopic.description}
+                  title={`Topic: ${topicTitle}`}
+                  description={topicDescription}
                 />
               </WrapperElement>
             </PageSection>
             <Divider />
             <div css={styles.actionBar}>
-              <TopicSelect
-                topics={reactTopics}
-                current={currentTopic.slug}
-                placement="bottomCenter"
-              />
+              {
+                <TopicSelect
+                  topics={topicsList}
+                  current={topicSlug}
+                  placement="bottomCenter"
+                />
+              }
             </div>
             <Divider />
             <PageSection>
@@ -57,9 +64,9 @@ const TopicPage = ({
                   `}
                 >
                   <ResourceList
-                    resources={currentTopic.resources}
+                    resources={topicResources}
                     pagination={pagination}
-                    navigateTo={(page) => navigate(getTopicPagePath({index: page, topicSlug: currentTopic.slug}))}
+                    navigateTo={(page) => navigate(getTopicPagePath({index: page, topicSlug: topicSlug}))}
                   />
                 </PageBlock>
               </WrapperElement>
@@ -81,5 +88,35 @@ const TopicPage = ({
     </BaseLayout>
   )
 }
+
+export const topicListQuery = graphql`
+  query topicListQuery($topicSearchSlug: String!, $skip: Int!, $limit: Int!) {
+    topicResources: allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___createdAt] }
+      filter: { frontmatter: { topics: { in: [$topicSearchSlug] } } }
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          frontmatter {
+            sections
+            link
+            title
+            author
+            publishedAt
+            type
+            topics
+            suggestedBy
+            createdAt
+            reference
+            slug
+            abstract
+          }
+        }
+      }
+    }
+  }
+`;
 
 export default TopicPage;

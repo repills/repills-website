@@ -16,7 +16,7 @@ const TopicSelect = ({
         {topics.map(topic => (
           <Menu.Item key={topic.slug}>
             <Link to={getTopicPagePath({topicSlug: topic.slug})}>
-              {topic.title} ({topic.resources.length})
+              {topic.title} ({topic.totalResources})
             </Link>
           </Menu.Item>
         ))}

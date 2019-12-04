@@ -1,13 +1,26 @@
+function mapTopics(topics) {
+  return Object.keys(topics).map(topicId => {
+    const topic = topics[topicId];
+    return {
+      slug: topic.slug,
+      title: topic.title,
+      description: topic.description,
+      basePath: topic.basePath,
+      totalResources: topic.resources.length,
+    };
+  });
+}
+
 function convertTopicsToOrderedArray(topics) {
-  const _topics = Object.keys(topics).map(topicId => (topics[topicId]));
-  return _topics.sort((a, b) => {
-    const keyA = a.resources.length, keyB = b.resources.length;
+  return topics.sort((a, b) => {
+    const keyA = a.totalResources, keyB = b.totalResources;
     if(keyA > keyB) return -1;
     if(keyA < keyB) return 1;
     return 0;
   });
 }
-  
+
 module.exports = {
-  convertTopicsToOrderedArray
+  convertTopicsToOrderedArray,
+  mapTopics
 }
