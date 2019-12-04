@@ -1,7 +1,6 @@
-import React, {useMemo} from 'react'
+import React from 'react'
 
 import BaseLayout from '../../components/layout/Layout'
-import {convertTopicsToOrderedArray} from '../../utils/topics'
 import TopicList from '../../components/topic-list/TopicList'
 import Hero from '../../components/hero/Hero'
 import PageSection from '../../components/page-section/PageSection'
@@ -13,13 +12,8 @@ const TopicsPage = ({
 }) => {
   const {
     sectionName,
-    topics,
+    topicsList,
   } = pageContext
-
-  const sectionTopics = useMemo(
-    () => convertTopicsToOrderedArray(topics),
-    [topics]
-  );
 
   return (
     <BaseLayout>
@@ -39,9 +33,9 @@ const TopicsPage = ({
             <PageSection>
               <WrapperElement>
                 <PageBlock
-                  caption={`${sectionTopics.length} available topics`}
+                  caption={`${topicsList.length} available topics`}
                 >
-                  <TopicList topics={sectionTopics} />
+                  <TopicList topics={topicsList} />
                 </PageBlock>
               </WrapperElement>
             </PageSection>

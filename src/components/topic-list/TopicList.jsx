@@ -40,6 +40,7 @@ const TopicList = ({
         secureLimit < topics.length && (
           <div css={styles.more}>
             <Button size="large">
+              {/** @TODO pass sectionSlug */}
               <Link to={getTopicsIndexPagePath('reactjs')}>See all topics</Link>
             </Button>
           </div>

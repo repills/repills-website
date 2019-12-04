@@ -1,9 +1,8 @@
-import React, {useMemo} from 'react'
+import React from 'react'
 import {graphql} from 'gatsby'
 
 import BaseLayout from '../../components/layout/Layout'
 import {normalizeResource} from '../../utils/resources'
-import {convertTopicsToOrderedArray} from '../../utils/topics'
 import {getLastAddedPagePath} from '../../paths'
 import TopicList from '../../components/topic-list/TopicList'
 import Hero from '../../components/hero/Hero'
@@ -23,13 +22,8 @@ const SectionPage = ({
     sectionSlug,
     sectionName,
     resourcesCount,
-    topics,
+    topicsList,
   } = pageContext
-
-  const topicsData = useMemo(
-    () => convertTopicsToOrderedArray(topics),
-    [topics]
-  )
 
   return (
     <BaseLayout>
@@ -69,10 +63,10 @@ const SectionPage = ({
             >
               <WrapperElement>
                 <PageBlock
-                  title={`${topicsData.length} topics about ${sectionName}`}
+                  title={`${topicsList.length} topics about ${sectionName}`}
                 >
                   <TopicList
-                    topics={topicsData}
+                    topics={topicsList}
                     limit={DISPLAYED_TOPICS}
                   />
                 </PageBlock>

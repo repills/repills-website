@@ -1,5 +1,6 @@
 const path = require('path');
 const paths = require('../../paths');
+const {mapTopics, convertTopicsToOrderedArray} = require('../topics');
 
 module.exports = ({ createPage, sections }) => () =>
   Object.keys(sections).forEach(sectionId => {
@@ -10,7 +11,7 @@ module.exports = ({ createPage, sections }) => () =>
       component: path.resolve(`src/templates/topics-index/index.js`),
       context: {
         sectionName: section.name,
-        topics: section.topics,
+        topicsList: convertTopicsToOrderedArray(mapTopics(section.topics)),
       },
     });
   });

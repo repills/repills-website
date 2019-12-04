@@ -1,4 +1,5 @@
 const path = require('path');
+const {mapTopics, convertTopicsToOrderedArray} = require('../topics');
 
 module.exports = ({ createPage, sections }) => () => {
   const section = sections['reactjs'];
@@ -9,7 +10,7 @@ module.exports = ({ createPage, sections }) => () => {
       sectionSlug: section.slug,
       sectionName: section.name,
       resourcesCount: section.resourcesCount,
-      topics: section.topics,
+      topicsList: convertTopicsToOrderedArray(mapTopics(section.topics)),
       limit: 12,
     }
   });
