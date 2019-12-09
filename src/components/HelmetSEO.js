@@ -10,7 +10,7 @@ import PropTypes from 'prop-types'
 import Helmet from 'react-helmet'
 import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, links, title, path }) {
+function SEO({ description, lang, meta, links, title, path, structuredData }) {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -92,7 +92,15 @@ function SEO({ description, lang, meta, links, title, path }) {
           content: metaDescription,
         },
       ].concat(meta)}
-    />
+    >
+      {
+        structuredData && (
+          <script type="application/ld+json">
+            {JSON.stringify(structuredData)}
+          </script>
+        )
+      }
+    </Helmet>
   )
 }
 
@@ -110,6 +118,7 @@ SEO.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  structuredData: PropTypes.object,
 }
 
 export default SEO

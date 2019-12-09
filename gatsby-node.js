@@ -43,11 +43,14 @@ exports.createPages = ({ actions, graphql }) => {
       // Section topics resources pages
       pageBuilder.createSectionTopicPages();
 
-      // Resource pages
+      // Latest resources pages
       pageBuilder.createSectionLatestResourcePage();
 
       // Contribution page
       // pageBuilder.createContributionPage()
+
+      // Resource pages
+      pageBuilder.createResourcePages();
 
       resolve();
     });

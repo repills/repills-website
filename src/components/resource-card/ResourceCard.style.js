@@ -32,7 +32,13 @@ export const details = ({ theme }) => css`
   color: ${theme.palettes.neutrals.medium};
 `
 
-export const type = ({ color }) => css`
-  color: ${color};
+export const type = ({ theme, color }) => css`
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+  padding: .15rem .3rem;
+  color: white;
+  background-color: ${color};
   font-weight: bold;
+  text-transform: uppercase;
+  margin-right: .3rem;
+  border-radius: .25rem;
 `
