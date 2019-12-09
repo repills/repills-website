@@ -6,7 +6,7 @@ import Hero from '../../components/hero/Hero'
 import PageSection from '../../components/page-section/PageSection'
 import PageBlock from '../../components/page-block/PageBlock'
 import Divider from '../../components/divider/Divider'
-import SEO from '../../components/SEO'
+import SEO from '../../components/HelmetSEO'
 
 const TopicsPage = ({
   pageContext,

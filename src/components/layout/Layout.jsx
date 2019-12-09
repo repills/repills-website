@@ -2,7 +2,7 @@ import React from 'react'
 import {Layout} from 'antd'
 import {ThemeProvider} from 'styled-components'
 import {StaticQuery, graphql} from 'gatsby'
-import SEO from '../SEO'
+import SEO from '../HelmetSEO'
 
 import theme from '../../theme'
 import Navigation from '../navigation/Navigation'

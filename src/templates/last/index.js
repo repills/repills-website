@@ -11,7 +11,7 @@ import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import PageBlock from '../../components/page-block/PageBlock'
 import {normalizeResource} from '../../utils/resources'
-import SEO from '../../components/SEO'
+import SEO from '../../components/HelmetSEO'
 
 const LastPage = ({
   pageContext,

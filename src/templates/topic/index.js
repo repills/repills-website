@@ -13,7 +13,7 @@ import PageBlock from '../../components/page-block/PageBlock'
 import TopicSelect from '../../components/topics-select/TopicSelect'
 
 import * as styles from './style'
-import SEO from '../../components/SEO'
+import SEO from '../../components/HelmetSEO'
 
 const TopicPage = ({
   pageContext,
