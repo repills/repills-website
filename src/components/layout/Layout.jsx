@@ -2,7 +2,7 @@ import React from 'react'
 import {Layout} from 'antd'
 import {ThemeProvider} from 'styled-components'
 import {StaticQuery, graphql} from 'gatsby'
-import Helmet from 'react-helmet'
+import SEO from '../SEO'
 
 import theme from '../../theme'
 import Navigation from '../navigation/Navigation'
@@ -47,21 +47,10 @@ class BaseLayout extends React.Component {
           `}
           render={({ site }) => (
             <div css={styles.base}>
-              <Helmet
-                defaultTitle={site.siteMetadata.title}
-                titleTemplate={`%s | reactfeed.com`}
-              >
-                <meta name="description" content={site.siteMetadata.description} />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta property="og:title" content={site.siteMetadata.title} />
-                <meta property="og:description" content={site.siteMetadata.description} />
-                <meta property="og:type" content="website" />
-                <meta property="og:url" content={site.siteMetadata.siteUrl} />
-                <meta property="og:site_name" content="reactfeed.com" />
-                <meta property="og:image" content={`${site.siteMetadata.siteUrl}/images/share-facebook.jpg`} />
-                <meta name="twitter:image" content={`${site.siteMetadata.siteUrl}/images/share-twitter.jpg`} />
-                <meta property="og:locale" content="en_EN" />
-              </Helmet>
+              <SEO
+                title="Feed"
+                path="/"
+              />
               <header css={styles.header}>
                 <WrapperElement>
                   <Navigation />

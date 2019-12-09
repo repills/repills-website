@@ -11,10 +11,12 @@ import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import PageBlock from '../../components/page-block/PageBlock'
 import {normalizeResource} from '../../utils/resources'
+import SEO from '../../components/SEO'
 
 const LastPage = ({
   pageContext,
   data,
+  path,
 }) => {
   const {
     sectionName,
@@ -24,26 +26,37 @@ const LastPage = ({
 
   const {
     latestSharedResources,
-    site
   } = data;
 
   const resources = latestSharedResources.edges.map(normalizeResource);
   const metaTitle = `Latest resouces about ${sectionName}`;
+
+  const links = []
+
+  if(pagination.previousPage) {
+    links.push({
+      href: getLastAddedPagePath({index: pagination.previousPage, sectionSlug}),
+      rel: 'prev',
+    })
+  }
+
+  if(pagination.nextPage) {
+    links.push({
+      href: getLastAddedPagePath({index: pagination.nextPage, sectionSlug}),
+      rel: 'next',
+    })
+  }
 
   return (
     <BaseLayout>
       {
         ({WrapperElement}) => (
           <>
-            <Helmet>
-              <title>{ metaTitle }</title>
-              <meta property="og:title" content={`${metaTitle} - reactfeed.com`} />
-              <meta
-                property="og:url"
-                content={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({index: pagination.currentPage, sectionSlug: sectionSlug})}`}
-              />
-              <link href={`${site.siteMetadata.siteUrl}${getLastAddedPagePath({sectionSlug: sectionSlug})}`} rel="canonical"></link>
-            </Helmet>
+            <SEO
+              title={metaTitle}
+              links={links}
+              path={path}
+            />
             <PageSection
               backgroundColor="primary.basic"
             >

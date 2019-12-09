@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://${siteName}.com`,
     name: siteName,
-    title: `${siteName} | React.js high-quality resources`,
+    title: `React.js high-quality resources`,
     description: `${siteName}.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.`,
     author: 'Andrea Mangano',
   },

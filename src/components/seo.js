@@ -5,19 +5,21 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import Helmet from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
+import React from 'react'
+import PropTypes from 'prop-types'
+import Helmet from 'react-helmet'
+import { useStaticQuery, graphql } from 'gatsby'
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ description, lang, meta, links, title, path }) {
   const { site } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
+            name
             title
             description
+            siteUrl
             author
           }
         }
@@ -33,7 +35,13 @@ function SEO({ description, lang, meta, title }) {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${site.siteMetadata.name}`}
+      link={[
+        {
+          href: `${site.siteMetadata.siteUrl}${path}`,
+          rel: 'canonical',
+        }
+      ].concat(links)}
       meta={[
         {
           name: `description`,
@@ -52,8 +60,24 @@ function SEO({ description, lang, meta, title }) {
           content: `website`,
         },
         {
+          property: `og:site_name`,
+          content: site.siteMetadata.name,
+        },
+        {
+          property: `og:url`,
+          content: `${site.siteMetadata.siteUrl}${path}`,
+        },
+        {
+          property: `og:image`,
+          content: `${site.siteMetadata.siteUrl}/images/share-facebook.jpg`
+        },
+        {
+          property: 'twitter:image',
+          content: `${site.siteMetadata.siteUrl}/images/share-twitter.jpg`,
+        },
+        {
           name: `twitter:card`,
-          content: `summary`,
+          content: `summary_large_image`,
         },
         {
           name: `twitter:creator`,
@@ -75,6 +99,7 @@ function SEO({ description, lang, meta, title }) {
 SEO.defaultProps = {
   lang: `en`,
   meta: [],
+  links: [],
   description: ``,
 }
 
@@ -82,7 +107,9 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
+  links: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 }
 
 export default SEO

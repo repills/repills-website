@@ -13,10 +13,12 @@ import PageBlock from '../../components/page-block/PageBlock'
 import TopicSelect from '../../components/topics-select/TopicSelect'
 
 import * as styles from './style'
+import SEO from '../../components/SEO'
 
 const TopicPage = ({
   pageContext,
-  data
+  data,
+  path,
 }) => {
   const {
     topicSlug,
@@ -29,11 +31,33 @@ const TopicPage = ({
   const currentTopic = topicsList[topicSlug]
   const topicResources = data.topicResources.edges.map(normalizeResource)
 
+  const links = []
+
+  if(pagination.previousPage) {
+    links.push({
+      href: getTopicPagePath({index: pagination.previousPage, topicSlug}),
+      rel: 'prev',
+    })
+  }
+
+  if(pagination.nextPage) {
+    links.push({
+      href: getTopicPagePath({index: pagination.nextPage, topicSlug}),
+      rel: 'next',
+    })
+  }
+
   return (
     <BaseLayout>
       {
         ({WrapperElement}) => (
           <>
+            <SEO
+              title={topicTitle}
+              description={topicDescription}
+              links={links}
+              path={path}
+            />
             <PageSection
               backgroundColor="primary.basic"
             >
