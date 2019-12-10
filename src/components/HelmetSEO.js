@@ -28,6 +28,7 @@ function SEO({ description, lang, meta, links, title, path, structuredData }) {
   )
 
   const metaDescription = description || site.siteMetadata.description
+  const canonicalUrl = `${site.siteMetadata.siteUrl}${path}`;
 
   return (
     <Helmet
@@ -38,7 +39,8 @@ function SEO({ description, lang, meta, links, title, path, structuredData }) {
       titleTemplate={`%s | ${site.siteMetadata.name}`}
       link={[
         {
-          href: `${site.siteMetadata.siteUrl}${path}`,
+          href: canonicalUrl,
+          key: canonicalUrl,
           rel: 'canonical',
         }
       ].concat(links)}
