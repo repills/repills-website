@@ -5,6 +5,7 @@ module.exports = ({ createPage, resources }) => () => {
   resources.forEach(({
     slug,
     reference,
+    topics,
     publishedAt,
   }) => {
     createPage({
@@ -12,6 +13,8 @@ module.exports = ({ createPage, resources }) => () => {
       component: path.resolve(`src/templates/resource/index.js`),
       context: {
         reference,
+        resourceTopics: topics,
+        relatedLimit: 4,
       }
     })
   });
