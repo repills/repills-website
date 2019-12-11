@@ -22,6 +22,10 @@ export const description = ({ theme }) => css`
 
 export const actions = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.MEDIUM)}
+
+  > button + button {
+    margin-left: .5rem;
+  }
 `
 export const type = ({ theme, color }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}

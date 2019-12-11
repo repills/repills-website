@@ -12,7 +12,7 @@ export const title = ({ theme }) => css`
 
 export const description = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.SMALL)}
-  ${getTypography(theme, TYPOGRAPHY_NAMES.BODY)}
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
   color: ${theme.palettes.neutrals.medium};
   max-width: 60rem;
   display: none;

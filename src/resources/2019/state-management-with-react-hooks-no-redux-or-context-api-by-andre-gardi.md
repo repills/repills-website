@@ -5,7 +5,7 @@ title: "State Management with React Hooks — No Redux or Context API"
 author: "André Gardi"
 publishedAt: 2019-04-08T00:00:00.000Z
 type: [article]
-topics: [react_hooks]
+topics: [react_hooks, react_managing_application_state]
 suggestedBy: [andreamangano]
 createdAt: 2019-12-10T18:29:06.375Z
 reference: aHR0cHM6Ly9tZWRpdW0uY29tL2phdmFzY3JpcHQtaW4tcGxhaW4tZW5nbGlzaC9zdGF0ZS1tYW5hZ2VtZW50LXdpdGgtcmVhY3QtaG9va3Mtbm8tcmVkdXgtb3ItY29udGV4dC1hcGktOGIzMDM1Y2VlY2Y4

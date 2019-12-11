@@ -1,7 +1,8 @@
 import React from 'react'
-import {graphql} from 'gatsby'
-import { Button } from 'antd';
+import {graphql, Link} from 'gatsby'
+import { Button, Icon } from 'antd';
 import types from '../../config/types'
+import sectionsData from '../../config/sections'
 
 import Divider from '../../components/divider/Divider'
 import ResourceList from '../../components/resource-list/ResourceList'
@@ -71,39 +72,52 @@ const ResourcePage = ({data, path}) => {
             />
             <PageSection>
               <WrapperElement>
-                <PageBlock>
-                  <article css={styles.article}>
-                    <h1 css={styles.title}>{title}</h1>
-                    <div css={styles.details}>
-                      <span
-                        css={styles.type}
-                        color={color}
-                      >
-                        {typeLabel}
-                      </span> by <strong>{author}</strong>
-                    </div>
-                    {
-                      abstract && (
-                        <p css={styles.description}>
-                          {abstract}
-                        </p>
-                      )
-                    }
-                    <div css={styles.actions}>
-                      <Button
-                        size="large"
-                      >
-                          <a
-                            href={link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            Open resource
-                          </a>
-                      </Button>
-                    </div>
-                  </article>
-                </PageBlock>
+                <article css={styles.article}>
+                  <h1 css={styles.title}>{title}</h1>
+                  <div css={styles.details}>
+                    <span
+                      css={styles.type}
+                      color={color}
+                    >
+                      {typeLabel}
+                    </span> by <strong>{author}</strong>
+                  </div>
+                  {
+                    abstract && (
+                      <p css={styles.description}>
+                        {abstract}
+                      </p>
+                    )
+                  }
+                  <div css={styles.actions}>
+                    <Button
+                      size="large"
+                      type="primary"
+                    >
+                        <a
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Open resource <Icon type="right" />
+                        </a>
+                    </Button>
+                  </div>
+                  <div css={styles.actions}>
+                    { topics.map(topicId => {
+                      const topic = sectionsData[0].topics[topicId]
+                      return (
+                        <Button
+                          shape="round"
+                        >
+                          <Link to={getTopicPagePath({index: 1, topicSlug: topic.slug})}>
+                            {topic.title}
+                          </Link>
+                        </Button>
+                      );
+                    })}
+                  </div>
+                </article>
               </WrapperElement>
             </PageSection>
             <Divider />
@@ -114,7 +128,6 @@ const ResourcePage = ({data, path}) => {
                 >
                   <ResourceList
                     resources={relatedResources}
-                    // seeMore={getTopicPagePath({index: 1, topicSlug: topics[0]})} @TODO fix
                   />
                 </PageBlock>
               </WrapperElement>
