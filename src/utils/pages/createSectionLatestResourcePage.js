@@ -12,7 +12,7 @@ module.exports = ({ createPage, sections, resources }) => () =>
     Array.from({ length: numPages }).forEach((_, i) => {
       // The page 1 will be the site homepage
       createPage({
-        path: paths.getLastAddedPagePath({index: i!== 0 && i + 1, sectionSlug: section.slug}),
+        path: paths.getLastAddedPagePath({index: i + 1, sectionSlug: section.slug}),
         component: path.resolve(`src/templates/section/index.js`),
         context: {
           sectionSlug: section.slug,
