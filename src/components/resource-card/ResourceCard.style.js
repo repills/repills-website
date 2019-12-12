@@ -34,7 +34,7 @@ export const details = ({ theme }) => css`
 `
 
 export const type = ({ theme, color }) => css`
-  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+  ${getTypography(theme, TYPOGRAPHY_NAMES.MINI)}
   padding: .15rem .3rem;
   color: white;
   background-color: ${color};
