@@ -3,8 +3,12 @@ import { css } from 'styled-components'
 import { getTypography, getSpacing } from '../../theme/utils'
 import { TYPOGRAPHY_NAMES, SPACING_NAMES } from '../../theme/constants'
 
-export const header = ({ theme }) => css`
+export const header = ({
+  theme,
+  align,
+}) => css`
   ${getSpacing.paddingBottom(theme, SPACING_NAMES.BIG)}
+  text-align: ${align};
 `
 
 export const caption = ({ theme }) => css`
@@ -14,6 +18,7 @@ export const caption = ({ theme }) => css`
 
 export const title = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.H2)}
+  color: ${theme.palettes.neutrals.dark};
   font-weight: normal;
   margin: 0;
 `
