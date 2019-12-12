@@ -10,14 +10,11 @@ export const BREAKPOINTS_QUERY_NAMES = {
 export const TYPOGRAPHY_NAMES = {
   MEGA: 'MEGA',
   H1: 'H1',
-  H1_MONO: 'H1_MONO',
   TITLE: 'TITLE',
-  TITLE_MONO: 'TITLE_MONO',
   CAPTION: 'CAPTION',
   BODY: 'BODY',
-  BODY_MONO: 'BODY_MONO',
   SMALL: 'SMALL',
-  SMALL_MONO: 'SMALL_MONO',
+  MINI: 'MINI',
 }
 
 export const ZINDEX = {
@@ -32,7 +29,7 @@ export const ZINDEX = {
   below: 'below',
   bottomless: 'bottomless'
 }
-  
+
 export const SPACING_NAMES = {
     ZERO: 0,
     AUTO: 'auto',
@@ -51,4 +48,3 @@ export const SPACING_NAMES = {
     NEGATIVE_SMALLER: '-SMALLER',
     NEGATIVE_SMALLEST: '-SMALLEST',
 }
-  

@@ -102,6 +102,20 @@ const typographyConfig = {
         lineHeight: '1.6'
       }
     }
+  },
+  [TYPOGRAPHY_NAMES.MINI]: {
+    weight: 400,
+    family: PRIMARY_FONT_FAMILY,
+    variants: {
+      mobile: {
+        fontSize: '0.8rem',
+        lineHeight: '1.2'
+      },
+      desktop: {
+        fontSize: '0.8rem',
+        lineHeight: '1.2'
+      }
+    }
   }
 }
 
