@@ -79,13 +79,13 @@ const SectionPage = ({
               </WrapperElement>
             </PageSection>
             <Divider />
-            <PageSection>
+            <PageSection id="feed-start">
               <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock title={`Feed - Page ${pagination.currentPage}`}>
                   <ResourceList
                     resources={latestSharedResources}
                     pagination={pagination}
-                    getPageUrl={(page) => getLastAddedPagePath({index: page, sectionSlug: sectionSlug})}
+                    getPageUrl={(page) => getLastAddedPagePath({index: page, sectionSlug: sectionSlug, anchor: 'feed-start'})}
                   />
                 </PageBlock>
               </WrapperElement>

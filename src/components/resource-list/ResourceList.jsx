@@ -1,5 +1,5 @@
 import React from 'react'
-import {Pagination, Button} from 'antd'
+import {Icon, Button} from 'antd'
 import {Link} from 'gatsby'
 
 import ResourceCard from '../resource-card/ResourceCard'
@@ -35,7 +35,8 @@ const ResourceList = ({
               pagination.previousPage && (
                 <Button size="large">
                   <Link to={getPageUrl(pagination.previousPage)}>
-                    Prev ({pagination.previousPage})
+                    <Icon type="left" />
+                    Page {pagination.previousPage}
                   </Link>
                 </Button>
               )
@@ -44,7 +45,8 @@ const ResourceList = ({
               pagination.nextPage && (
                 <Button size="large">
                   <Link to={getPageUrl(pagination.nextPage)}>
-                    Next ({pagination.nextPage})
+                    Page {pagination.nextPage}
+                    <Icon type="right" />
                   </Link>
                 </Button>
               )

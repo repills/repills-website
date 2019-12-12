@@ -9,11 +9,11 @@ module.exports = {
   getTopicsIndexPagePath: (sectionSlug) => {
     return `/${sectionSlug}/topics`;
   },
-  getLastAddedPagePath: ({index, sectionSlug}) => {
+  getLastAddedPagePath: ({index, sectionSlug, anchor}) => {
     if(!index) {
       return '/';
     }
 
-    return `/${sectionSlug}/latest-resources/${(index !== 1) ? `${index}/` : ''}`;
+    return `/${sectionSlug}/latest-resources/${(index !== 1) ? `${index}/` : ''}${anchor && `#${anchor}`}`;
   },
 };
