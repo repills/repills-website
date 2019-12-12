@@ -71,7 +71,7 @@ const ResourcePage = ({data, path}) => {
               structuredData={structuredData}
             />
             <PageSection>
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <article css={styles.article}>
                   <h1 css={styles.title}>{title}</h1>
                   <div css={styles.details}>
@@ -122,7 +122,7 @@ const ResourcePage = ({data, path}) => {
             </PageSection>
             <Divider />
             <PageSection>
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
                   title="Related resource"
                 >

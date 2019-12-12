@@ -13,9 +13,10 @@ const Hero = ({
     </h1>
     {
       description && (
-        <p css={styles.description}>
-          {description}
-        </p>
+        <p
+          css={styles.description}
+          dangerouslySetInnerHTML={{__html: description}}
+        />
       )
     }
     {children}

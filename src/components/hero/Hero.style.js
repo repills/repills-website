@@ -21,4 +21,8 @@ export const description = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.BODY)}
   color: ${theme.palettes.neutrals.light};
   max-width: 50rem;
+
+  & > strong {
+    color: ${theme.palettes.neutrals.lightest};
+  }
 `

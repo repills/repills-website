@@ -61,7 +61,7 @@ const TopicPage = ({
             <PageSection
               backgroundColor="primary.basic"
             >
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <Hero
                   title={`Topic: ${topicTitle}`}
                   description={topicDescription}
@@ -80,7 +80,7 @@ const TopicPage = ({
             </div>
             <Divider />
             <PageSection>
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
                   caption={`
                     ${pagination.totalCount} resources available

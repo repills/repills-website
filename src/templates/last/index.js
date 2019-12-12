@@ -60,7 +60,7 @@ const LastPage = ({
             <PageSection
               backgroundColor="primary.basic"
             >
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <Hero
                   title={`Latest added resources about ${sectionName}`}
                 />
@@ -68,7 +68,7 @@ const LastPage = ({
             </PageSection>
             <Divider />
             <PageSection>
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
                   caption={`${pagination.totalCount} available yet`}
                 >

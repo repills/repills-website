@@ -10,6 +10,7 @@ import Divider from '../divider/Divider'
 
 import * as styles from './Layout.style'
 import GlobalStyle from './global.style'
+import Logo from '../logo/Logo'
 
 
 class BaseLayout extends React.Component {
@@ -62,8 +63,17 @@ class BaseLayout extends React.Component {
               <Divider />
               <footer css={styles.footer}>
                 <WrapperElement>
+                  <div css={styles.logoFooter}>
+                    <Logo
+                      color="neutrals.basic"
+                      secondaryColor="neutrals.basic"
+                    />
+                  </div>
                   <div>
-                    {site.siteMetadata.name} © {new Date().getFullYear()} - Free React.js resources. Created by {site.siteMetadata.author}.
+                    ©{new Date().getFullYear()} - Free React.js resources.
+                  </div>
+                  <div>
+                    Created by {site.siteMetadata.author}
                   </div>
                 </WrapperElement>
               </footer>

@@ -19,16 +19,21 @@ export const header = ({ theme }) => css`
 
 export const footer = ({ theme }) => css`
   ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0])}
-  color: ${theme.palettes.neutrals.medium};
+  color: ${theme.palettes.neutrals.basic};
   text-align: center;
 `
 
 export const wrapper = ({
   theme,
   width,
-  // @TODO add color variable
 }) => css`
   margin: 0 auto;
   max-width: ${width || 80}rem;
   ${getSpacing.padding(theme, [0, SPACING_NAMES.MEDIUM])}
+`
+export const logoFooter = ({
+  theme,
+}) => css`
+  ${getSpacing.margin(theme, [0, SPACING_NAMES.AUTO, SPACING_NAMES.SMALL])}
+  max-width: 10rem;
 `

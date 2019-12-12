@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 
 import BaseLayout from '../../components/layout/Layout'
 import {normalizeResource} from '../../utils/resources'
@@ -10,6 +10,8 @@ import PageBlock from '../../components/page-block/PageBlock'
 import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import ResourceList from '../../components/resource-list/ResourceList'
+
+import * as styles from './style'
 
 const DISPLAYED_TOPICS = 9;
 
@@ -33,23 +35,30 @@ const SectionPage = ({
             <PageSection
               backgroundColor="primary.basic"
             >
-              <WrapperElement>
+              <WrapperElement wrapperMaxWidth={54}>
                 <Hero
-                  title={
-                    `Dive deep into ${sectionName} through high-quality resources`
-                  }
+                  title={`Dive deep into ${sectionName} through high-quality resources`}
                   description={`
-                    reactfeed.com is the place where you stay up to date with the latest ${sectionName} news. You can discover articles, tutorials, courses, tools and books.
+                    <strong>reactfeed.com</strong> is the place where you stay up to date
+                    with the latest ${sectionName} news.<br/>
+                    You can discover <strong>articles</strong>, <strong>tutorials</strong>,
+                    <strong>courses</strong>, <strong>tools</strong> and <strong>books</strong>.
                   `}
-                />
+                >
+                  <Link
+                    css={styles.action}
+                    to={getLastAddedPagePath({sectionSlug})}
+                  >
+                    <strong css={styles.actionCount}>
+                    {resourcesCount}</strong> resources available yet
+                  </Link>
+                </Hero>
               </WrapperElement>
             </PageSection>
             <Divider />
             <PageSection>
-              <WrapperElement>
-                <PageBlock
-                  caption={`${resourcesCount} available resources about ${sectionName}`}
-                >
+              <WrapperElement wrapperMaxWidth={54}>
+                <PageBlock title="Feed">
                   <ResourceList
                     resources={latestSharedResources}
                     seeMore={getLastAddedPagePath({index: 2, sectionSlug})}

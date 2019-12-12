@@ -7,9 +7,7 @@ import Logo from '../logo/Logo'
 const Navigation = () => (
   <div css={styles.base}>
     <Link to="/">
-      <Logo
-        color="secondary.basic"
-      />
+      <Logo color="secondary.basic" />
     </Link>
   </div>
 );

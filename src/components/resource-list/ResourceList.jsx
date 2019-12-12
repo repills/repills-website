@@ -13,19 +13,21 @@ const ResourceList = ({
   navigateTo
 }) => {
   return (
-    <div css={styles.base}>
-      {
-        resources.map(resource => (
-          <div
-            css={styles.item}
-            key={resource.slug}
-          >
-            <ResourceCard
-              {...resource}
-            />
-          </div>
-        ))
-      }
+    <div>
+      <div>
+        {
+          resources.map(resource => (
+            <div
+              css={styles.item}
+              key={resource.slug}
+            >
+              <ResourceCard
+                {...resource}
+              />
+            </div>
+          ))
+        }
+      </div>
       {
         pagination && pagination.pageCount > 1 && (
           <div css={styles.pagination}>
