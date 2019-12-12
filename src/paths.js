@@ -14,8 +14,6 @@ module.exports = {
       return '/';
     }
 
-    console.log(`/${sectionSlug}/latest-resources/${index}/${anchor ? `#${anchor}` : ''}`)
-
     return `/${sectionSlug}/latest-resources/${index}/${anchor ? `#${anchor}` : ''}`;
   },
 };
