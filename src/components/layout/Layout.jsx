@@ -64,10 +64,7 @@ class BaseLayout extends React.Component {
               <footer css={styles.footer}>
                 <WrapperElement>
                   <div css={styles.logoFooter}>
-                    <Logo
-                      color="neutrals.basic"
-                      secondaryColor="neutrals.basic"
-                    />
+                    <Logo />
                   </div>
                   <div>
                     ©{new Date().getFullYear()} - Free React.js resources.

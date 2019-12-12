@@ -15,11 +15,13 @@ export const base = ({ theme }) => css`
 
 export const header = ({ theme }) => css`
   background-color: ${theme.palettes.primary.basic};
+  z-index: ${theme.zIndex.navbar};
 `
 
 export const footer = ({ theme }) => css`
   ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0])}
-  color: ${theme.palettes.neutrals.basic};
+  color: ${theme.palettes.neutrals.light};
+  background-color: ${theme.palettes.primary.medium};
   text-align: center;
 `
 

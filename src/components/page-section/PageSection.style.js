@@ -7,6 +7,7 @@ export const base = ({
   theme,
   backgroundColor,
 }) => css`
+  position: relative;
   background-color: ${backgroundColor ? getColor(theme, backgroundColor) : theme.palettes.neutrals.lightest};
   ${getSpacing.padding(theme, [SPACING_NAMES.BIGGER, 0])}
 

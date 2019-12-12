@@ -70,7 +70,7 @@ const SectionPage = ({
                 >
                   <Link
                     css={styles.action}
-                    to={getLastAddedPagePath({sectionSlug})}
+                    to={'#feed-start'}
                   >
                     <strong css={styles.actionCount}>
                     {resourcesCount}</strong> resources available yet
