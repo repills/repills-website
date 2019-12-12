@@ -11,6 +11,7 @@ export const title = ({ theme }) => css`
   line-height: 1.4 !important;
   height: 2.8rem;
   margin: 0;
+  color: ${theme.palettes.neutrals.dark};
 `
 
 export const description = ({ theme }) => css`
@@ -32,14 +33,16 @@ export const description = ({ theme }) => css`
   }
 
   ${breakpoint(BREAKPOINTS_QUERY_NAMES.LG)`
-    height: 9.5rem;
+    height: 10.2rem;
   `}
 `
 
 export const details = ({ theme }) => css`
+  ${getTypography(theme, TYPOGRAPHY_NAMES.MINI)}
   ${getSpacing.marginTop(theme, SPACING_NAMES.SMALLER)}
   font-weight: normal;
-  color: ${theme.palettes.neutrals.medium};
+  color: ${theme.palettes.neutrals.basic};
+  text-transform: uppercase;
 
   strong {
     font-weight: bold;

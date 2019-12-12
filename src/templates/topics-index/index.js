@@ -41,7 +41,10 @@ const TopicsPage = ({
                 <PageBlock
                   caption={`${topicsList.length} available topics`}
                 >
-                  <TopicList topics={topicsList} />
+                  <TopicList
+                    topics={topicsList}
+                    showDescription
+                  />
                 </PageBlock>
               </WrapperElement>
             </PageSection>

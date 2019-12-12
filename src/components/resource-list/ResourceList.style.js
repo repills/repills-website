@@ -9,7 +9,6 @@ export const pagination = ({ theme }) => css`
 
 export const more = ({theme}) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.BIG)}
-  text-align: center;
 `
 
 export const item = ({theme}) => css`

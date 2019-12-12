@@ -6,6 +6,7 @@ import { TYPOGRAPHY_NAMES, SPACING_NAMES, BREAKPOINTS_QUERY_NAMES } from '../../
 
 export const title = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.TITLE)}
+  color: ${theme.palettes.neutrals.dark};
   margin: 0;
   font-weight: bold;
 `

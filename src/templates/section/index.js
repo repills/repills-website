@@ -6,7 +6,7 @@ import {normalizeResource} from '../../utils/resources'
 import {getLastAddedPagePath} from '../../paths'
 import TopicList from '../../components/topic-list/TopicList'
 import Hero from '../../components/hero/Hero'
-import PageBlock from '../../components/page-block/PageBlock'
+import PageBlock, { PAGE_BLOCK_ALIGN } from '../../components/page-block/PageBlock'
 import PageSection from '../../components/page-section/PageSection'
 import Divider from '../../components/divider/Divider'
 import ResourceList from '../../components/resource-list/ResourceList'
@@ -68,11 +68,12 @@ const SectionPage = ({
             </PageSection>
             <Divider />
             <PageSection
-              backgroundColor="neutrals.light"
+              backgroundColor="neutrals.lighter"
             >
               <WrapperElement>
                 <PageBlock
-                  title={`${topicsList.length} topics about ${sectionName}`}
+                  title={`${topicsList.length} Topics about ${sectionName}`}
+                  align={PAGE_BLOCK_ALIGN.CENTER}
                 >
                   <TopicList
                     topics={topicsList}

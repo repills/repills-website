@@ -12,6 +12,7 @@ const TopicCard = ({
   title,
   description,
   totalResources,
+  showDescription,
 }) => (
   <CardFrame>
     <Link to={getTopicPagePath({topicSlug: slug})}>
@@ -19,7 +20,7 @@ const TopicCard = ({
         {title}
       </h4>
       {
-        description && (
+        showDescription && description && (
           <p css={styles.description}>
             {description}
           </p>

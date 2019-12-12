@@ -9,7 +9,8 @@ import * as styles from './TopicList.style'
 
 const TopicList = ({
   topics,
-  limit
+  limit,
+  showDescription
 }) => {
   const secureLimit = Math.min(limit || topics.length, topics.length);
 
@@ -31,7 +32,10 @@ const TopicList = ({
               lg={{ span: 8 }}
               key={topic.slug}
             >
-              <TopicCard {...topic} />
+              <TopicCard
+                {...topic}
+                showDescription={showDescription}
+              />
             </Col>
           ))
         }
