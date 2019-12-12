@@ -78,7 +78,7 @@ const TopicPage = ({
               }
             </div>
             <Divider />
-            <PageSection>
+            <PageSection id="feed-start">
               <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
                   caption={`
@@ -89,7 +89,7 @@ const TopicPage = ({
                   <ResourceList
                     resources={topicResources}
                     pagination={pagination}
-                    getPageUrl={(page) => getTopicPagePath({index: page, topicSlug: topicSlug})}
+                    getPageUrl={(page) => getTopicPagePath({index: page, topicSlug: topicSlug, anchor: 'feed-start'})}
                   />
                 </PageBlock>
               </WrapperElement>
