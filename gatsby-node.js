@@ -34,9 +34,6 @@ exports.createPages = ({ actions, graphql }) => {
       const sections = fillSectionsFromEdges(resources);
       const pageBuilder = pagesUtilities({ createPage, sections, resources });
 
-      // Homepage
-      pageBuilder.createHomePage();
-
       // Section Topics index pages
       pageBuilder.createSectionTopicIndexPages();
 

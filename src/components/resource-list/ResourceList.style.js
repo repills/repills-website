@@ -5,6 +5,12 @@ import { SPACING_NAMES } from '../../theme/constants'
 
 export const pagination = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.BIG)}
+  display: flex;
+  align-items: center;
+
+  > button + button {
+    margin-left: 1rem;
+  }
 `;
 
 export const more = ({theme}) => css`

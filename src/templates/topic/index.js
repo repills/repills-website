@@ -1,5 +1,4 @@
 import React from 'react'
-import {navigate} from 'gatsby'
 import {graphql} from 'gatsby'
 
 import {normalizeResource} from '../../utils/resources'
@@ -90,7 +89,7 @@ const TopicPage = ({
                   <ResourceList
                     resources={topicResources}
                     pagination={pagination}
-                    navigateTo={(page) => navigate(getTopicPagePath({index: page, topicSlug: topicSlug}))}
+                    getPageUrl={(page) => getTopicPagePath({index: page, topicSlug: topicSlug})}
                   />
                 </PageBlock>
               </WrapperElement>

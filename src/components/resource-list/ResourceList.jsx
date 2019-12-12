@@ -10,7 +10,7 @@ const ResourceList = ({
   resources,
   pagination,
   seeMore,
-  navigateTo
+  getPageUrl
 }) => {
   return (
     <div>
@@ -31,12 +31,24 @@ const ResourceList = ({
       {
         pagination && pagination.pageCount > 1 && (
           <div css={styles.pagination}>
-            <Pagination
-              total={pagination.totalCount}
-              current={pagination.currentPage}
-              pageSize={pagination.perPage}
-              onChange={(page) => navigateTo(page)}
-            />
+            {
+              pagination.previousPage && (
+                <Button size="large">
+                  <Link to={getPageUrl(pagination.previousPage)}>
+                    Prev ({pagination.previousPage})
+                  </Link>
+                </Button>
+              )
+            }
+            {
+              pagination.nextPage && (
+                <Button size="large">
+                  <Link to={getPageUrl(pagination.nextPage)}>
+                    Next ({pagination.nextPage})
+                  </Link>
+                </Button>
+              )
+            }
           </div>
         )
       }

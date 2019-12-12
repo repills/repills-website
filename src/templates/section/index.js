@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql, Link} from 'gatsby'
+import {graphql, Link, navigate} from 'gatsby'
 
 import BaseLayout from '../../components/layout/Layout'
 import {normalizeResource} from '../../utils/resources'
@@ -12,26 +12,49 @@ import Divider from '../../components/divider/Divider'
 import ResourceList from '../../components/resource-list/ResourceList'
 
 import * as styles from './style'
+import SEO from '../../components/HelmetSEO'
 
 const DISPLAYED_TOPICS = 9;
 
 const SectionPage = ({
   data,
   pageContext,
+  path,
 }) => {
-  const latestSharedResources = data.latestSharedResources.edges.map(normalizeResource)
+  const latestSharedResources = data.latestResources.edges.map(normalizeResource)
   const {
     sectionSlug,
     sectionName,
     resourcesCount,
     topicsList,
+    pagination,
   } = pageContext
+
+  const links = []
+
+  if(pagination.previousPage) {
+    links.push({
+      href: getLastAddedPagePath({index: pagination.previousPage, sectionSlug}),
+      rel: 'prev',
+    })
+  }
+
+  if(pagination.nextPage) {
+    links.push({
+      href: getLastAddedPagePath({index: pagination.nextPage, sectionSlug}),
+      rel: 'next',
+    })
+  }
 
   return (
     <BaseLayout>
       {
         ({WrapperElement}) => (
           <>
+            <SEO
+              links={links}
+              path={path}
+            />
             <PageSection
               backgroundColor="primary.basic"
             >
@@ -58,10 +81,11 @@ const SectionPage = ({
             <Divider />
             <PageSection>
               <WrapperElement wrapperMaxWidth={54}>
-                <PageBlock title="Feed">
+                <PageBlock title={`Feed - Page ${pagination.currentPage}`}>
                   <ResourceList
                     resources={latestSharedResources}
-                    seeMore={getLastAddedPagePath({index: 2, sectionSlug})}
+                    pagination={pagination}
+                    getPageUrl={(page) => getLastAddedPagePath({index: page, sectionSlug: sectionSlug})}
                   />
                 </PageBlock>
               </WrapperElement>
@@ -92,11 +116,12 @@ const SectionPage = ({
 export default SectionPage;
 
 export const sectionPageQuery = graphql`
-  query sectionPageQuery($sectionSlug: String!, $limit: Int!) {
-    latestSharedResources: allMarkdownRemark(
-      limit: $limit,
+  query sectionPageQuery($sectionSlug: String!, $skip: Int!, $limit: Int!) {
+    latestResources: allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___createdAt] }
       filter: { frontmatter: { sections: { in: [$sectionSlug] } } }
+      limit: $limit
+      skip: $skip
     ) {
       edges {
         node {

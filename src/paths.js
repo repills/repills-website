@@ -10,6 +10,10 @@ module.exports = {
     return `/${sectionSlug}/topics`;
   },
   getLastAddedPagePath: ({index, sectionSlug}) => {
-    return `/${sectionSlug}/latest-resources/${(index && index !== 1) ? `${index}/` : ''}`;
+    if(!index) {
+      return '/';
+    }
+
+    return `/${sectionSlug}/latest-resources/${(index !== 1) ? `${index}/` : ''}`;
   },
 };
