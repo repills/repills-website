@@ -67,10 +67,7 @@ class BaseLayout extends React.Component {
                     <Logo />
                   </div>
                   <div>
-                    ©{new Date().getFullYear()} - Free React.js resources.
-                  </div>
-                  <div>
-                    Created by {site.siteMetadata.author}
+                    ©2018-{new Date().getFullYear()} • Free React.js resources. Created by {site.siteMetadata.author}
                   </div>
                 </WrapperElement>
               </footer>
