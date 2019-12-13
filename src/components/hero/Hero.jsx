@@ -3,12 +3,20 @@ import React from 'react'
 import * as styles from './Hero.style'
 
 const Hero = ({
+  caption,
   title,
   description,
   children,
 }) => (
   <header css={styles.base}>
     <div css={styles.content}>
+      {
+        caption && (
+          <div css={styles.caption}>
+            {caption}
+          </div>
+        )
+      }
       <h1 css={styles.title}>
         {title}
       </h1>

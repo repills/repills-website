@@ -16,6 +16,7 @@ export const base = ({ theme }) => css`
 export const header = ({ theme }) => css`
   background-color: ${theme.palettes.primary.basic};
   z-index: ${theme.zIndex.navbar};
+  position: relative;
 `
 
 export const footer = ({ theme }) => css`

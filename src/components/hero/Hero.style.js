@@ -10,6 +10,13 @@ export const base = () => css`
   `}
 `
 
+export const caption = ({ theme }) => css`
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+  color: ${theme.palettes.neutrals.light};
+  ${getSpacing.marginBottom(theme, SPACING_NAMES.SMALLER)}
+  text-transform: uppercase;
+`
+
 export const title = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.H1)}
   color: ${theme.palettes.neutrals.lightest};

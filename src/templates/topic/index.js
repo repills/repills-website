@@ -62,7 +62,8 @@ const TopicPage = ({
             >
               <WrapperElement wrapperMaxWidth={54}>
                 <Hero
-                  title={`Topic: ${topicTitle}`}
+                  caption="Topic"
+                  title={topicTitle}
                   description={topicDescription}
                 />
               </WrapperElement>
