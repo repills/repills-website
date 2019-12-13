@@ -1,5 +1,5 @@
 import React from 'react'
-import {graphql, Link, navigate} from 'gatsby'
+import {graphql, Link} from 'gatsby'
 
 import BaseLayout from '../../components/layout/Layout'
 import {normalizeResource} from '../../utils/resources'
@@ -13,8 +13,20 @@ import ResourceList from '../../components/resource-list/ResourceList'
 
 import * as styles from './style'
 import SEO from '../../components/HelmetSEO'
+import { ICON_PATHS } from '../../components/Icon/Icon'
+import IconType from '../../components/Icon/IconType'
 
 const DISPLAYED_TOPICS = 9;
+
+const heroTypes = [
+  ICON_PATHS.ARTICLE,
+  ICON_PATHS.TUTORIAL,
+  // ICON_PATHS.LIBRARY,
+  // ICON_PATHS.TALK,
+  ICON_PATHS.COURSE,
+  ICON_PATHS.TOOL,
+  ICON_PATHS.BOOK
+]
 
 const SectionPage = ({
   data,
@@ -62,12 +74,25 @@ const SectionPage = ({
                 <Hero
                   title={`Dive deep into ${sectionName} through high-quality resources`}
                   description={`
-                    <strong>reactfeed.com</strong> is the place where you stay up to date
-                    with the latest ${sectionName} news.<br/>
                     You can discover <strong>articles</strong>, <strong>tutorials</strong>,
-                    <strong>courses</strong>, <strong>tools</strong> and <strong>books</strong>.
+                    <strong>libraries</strong>, <strong>talks</strong>, <strong>courses</strong>, <strong>tools</strong> and <strong>books</strong>.
                   `}
                 >
+                  <div css={styles.heroTypes}>
+                    {
+                      heroTypes.map(path => (
+                        <div
+                          key={path}
+                          css={styles.heroTypesItem}
+                        >
+                          <IconType
+                            path={path}
+                            size={40}
+                          />
+                        </div>
+                      ))
+                    }
+                  </div>
                   <Link
                     css={styles.action}
                     to={'#feed-start'}
