@@ -24,5 +24,6 @@ export const item = ({theme}) => css`
 
   &:last-child {
     border-bottom: 0;
+    margin-bottom: 0;
   }
 `

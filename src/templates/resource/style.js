@@ -13,6 +13,7 @@ export const title = () => css`
 `
 
 export const details = ({ theme }) => css`
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
   ${getSpacing.marginTop(theme, SPACING_NAMES.SMALLER)}
 `
 
@@ -28,7 +29,6 @@ export const actions = ({ theme }) => css`
   }
 `
 export const type = ({ theme, color }) => css`
-  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
   padding: .15rem .3rem;
   color: white;
   background-color: ${color};

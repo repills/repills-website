@@ -1,7 +1,7 @@
 import { css } from 'styled-components'
-import {SPACING_NAMES} from '../../theme/constants'
+import {SPACING_NAMES, TYPOGRAPHY_NAMES} from '../../theme/constants'
 // import { navHeight } from '../Navigation/Navigation.style'
-import { getSpacing } from '../../theme/utils'
+import { getSpacing, getTypography } from '../../theme/utils'
 
 const navHeight = {
   mobile: '4rem',
@@ -19,7 +19,8 @@ export const header = ({ theme }) => css`
 `
 
 export const footer = ({ theme }) => css`
-  ${getSpacing.padding(theme, [SPACING_NAMES.BIG, 0])}
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+  ${getSpacing.padding(theme, [SPACING_NAMES.BIGGER, 0])}
   color: ${theme.palettes.neutrals.light};
   background-color: ${theme.palettes.primary.medium};
   text-align: center;

@@ -1,4 +1,4 @@
-import { css, keyframes } from 'styled-components'
+import { css } from 'styled-components'
 import breakpoint from 'styled-components-breakpoint'
 
 import { getTypography, getSpacing } from '../../theme/utils'
@@ -17,7 +17,7 @@ export const title = ({ theme }) => css`
 `
 
 export const description = ({ theme }) => css`
-  ${getSpacing.margin(theme, [SPACING_NAMES.MEDIUM, SPACING_NAMES.AUTO, 0])}
+  ${getSpacing.margin(theme, [SPACING_NAMES.SMALLER, SPACING_NAMES.AUTO, 0])}
   ${getTypography(theme, TYPOGRAPHY_NAMES.BODY)}
   color: ${theme.palettes.neutrals.light};
   max-width: 50rem;
