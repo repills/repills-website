@@ -1,11 +1,13 @@
 function mapTopics(topics) {
   return Object.keys(topics).map(topicId => {
     const topic = topics[topicId];
+
     return {
       slug: topic.slug,
       title: topic.title,
       description: topic.description,
       basePath: topic.basePath,
+      similar: topic.similar,
       totalResources: topic.resources.length,
     };
   });
