@@ -8,6 +8,8 @@ export const base = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.H2)}
   ${getSpacing.padding(theme, [SPACING_NAMES.MEDIUM, 0])}
   display: flex;
+  z-index: ${theme.zIndex.navbar};
+  position: relative;
 
   > a {
     color: ${theme.palettes.neutrals.lightest};
