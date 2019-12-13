@@ -5,7 +5,7 @@ module.exports = {
     siteUrl: `https://${siteName}.com`,
     name: siteName,
     title: `React.js high-quality resources`,
-    description: `${siteName}.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, courses, tools and books in one place.`,
+    description: `${siteName}.com is the place to learn about React.js through high-quality resources. You can discover articles, tutorials, libraries, talks, courses, tools and books in one place.`,
     author: 'Andrea Mangano',
   },
   plugins: [
