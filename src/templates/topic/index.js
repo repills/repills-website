@@ -27,7 +27,7 @@ const TopicPage = ({
     topicsList
   } = pageContext
 
-  const currentTopic = topicsList[topicSlug]
+  const currentTopic = topicsList.find(t => t.slug === topicSlug)
   const topicResources = data.topicResources.edges.map(normalizeResource)
 
   const links = []
@@ -67,7 +67,6 @@ const TopicPage = ({
                 />
               </WrapperElement>
             </PageSection>
-            <Divider />
             <div css={styles.actionBar}>
               {
                 <TopicSelect
@@ -94,6 +93,7 @@ const TopicPage = ({
                 </PageBlock>
               </WrapperElement>
             </PageSection>
+            <Divider />
             <PageSection>
               <WrapperElement>
                 {
