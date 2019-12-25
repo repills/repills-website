@@ -106,7 +106,7 @@ const SectionPage = ({
             <Divider />
             <PageSection id="feed-start">
               <WrapperElement wrapperMaxWidth={54}>
-                <PageBlock title={`Feed - Page ${pagination.currentPage}`}>
+                <PageBlock caption={`Feed - Page ${pagination.currentPage}`}>
                   <ResourceList
                     resources={latestSharedResources}
                     pagination={pagination}
