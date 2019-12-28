@@ -13,6 +13,7 @@ const ContributionForm = ({
   const { getFieldDecorator } = form;
   const urlRegex = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/gi;
   const titleRegex = /^.{6,}$/gi;
+  const suggestedByRegex = /^[a-z](?:[a-z]|-(?=[a-z])){0,38}$/gi;
 
   const onSubmit = useCallback(
     (e) => {
@@ -139,11 +140,12 @@ const ContributionForm = ({
       </Form.Item>
       <Form.Item label="Contributor github username">
         {
+          // @TODO: on change save the value on localstorage
           getFieldDecorator(FIELD_NAMES.SUGGESTED_BY, {
             rules: [
               {
-                pattern: new RegExp(titleRegex),
-                message: 'Title too much short',
+                pattern: new RegExp(suggestedByRegex),
+                message: 'It doesn\'t seem to be a valid GitHub username.',
               },
             ],
           })(
