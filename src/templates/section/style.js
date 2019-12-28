@@ -47,4 +47,12 @@ export const actionCount = ({ theme }) => css`
   margin-right: .75rem;
 `;
 
+export const submit = ({ theme }) => css`
+  ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+  ${getSpacing.marginTop(theme, SPACING_NAMES.SMALL)}
+
+  a {
+    color: ${theme.palettes.secondary.basic};
+  }
+`;
 

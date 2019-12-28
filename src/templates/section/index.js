@@ -100,6 +100,9 @@ const SectionPage = ({
                     <strong css={styles.actionCount}>
                     {resourcesCount}</strong> resources available yet
                   </Link>
+                  <div css={styles.submit}>
+                    <Link to="/contribution">Submit a resource!</Link>
+                  </div>
                 </Hero>
               </WrapperElement>
             </PageSection>
