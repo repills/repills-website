@@ -26,7 +26,8 @@ const fieldTransformers = {
   [FIELD_NAMES.AUTHOR]: (value) => `"${value.replace(/"/g, '\\"').trim()}"`,
   [FIELD_NAMES.PUBLISHED_AT]: (value) => value.toISOString(),
   [FIELD_NAMES.ABSTRACT]: (value) => `"${allReplace(value, {'\\n' : ' ', '"': '\\"'}).trim()}"`,
-  [FIELD_NAMES.TOPICS]: (value) => value.join(', '),
+  [FIELD_NAMES.TOPICS]: (value) => `[${value.join(', ')}]`,
+  [FIELD_NAMES.TYPE]: (value) => `[${value.split('_').join(', ')}]`,
   [FIELD_NAMES.SUGGESTED_BY]: (value) => `[${value.trim()}]`,
 };
 

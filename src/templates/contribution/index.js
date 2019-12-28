@@ -5,6 +5,7 @@ import Hero from '../../components/hero/Hero'
 import PageSection from '../../components/page-section/PageSection'
 import { Input, Form, DatePicker, Icon, Button, Select } from 'antd'
 import { generateSnippet, FIELD_NAMES, getPullRequestUrl, getFileName } from '../../utils/contribution'
+import types from '../../config/types';
 
 const ContributionForm = ({
   form,
@@ -112,6 +113,26 @@ const ContributionForm = ({
               size="large"
               rows={5}
             />
+          )
+        }
+      </Form.Item>
+      <Form.Item label="Type">
+        {
+          getFieldDecorator(FIELD_NAMES.TYPE, {
+            rules: [
+              {
+                required: true,
+                message: 'Please select the resource\'s type',
+              },
+            ],
+          })(
+            <Select size="large">
+              {
+                Object.entries(types).map(([key, value]) => (
+                  <Select.Option key={key}>{value.label.singular}</Select.Option>
+                ))
+              }
+            </Select>
           )
         }
       </Form.Item>
