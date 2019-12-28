@@ -3,6 +3,7 @@ function mapTopics(topics) {
     const topic = topics[topicId];
 
     return {
+      id: topicId,
       slug: topic.slug,
       title: topic.title,
       description: topic.description,

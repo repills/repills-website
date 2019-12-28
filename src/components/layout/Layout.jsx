@@ -1,7 +1,7 @@
 import React from 'react'
-import {Layout} from 'antd'
+import {Layout, Button} from 'antd'
 import {ThemeProvider} from 'styled-components'
-import {StaticQuery, graphql} from 'gatsby'
+import {StaticQuery, graphql, Link} from 'gatsby'
 import SEO from '../HelmetSEO'
 
 import theme from '../../theme'
@@ -68,6 +68,14 @@ class BaseLayout extends React.Component {
                   </div>
                   <div>
                     ©2018-{new Date().getFullYear()} • Free React.js resources. Created by {site.siteMetadata.author}
+                  </div>
+                  <div>
+                    Want to submit a resource? <Button
+                      size="small"
+                      type="primary"
+                    >
+                      <Link to="/contribution">Let's get started!</Link>
+                    </Button>
                   </div>
                 </WrapperElement>
               </footer>
