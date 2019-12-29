@@ -42,6 +42,8 @@ const SectionPage = ({
     pagination,
   } = pageContext
 
+  console.log(latestSharedResources)
+
   const links = []
 
   if(pagination.previousPage) {

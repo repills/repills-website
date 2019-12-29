@@ -33,7 +33,7 @@ const fieldTransformers = {
 
 export function getPullRequestUrl({fileName, snippet, baseUrl, publishedAt}) {
   const year = publishedAt ? publishedAt.year() : 'NO_DATE';
-  return `${baseUrl}new/develop/src/resources/${year}/resource?filename=${fileName}&value=${encodeURI(snippet)}`;
+  return `${baseUrl}new/master/src/resources/${year}/resource?filename=${fileName}&value=${encodeURI(snippet)}`;
 }
 
 export function getFileName(data, withExtension = true) {
