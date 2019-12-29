@@ -4,8 +4,6 @@ import { getTypography, getSpacing } from '../../theme/utils'
 import { TYPOGRAPHY_NAMES, SPACING_NAMES } from '../../theme/constants'
 
 export const article = () => css`
-  max-width: 52rem;
-  margin: 0 auto;
 `
 
 export const title = () => css`
@@ -19,6 +17,7 @@ export const details = ({ theme }) => css`
 
 export const description = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.MEDIUM)}
+  color: ${theme.palettes.neutrals.medium}
 `
 
 export const actions = ({ theme }) => css`

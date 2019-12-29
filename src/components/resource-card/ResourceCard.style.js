@@ -43,3 +43,13 @@ export const type = ({ theme, color }) => css`
   margin-right: .3rem;
   border-radius: .25rem;
 `
+
+export const actions = ({ theme }) => css`
+  ${getSpacing.marginTop(theme, SPACING_NAMES.SMALL)}
+
+  > a {
+    ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
+    text-decoration: underline;
+    font-weight: bold;
+  }
+`

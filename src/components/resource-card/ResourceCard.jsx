@@ -1,6 +1,7 @@
 import React from 'react'
 
 import * as styles from './ResourceCard.style'
+import { Button } from 'antd';
 
 const ResourceCard = ({
   link,
@@ -10,11 +11,7 @@ const ResourceCard = ({
   typeLabel,
   color,
 }) => (
-  <a
-    href={link}
-    target="_blank"
-    rel="noopener noreferrer"
-  >
+  <article>
     <h4 css={styles.title}>
       {title}
     </h4>
@@ -33,7 +30,16 @@ const ResourceCard = ({
         {typeLabel}
       </span> by <strong>{author}</strong>
     </div>
-  </a>
+    <div css={styles.actions}>
+      <a
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read more
+      </a>
+    </div>
+  </article>
 );
 
 export default ResourceCard;

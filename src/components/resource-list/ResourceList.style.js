@@ -18,12 +18,10 @@ export const more = ({theme}) => css`
 `
 
 export const item = ({theme}) => css`
-  ${getSpacing.marginBottom(theme, SPACING_NAMES.BIG)}
-  ${getSpacing.paddingBottom(theme, SPACING_NAMES.BIG)}
-  border-bottom: 1px solid ${theme.palettes.neutrals.light};
-
-  &:last-child {
-    border-bottom: 0;
-    margin-bottom: 0;
-  }
+  ${getSpacing.marginBottom(theme, SPACING_NAMES.MEDIUM)}
+  ${getSpacing.padding(theme, SPACING_NAMES.MEDIUM)}
+  box-shadow: 0 2px 4px rgba(3,27,78,.06);
+  border: 1px solid rgba(0,0,0,.05);
+  border-radius: .5rem;
+  background-color: ${theme.palettes.neutrals.lightest};
 `
