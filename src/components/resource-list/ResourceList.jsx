@@ -5,6 +5,7 @@ import {Link} from 'gatsby'
 import ResourceCard from '../resource-card/ResourceCard'
 
 import * as styles from './ResourceList.style'
+import { getIconFromType } from '../../utils/resources/ui'
 
 const ResourceList = ({
   resources,
@@ -23,6 +24,7 @@ const ResourceList = ({
             >
               <ResourceCard
                 {...resource}
+                icon={getIconFromType(resource.rawTypes)}
               />
             </div>
           ))

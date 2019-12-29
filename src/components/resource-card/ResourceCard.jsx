@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as styles from './ResourceCard.style'
-import { Button } from 'antd';
+import IconType from '../Icon/IconType'
 
 const ResourceCard = ({
   link,
@@ -9,9 +9,10 @@ const ResourceCard = ({
   author,
   abstract,
   typeLabel,
+  icon,
   color,
 }) => (
-  <article>
+  <article css={styles.base}>
     <h4 css={styles.title}>
       {title}
     </h4>
@@ -38,6 +39,13 @@ const ResourceCard = ({
       >
         Read more
       </a>
+    </div>
+    <div css={styles.icon}>
+      <IconType
+        path={icon}
+        size={40}
+        color={color}
+      />
     </div>
   </article>
 );

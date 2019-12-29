@@ -20,8 +20,8 @@ export const more = ({theme}) => css`
 export const item = ({theme}) => css`
   ${getSpacing.marginBottom(theme, SPACING_NAMES.MEDIUM)}
   ${getSpacing.padding(theme, SPACING_NAMES.MEDIUM)}
-  box-shadow: 0 2px 4px rgba(3,27,78,.06);
-  border: 1px solid rgba(0,0,0,.05);
+  box-shadow: 0 2px 4px rgba(3,27,78,.07);
+  border: 1px solid rgba(0,0,0,.07);
   border-radius: .5rem;
   background-color: ${theme.palettes.neutrals.lightest};
 `

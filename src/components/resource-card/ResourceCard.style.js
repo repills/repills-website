@@ -4,6 +4,14 @@ import breakpoint from 'styled-components-breakpoint'
 import { getTypography, getSpacing } from '../../theme/utils'
 import { TYPOGRAPHY_NAMES, SPACING_NAMES, BREAKPOINTS_QUERY_NAMES } from '../../theme/constants'
 
+export const base = () => css`
+  position: relative;
+
+  ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
+    padding-right: 4.25rem;
+  `}
+`
+
 export const title = ({ theme }) => css`
   ${getTypography(theme, TYPOGRAPHY_NAMES.TITLE)}
   color: ${theme.palettes.neutrals.dark};
@@ -52,4 +60,15 @@ export const actions = ({ theme }) => css`
     text-decoration: underline;
     font-weight: bold;
   }
+`
+
+export const icon = () => css`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: none;
+
+  ${breakpoint(BREAKPOINTS_QUERY_NAMES.MD)`
+    display: block;
+  `}
 `
