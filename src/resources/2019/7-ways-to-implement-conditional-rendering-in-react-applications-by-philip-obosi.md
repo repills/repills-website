@@ -1,4 +1,5 @@
 ---
+sections: [reactjs]
 link: https://scotch.io/tutorials/7-ways-to-implement-conditional-rendering-in-react-applications
 title: "7 Ways to Implement Conditional Rendering in React Applications"
 author: "Philip Obosi"

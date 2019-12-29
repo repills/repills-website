@@ -58,6 +58,7 @@ export function generateSnippet(data) {
 
   return (
     `---
+sections: [reactjs]
 ${body}
 createdAt: ${new Date().toISOString()}
 reference: ${getFileReference(data, false)}

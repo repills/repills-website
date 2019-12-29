@@ -1,4 +1,5 @@
 ---
+sections: [reactjs]
 link: https://overreacted.io/what-are-the-react-team-principles/
 title: "What Are the React Team Principles?"
 author: "Dan Abramov"

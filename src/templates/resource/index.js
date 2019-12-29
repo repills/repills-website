@@ -124,7 +124,7 @@ const ResourcePage = ({data, path}) => {
             <PageSection>
               <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
-                  title="Related resource"
+                  title="Related resources"
                 >
                   <ResourceList
                     resources={relatedResources}
