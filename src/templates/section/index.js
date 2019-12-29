@@ -64,6 +64,7 @@ const SectionPage = ({
         ({WrapperElement}) => (
           <>
             <SEO
+              title={`Latest resources about ${sectionName}`}
               links={links}
               path={path}
             />
