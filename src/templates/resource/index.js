@@ -39,7 +39,7 @@ const ResourcePage = ({data, path}) => {
     "@type": "NewsArticle",
     mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": path
+      "@id": `${siteUrl}${path}`
     },
     headline: title,
     datePublished: publishedAt,
@@ -121,7 +121,9 @@ const ResourcePage = ({data, path}) => {
               </WrapperElement>
             </PageSection>
             <Divider />
-            <PageSection>
+            <PageSection
+              backgroundColor="neutrals.lighter"
+            >
               <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock
                   title="Related resources"

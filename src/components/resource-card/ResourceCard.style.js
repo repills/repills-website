@@ -56,13 +56,15 @@ export const actions = ({ theme }) => css`
   ${getSpacing.marginTop(theme, SPACING_NAMES.SMALL)}
 
   > a {
-    ${getTypography(theme, TYPOGRAPHY_NAMES.SMALL)}
-    text-decoration: underline;
+    ${getTypography(theme, TYPOGRAPHY_NAMES.MINI)}
+    text-decoration: none;
     font-weight: bold;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
   }
 `
 
-export const icon = () => css`
+export const icon = ({theme}) => css`
   position: absolute;
   top: 0;
   right: 0;

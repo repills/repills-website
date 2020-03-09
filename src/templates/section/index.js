@@ -110,7 +110,10 @@ const SectionPage = ({
               </WrapperElement>
             </PageSection>
             <Divider />
-            <PageSection id="feed-start">
+            <PageSection
+              id="feed-start"
+              backgroundColor="neutrals.lighter"
+            >
               <WrapperElement wrapperMaxWidth={54}>
                 <PageBlock caption={`Feed - Page ${pagination.currentPage}`}>
                   <ResourceList
@@ -123,7 +126,7 @@ const SectionPage = ({
             </PageSection>
             <Divider />
             <PageSection
-              backgroundColor="neutrals.lighter"
+              backgroundColor="neutrals.light"
             >
               <WrapperElement>
                 <PageBlock

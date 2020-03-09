@@ -8,7 +8,6 @@ export const base = ({ theme }) => css`
   box-shadow: 0 1px 1px 1px rgba(10,16,34,.08);
   cursor: pointer;
   background-color: ${theme.palettes.neutrals.lightest};
-  border-radius: 5px;
   transition: transform .2s ease,box-shadow .2s ease;
 
   > a {
